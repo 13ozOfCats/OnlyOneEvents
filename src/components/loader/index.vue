@@ -438,7 +438,13 @@
 	import anime from 'animejs/lib/anime.es.js';
 	import $ from 'jquery';
 
+
     export default Vue.extend({
+		methods: {
+			openShowreel: function() {
+				this.$eventBus.$emit('showreel');
+			},
+		},
 		mounted: () => {
 			const preloaderTimeline = anime
 				.timeline({
@@ -573,9 +579,13 @@
 					delay: 200,
 					duration: 400,
 				});
-			preloaderTimeline.finished.then(() => {
+
+			const that = this;
+			console.log(this)
+			preloaderTimeline.finished.then(function() {
 				$('#loader').fadeOut(400, function () {
-					//	showRealVideo.play();
+					console.log(this)
+					this.openShowreel();
 					window.sessionStorage.setItem('preloaderIsShown', true);
 				});
 			});

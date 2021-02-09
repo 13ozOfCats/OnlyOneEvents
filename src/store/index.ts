@@ -5,6 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
+		shortcut: 'http://ooe.borodadigital.com/video/showreel.mp4',
+		showreel: 'http://ooe.borodadigital.com/video/showreel2.mp4',
 		posts: [
 			{
 				id: 1,
@@ -320,6 +322,12 @@ export default new Vuex.Store({
 	actions: {},
 	modules: {},
 	getters: {
+		shortcut: function(state) {
+			return state.shortcut;
+		},
+		showreel: function(state) {
+			return state.showreel;
+		},
 		posts: function(state) {
 			return state.posts;
 		},
