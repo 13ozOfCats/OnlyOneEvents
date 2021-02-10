@@ -1,5 +1,7 @@
 <template>
 	<div id="app">
+		<myLoader v-if="showPreloader"></myLoader>
+		<myShowreel v-if="showPreloader" :videoLink="shortcut" :displayOn="true"></myShowreel>
 		<myHeader></myHeader>
 		<myDot v-if="this.$route.path.includes('/works')" ref="dot"></myDot>
 		<router-view />
@@ -10,6 +12,9 @@
 	import myFooter from './components/footer/index.vue';
 	import myHeader from './components/header/index.vue';
 	import myDot from './components/dot/index.vue';
+	import myLoader from './components/loader/index.vue';
+	import myShowreel from './components/showreel/index.vue';
+	import {mapGetters} from 'vuex';
 
 	export default {
 		data: function() {
@@ -18,9 +23,14 @@
 			};
 		},
 		components: {
+			myLoader,
+			myShowreel,
 			myFooter,
 			myHeader,
 			myDot,
+		},
+		computed: {
+			...mapGetters(['showPreloader', 'shortcut']),
 		},
 	};
 </script>
@@ -212,8 +222,7 @@
 		font-family: 'Circe';
 		src: url('assets/fonts/Circe-Regular.eot');
 		src: url('assets/fonts/Circe-Regular.eot?#iefix') format('embedded-opentype'),
-		url('assets/fonts/Circe-Regular.woff') format('woff'),
-		url('assets/fonts/Circe-Regular.ttf') format('truetype');
+			url('assets/fonts/Circe-Regular.woff') format('woff'), url('assets/fonts/Circe-Regular.ttf') format('truetype');
 		font-weight: normal;
 		font-style: normal;
 	}
@@ -221,8 +230,7 @@
 		font-family: 'Circe';
 		src: url('assets/fonts/Circe-Light.eot');
 		src: url('assets/fonts/Circe-Light.eot?#iefix') format('embedded-opentype'),
-		url('assets/fonts/Circe-Light.woff') format('woff'),
-		url('assets/fonts/Circe-Light.ttf') format('truetype');
+			url('assets/fonts/Circe-Light.woff') format('woff'), url('assets/fonts/Circe-Light.ttf') format('truetype');
 		font-weight: 300;
 		font-style: normal;
 	}
@@ -231,8 +239,7 @@
 		font-family: 'Circe-Light';
 		src: url('assets/fonts/Circe-Light.eot');
 		src: url('assets/fonts/Circe-Light.eot?#iefix') format('embedded-opentype'),
-		url('assets/fonts/Circe-Light.woff') format('woff'),
-		url('assets/fonts/Circe-Light.ttf') format('truetype');
+			url('assets/fonts/Circe-Light.woff') format('woff'), url('assets/fonts/Circe-Light.ttf') format('truetype');
 		font-weight: 300;
 		font-style: normal;
 	}

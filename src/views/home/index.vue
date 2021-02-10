@@ -1,8 +1,6 @@
 <template>
 	<div class="home">
-		<myLoader v-if="show"></myLoader>
-		<myShowreel v-if="show" :videoLink="shortcut"></myShowreel>
-		<myShowreel v-else :videoLink="showreel"></myShowreel>
+		<myShowreel v-if="!showPreloader" :videoLink="showreel"></myShowreel>
 		<div class="main__wrapper desktop">
 			<div class="main__inner">
 				<section class="main__section" id="welcome">
@@ -10,43 +8,43 @@
 						<div class="main__string" id="string-1">
 							<span class="main__word" id="word-1"> Привет!&nbsp; </span>
 							<span class="main__word" id="word-2">
-							Мы
-							<span class="main__dot" style="opacity: 0"></span>
-						</span>
+								Мы
+								<span class="main__dot" style="opacity: 0"></span>
+							</span>
 							<span class="main__word" id="word-3"> &nbsp;маркетинговое&nbsp; </span>
 							<span id="string-1-2-3">
-							<span class="main__word" id="word-4">
-								агентство
-								<span class="main__dot" style="opacity: 0"></span>
+								<span class="main__word" id="word-4">
+									агентство
+									<span class="main__dot" style="opacity: 0"></span>
+								</span>
+								<span class="main__word" id="word-5"> &nbsp;из&nbsp; </span>
+								<span class="main__word" id="word-6"> Санкт- </span>
+								<span class="main__word" id="word-7">
+									Петербурга
+									<span class="main__dot" style="opacity: 0"></span>
+								</span>
 							</span>
-							<span class="main__word" id="word-5"> &nbsp;из&nbsp; </span>
-							<span class="main__word" id="word-6"> Санкт- </span>
-							<span class="main__word" id="word-7">
-								Петербурга
-								<span class="main__dot" style="opacity: 0"></span>
-							</span>
-						</span>
 						</div>
 						<div class="main__string" id="string-2">
 							<span class="main__word" id="word-11"> Продюссируем&nbsp; </span>
 							<span class="main__word" id="word-12"> ивенты </span>
 							<span class="main__word" id="word-13"> &nbsp;разрабатываем&nbsp; </span>
 							<span id="string-2-2">
-							<span class="main__word" id="word-14"> креатив </span>
-							<span class="main__word" id="word-15"> &nbsp;проектируем&nbsp;стенды </span>
-							<span class="inline-block" id="string-2-3">
-								<span class="main__word" id="word-16"> и </span>
-								<span class="main__word">декор</span
-								><span class="main__word" id="word-18"> ации&nbsp;c 2015 года.</span>
+								<span class="main__word" id="word-14"> креатив </span>
+								<span class="main__word" id="word-15"> &nbsp;проектируем&nbsp;стенды </span>
+								<span class="inline-block" id="string-2-3">
+									<span class="main__word" id="word-16"> и </span>
+									<span class="main__word">декор</span
+									><span class="main__word" id="word-18"> ации&nbsp;c 2015 года.</span>
+								</span>
 							</span>
-						</span>
 						</div>
 						<div class="main__string" id="string-3">
 							<span class="main__word" id="word-21"> Наша&nbsp; </span>
 							<span class="main__word" id="word-22">
-							философия
-							<span class="main__dot" style="opacity: 0"></span>
-						</span>
+								философия
+								<span class="main__dot" style="opacity: 0"></span>
+							</span>
 							<span class="main__word" id="word-23"> &nbsp;- f </span>
 							<span class="main__word"> o </span>
 							<span class="main__word" id="word-25"> cus&nbsp; </span>
@@ -61,17 +59,11 @@
 						</div>
 						<div class="main__aboutBg"></div>
 						<span class="main__about">
-						”Мы - команда увлеченных профессионалов, с 2015 года создающая яркие зрелищные проекты в
-						сфере event-маркетинга.”
-					</span>
+							”Мы - команда увлеченных профессионалов, с 2015 года создающая яркие зрелищные проекты в сфере
+							event-маркетинга.”
+						</span>
 						<div class="main__cities">
-							<svg
-								width="110"
-								height="163"
-								viewBox="0 0 110 163"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
+							<svg width="110" height="163" viewBox="0 0 110 163" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<ellipse cx="55" cy="153" rx="38" ry="10" fill="black" fill-opacity="0.25" />
 								<path
 									d="M55 0C24.6728 0 0 24.6728 0 54.9997C0 92.6363 49.2196 147.889 51.3152 150.223C53.2835 152.415 56.7201 152.411 58.6848 150.223C60.7804 147.889 110 92.6363 110 54.9997C109.999 24.6728 85.3269 0 55 0ZM55 82.6716C39.7416 82.6716 27.3284 70.258 27.3284 54.9997C27.3284 39.7414 39.7419 27.3281 55 27.3281C70.2581 27.3281 82.6713 39.7416 82.6713 55C82.6713 70.2583 70.2581 82.6716 55 82.6716Z"
@@ -83,20 +75,14 @@
 							</div>
 						</div>
 						<div class="main__videocircle">
-						<span class="main__playcircle" @click="openShowreel">
-							<svg
-								width="48"
-								height="53"
-								viewBox="0 0 48 53"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									d="M45.0882 23.0868C47.7157 24.6038 47.7157 28.3962 45.0882 29.9132L6.66176 52.0987C4.03431 53.6156 0.749997 51.7194 0.749998 48.6855L0.75 4.31447C0.75 1.28055 4.03431 -0.615653 6.66177 0.901307L45.0882 23.0868Z"
-									fill="white"
-								/>
-							</svg>
-						</span>
+							<span class="main__playcircle" @click="openShowreel">
+								<svg width="48" height="53" viewBox="0 0 48 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M45.0882 23.0868C47.7157 24.6038 47.7157 28.3962 45.0882 29.9132L6.66176 52.0987C4.03431 53.6156 0.749997 51.7194 0.749998 48.6855L0.75 4.31447C0.75 1.28055 4.03431 -0.615653 6.66177 0.901307L45.0882 23.0868Z"
+										fill="white"
+									/>
+								</svg>
+							</span>
 							<div class="main__videodescr">
 								<span class="main__name"> Видео о нас </span>
 								<span class="main__time"> 2:12 </span>
@@ -390,8 +376,7 @@
 						</svg>
 						<div class="main__foibox" style="opacity: 0">
 							<div class="main__textfoi">
-								Мы всегда в поиске новых идей для создания эффективных и оригинальных маркетинговых
-								коммуникаций
+								Мы всегда в поиске новых идей для создания эффективных и оригинальных маркетинговых коммуникаций
 							</div>
 						</div>
 						<div class="main__end">
@@ -444,11 +429,7 @@
 											/>
 										</svg>
 									</a>
-									<a
-										target="_blank"
-										href="https://www.instagram.com/oneonlyevents"
-										class="main__link link"
-									>
+									<a target="_blank" href="https://www.instagram.com/oneonlyevents" class="main__link link">
 										<svg width="73" height="73" viewBox="0 0 73 73">
 											<circle
 												class="link__bg link__bg-gray"
@@ -886,362 +867,340 @@
 	import Vue from 'vue';
 	import {mapGetters} from 'vuex';
 	import lax from 'lax.js';
-	import myLoader from '@/components/loader/index.vue';
 	import myShowreel from '@/components/showreel/index.vue';
 
 	export default Vue.extend({
 		name: 'Home',
 		components: {
-			myLoader,
 			myShowreel,
 		},
 		data: function() {
 			return {
-                mainOverflow: 'hidden',
-                show: true,
-				videoLink: this.shortcut,
+				mainOverflow: 'hidden',
 			};
 		},
-        methods: {
-            changeMainOverflow: function () {
-                this.mainOverflow = 'scroll';
-            },
-            noLoader: function () {
-                this.show = false;
-            },
+		methods: {
+			changeMainOverflow: function () {
+				this.mainOverflow = 'scroll';
+			},
 			openShowreel: function() {
 				this.$eventBus.$emit('showreel');
 			},
-			changeVideolink: function() {
-            	if(this.show === true){
-            		this.videoLink = this.shortcut;
-				} else {
-					this.videoLink = this.showreel;
-				}
-			},
-        },
-        computed: {
-            ...mapGetters(['posts', 'shortcut', 'showreel']),
-        },
-		created() {
-			this.changeVideolink();
 		},
-        mounted() {
-            if (!window.sessionStorage.getItem('preloaderIsShown')) {
-                this.show = true;
-            } else {
-                this.show = false;
-                window.scrollTo({
-                    top: document.getElementById('main').offsetTop,
-                });
-            }
+		computed: {
+			...mapGetters(['posts', 'showPreloader', 'showreel']),
+		},
+		mounted() {
+			if (!this.showPreloader) {
+				window.scrollTo({
+					top: document.getElementById('main').offsetTop,
+				});
+			}
+			if (document.documentElement.clientWidth > 1300) {
+				lax.init();
+				lax.addDriver('scrollY', function () {
+					return window.scrollY;
+				});
+				// TEXT
+				lax.addElements('#string-1', {
+					scrollY: {
+						translateX: [
+							[100, 1800],
+							['screenWidth/3', -200],
+						],
+						brightness: [
+							[1400, 1600, 3500, 3600],
+							[1, 2, 2, 1],
+						],
+					},
+				});
+				lax.addElements('#word-1', {
+					scrollY: {
+						opacity: [
+							[400, 1000],
+							[1, 0],
+						],
+					},
+				});
+				lax.addElements('#word-2', {
+					scrollY: {
+						brightness: [
+							[1400, 1600, 3640, 3690],
+							[1, 10, 10, 1],
+						],
+						translateX: [
+							[1800, 2200],
+							[0, 110],
+						],
+					},
+				});
+				lax.addElements('#word-3', {
+					scrollY: {
+						opacity: [
+							[700, 1300],
+							[1, 0],
+						],
+					},
+				});
+				lax.addElements('#word-4', {
+					scrollY: {
+						brightness: [
+							[1400, 1600, 3570, 3640],
+							[1, 10, 10, 1],
+						],
+					},
+				});
+				lax.addElements('#string-1-2-3', {
+					scrollY: {
+						translateX: [
+							[1200, 2000],
+							[0, -320],
+						],
+					},
+				});
+				lax.addElements('#word-5', {
+					scrollY: {
+						brightness: [
+							[2500, 2800, 3500, 3600],
+							[1, 10, 10, 1],
+						],
+					},
+				});
+				lax.addElements('#word-6', {
+					scrollY: {
+						opacity: [
+							[2000, 2400],
+							[1, 0],
+						],
+					},
+				});
+				lax.addElements('#word-7', {
+					scrollY: {
+						translateX: [
+							[2300, 2800],
+							[0, -195],
+						],
+						brightness: [
+							[2500, 2800, 3450, 3580],
+							[1, 10, 10, 1],
+						],
+					},
+				});
+				lax.addElements('#string-2', {
+					scrollY: {
+						translateX: [
+							[3500, 3900, 4300, 5000, 5700, 6000],
+							['screenWidth', 0, 0, -420, -420, -240],
+						],
+					},
+				});
+				lax.addElements('#word-11', {
+					scrollY: {
+						opacity: [
+							[4100, 4400],
+							[1, 0],
+						],
+					},
+				});
+				lax.addElements('#word-13', {
+					scrollY: {
+						opacity: [
+							[4400, 4800],
+							[1, 0],
+						],
+					},
+				});
+				lax.addElements('#string-2-2', {
+					scrollY: {
+						translateX: [
+							[4900, 5300],
+							[0, -420],
+						],
+					},
+				});
+				lax.addElements('#word-15', {
+					scrollY: {
+						opacity: [
+							[5200, 5400],
+							[1, 0],
+						],
+					},
+				});
+				lax.addElements('#string-2-3', {
+					scrollY: {
+						translateX: [
+							[5300, 5600],
+							[0, -610],
+						],
+					},
+				});
+				lax.addElements('#word-16, #word-18', {
+					scrollY: {
+						opacity: [
+							[5500, 5700],
+							[1, 0],
+						],
+					},
+				});
+				lax.addElements('#string-3', {
+					scrollY: {
+						translateX: [
+							[5800, 6300],
+							['screenWidth', 140],
+						],
+					},
+				});
+				lax.addElements('#word-21', {
+					scrollY: {
+						opacity: [
+							[6300, 6700],
+							[1, 0],
+						],
+					},
+				});
+				lax.addElements('#word-23, #word-25, #word-27, #word-29', {
+					scrollY: {
+						opacity: [
+							[6400, 6800],
+							[1, 0],
+						],
+					},
+				});
+				lax.addElements('#word-26', {
+					scrollY: {
+						translateX: [
+							[6750, 7050],
+							[0, -102],
+						],
+					},
+				});
+				lax.addElements('#word-28', {
+					scrollY: {
+						translateX: [
+							[6750, 7050],
+							[0, -200],
+						],
+					},
+				});
+				// BGs
+				lax.addElements('.main__bg-black', {
+					scrollY: {
+						opacity: [
+							[1300, 1600, 3400, 3401],
+							[0, 1, 1, 0],
+						],
+					},
+				});
+				lax.addElements('.main__bg-red', {
+					scrollY: {
+						opacity: [
+							[2500, 2800],
+							[0, 1],
+						],
+						translateX: [
+							[3400, 3800],
+							[0, '-screenWidth'],
+						],
+					},
+				});
 
-            if (document.documentElement.clientWidth > 1300) {
-                lax.init();
-                lax.addDriver('scrollY', function () {
-                    return window.scrollY;
-                });
+				// SOME SHIT
 
-                // TEXT
-                lax.addElements('#string-1', {
-                    scrollY: {
-                        translateX: [
-                            [100, 1800],
-                            ['screenWidth/3', -200],
-                        ],
-                        brightness: [
-                            [1400, 1600, 3500, 3600],
-                            [1, 2, 2, 1],
-                        ],
-                    },
-                });
-                lax.addElements('#word-1', {
-                    scrollY: {
-                        opacity: [
-                            [400, 1000],
-                            [1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('#word-2', {
-                    scrollY: {
-                        brightness: [
-                            [1400, 1600, 3640, 3690],
-                            [1, 10, 10, 1],
-                        ],
-                        translateX: [
-                            [1800, 2200],
-                            [0, 110],
-                        ],
-                    },
-                });
-                lax.addElements('#word-3', {
-                    scrollY: {
-                        opacity: [
-                            [700, 1300],
-                            [1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('#word-4', {
-                    scrollY: {
-                        brightness: [
-                            [1400, 1600, 3570, 3640],
-                            [1, 10, 10, 1],
-                        ],
-                    },
-                });
-                lax.addElements('#string-1-2-3', {
-                    scrollY: {
-                        translateX: [
-                            [1200, 2000],
-                            [0, -320],
-                        ],
-                    },
-                });
-                lax.addElements('#word-5', {
-                    scrollY: {
-                        brightness: [
-                            [2500, 2800, 3500, 3600],
-                            [1, 10, 10, 1],
-                        ],
-                    },
-                });
-                lax.addElements('#word-6', {
-                    scrollY: {
-                        opacity: [
-                            [2000, 2400],
-                            [1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('#word-7', {
-                    scrollY: {
-                        translateX: [
-                            [2300, 2800],
-                            [0, -195],
-                        ],
-                        brightness: [
-                            [2500, 2800, 3450, 3580],
-                            [1, 10, 10, 1],
-                        ],
-                    },
-                });
-                lax.addElements('#string-2', {
-                    scrollY: {
-                        translateX: [
-                            [3500, 3900, 4300, 5000, 5700, 6000],
-                            ['screenWidth', 0, 0, -420, -420, -240],
-                        ],
-                    },
-                });
-                lax.addElements('#word-11', {
-                    scrollY: {
-                        opacity: [
-                            [4100, 4400],
-                            [1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('#word-13', {
-                    scrollY: {
-                        opacity: [
-                            [4400, 4800],
-                            [1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('#string-2-2', {
-                    scrollY: {
-                        translateX: [
-                            [4900, 5300],
-                            [0, -420],
-                        ],
-                    },
-                });
-                lax.addElements('#word-15', {
-                    scrollY: {
-                        opacity: [
-                            [5200, 5400],
-                            [1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('#string-2-3', {
-                    scrollY: {
-                        translateX: [
-                            [5300, 5600],
-                            [0, -610],
-                        ],
-                    },
-                });
-                lax.addElements('#word-16, #word-18', {
-                    scrollY: {
-                        opacity: [
-                            [5500, 5700],
-                            [1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('#string-3', {
-                    scrollY: {
-                        translateX: [
-                            [5800, 6300],
-                            ['screenWidth', 140],
-                        ],
-                    },
-                });
-                lax.addElements('#word-21', {
-                    scrollY: {
-                        opacity: [
-                            [6300, 6700],
-                            [1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('#word-23, #word-25, #word-27, #word-29', {
-                    scrollY: {
-                        opacity: [
-                            [6400, 6800],
-                            [1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('#word-26', {
-                    scrollY: {
-                        translateX: [
-                            [6750, 7050],
-                            [0, -102],
-                        ],
-                    },
-                });
-                lax.addElements('#word-28', {
-                    scrollY: {
-                        translateX: [
-                            [6750, 7050],
-                            [0, -200],
-                        ],
-                    },
-                });
-
-                // BGs
-                lax.addElements('.main__bg-black', {
-                    scrollY: {
-                        opacity: [
-                            [1300, 1600, 3400, 3401],
-                            [0, 1, 1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('.main__bg-red', {
-                    scrollY: {
-                        opacity: [
-                            [2500, 2800],
-                            [0, 1],
-                        ],
-                        translateX: [
-                            [3400, 3800],
-                            [0, '-screenWidth'],
-                        ],
-                    },
-                });
-
-                // SOME SHIT
-                lax.addElements('.main__scroll', {
-                    scrollY: {
-                        translateY: [
-                            [100, 400],
-                            [0, 'screenHeight/10'],
-                        ],
-                    },
-                });
-                lax.addElements('.main__logo', {
-                    scrollY: {
-                        opacity: [
-                            [200, 600, 800, 1100],
-                            [0, 1, 1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('.menu__link', {
-                    scrollY: {
-                        brightness: [
-                            [1000, 1500, 3400, 3750, 8100, 8300],
-                            [1, 10, 10, 1, 1, 10],
-                        ],
-                    },
-                });
-                lax.addElements('.main__aboutBg', {
-                    scrollY: {
-                        opacity: [
-                            [1600, 1900, 2100, 2400],
-                            [0, 1, 1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('.main__cities', {
-                    scrollY: {
-                        translateY: [
-                            [2700, 3100],
-                            [50, 0],
-                        ],
-                        opacity: [
-                            [2700, 3100],
-                            [0, 1],
-                        ],
-                        translateX: [
-                            [3300, 3800],
-                            [0, '-screenWidth'],
-                        ],
-                    },
-                });
-                lax.addElements('.main__playcircle', {
-                    scrollY: {
-                        scale: [
-                            [5700, 6000, 6100, 6300],
-                            [0, 1, 1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('.main__videodescr', {
-                    scrollY: {
-                        opacity: [
-                            [5700, 6000, 6100, 6300],
-                            [0, 1, 1, 0],
-                        ],
-                    },
-                });
-                lax.addElements('.main__end', {
-                    scrollY: {
-                        translateY: [
-                            [7100, 7400],
-                            [300, 0],
-                        ],
-                        opacity: [
-                            [7000, 7200],
-                            [0, 1],
-                        ],
-                    },
-                });
-                lax.addElements('.works', {
-                    scrollY: {
-                        translateY: [
-                            [7600, 8300],
-                            ['screenHeight + 100', 0],
-                        ],
-                    },
-                });
-                lax.addElements('.works__items', {
-                    scrollY: {
-                        translateX: [
-                            [8500, 10000],
-                            [0, '-elWidth - 300'],
-                        ],
-                    },
-                });
-            }
-        },
-    });
+				lax.addElements('.main__scroll', {
+					scrollY: {
+						translateY: [
+							[100, 400],
+							[0, 'screenHeight/10'],
+						],
+					},
+				});
+				lax.addElements('.main__logo', {
+					scrollY: {
+						opacity: [
+							[200, 600, 800, 1100],
+							[0, 1, 1, 0],
+						],
+					},
+				});
+				lax.addElements('.menu__link', {
+					scrollY: {
+						brightness: [
+							[1000, 1500, 3400, 3750, 8100, 8300],
+							[1, 10, 10, 1, 1, 10],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg', {
+					scrollY: {
+						opacity: [
+							[1600, 1900, 2100, 2400],
+							[0, 1, 1, 0],
+						],
+					},
+				});
+				lax.addElements('.main__cities', {
+					scrollY: {
+						translateY: [
+							[2700, 3100],
+							[50, 0],
+						],
+						opacity: [
+							[2700, 3100],
+							[0, 1],
+						],
+						translateX: [
+							[3300, 3800],
+							[0, '-screenWidth'],
+						],
+					},
+				});
+				lax.addElements('.main__playcircle', {
+					scrollY: {
+						scale: [
+							[5700, 6000, 6100, 6300],
+							[0, 1, 1, 0],
+						],
+					},
+				});
+				lax.addElements('.main__videodescr', {
+					scrollY: {
+						opacity: [
+							[5700, 6000, 6100, 6300],
+							[0, 1, 1, 0],
+						],
+					},
+				});
+				lax.addElements('.main__end', {
+					scrollY: {
+						translateY: [
+							[7100, 7400],
+							[300, 0],
+						],
+						opacity: [
+							[7000, 7200],
+							[0, 1],
+						],
+					},
+				});
+				lax.addElements('.works', {
+					scrollY: {
+						translateY: [
+							[7600, 8300],
+							['screenHeight + 100', 0],
+						],
+					},
+				});
+				lax.addElements('.works__items', {
+					scrollY: {
+						translateX: [
+							[8500, 10000],
+							[0, '-elWidth - 300'],
+						],
+					},
+				});
+			}
+		},
+	});
 </script>
 <style lang="scss">
 	#main {

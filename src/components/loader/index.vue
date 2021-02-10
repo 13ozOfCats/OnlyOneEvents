@@ -1,9 +1,6 @@
 <template>
 	<div id="loader" class="loading">
-		<span
-			class="loading__logo"
-			style="left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%)"
-		>
+		<span class="loading__logo" style="left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%)">
 			<svg width="88" height="88" viewBox="0 0 88 88" fill="none">
 				<circle cx="44" cy="44" r="44" fill="#EE3D43" />
 				<path
@@ -434,18 +431,17 @@
 	</div>
 </template>
 <script lang="js">
-    import Vue from "vue";
+	import Vue from "vue";
 	import anime from 'animejs/lib/anime.es.js';
 	import $ from 'jquery';
 
-
-    export default Vue.extend({
+	export default Vue.extend({
 		methods: {
 			openShowreel: function() {
 				this.$eventBus.$emit('showreel');
 			},
 		},
-		mounted: () => {
+		mounted: function() {
 			const preloaderTimeline = anime
 				.timeline({
 					autoplay: true,
@@ -579,14 +575,9 @@
 					delay: 200,
 					duration: 400,
 				});
-
-			const that = this;
-			console.log(this)
-			preloaderTimeline.finished.then(function() {
-				$('#loader').fadeOut(400, function () {
-					console.log(this)
+			preloaderTimeline.finished.then(() => {
+				$('#loader').fadeOut(400, () => {
 					this.openShowreel();
-					window.sessionStorage.setItem('preloaderIsShown', true);
 				});
 			});
 		},

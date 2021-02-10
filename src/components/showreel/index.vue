@@ -95,15 +95,17 @@
 	</div>
 </template>
 <script lang="js">
-	   import Vue from "vue";
+	import Vue from "vue";
+	import { mapGetters, mapMutations } from 'vuex';
 
-	   export default Vue.extend({
+	export default Vue.extend({
 		props: {
 			videoLink: String,
+			displayOn: Boolean,
 		},
 		data: function() {
 			return {
-				display: 'none',
+				display: this.displayCheck(),
 				muteClass: 'showreel__sound-off',
 			};
 		},
@@ -111,9 +113,21 @@
 			this.$eventBus.$on('showreel', this.playVideo);
 		},
 		beforeDestroy(){
-		   this.$eventBus.$off('showreel');
+			this.$eventBus.$off('showreel');
+		},computed: {
+			...mapGetters(['showPreloader']),
 		},
 		methods: {
+			...mapMutations([
+				'preloaderShown',
+			]),
+			displayCheck: function() {
+				if(this.displayOn === true) {
+					return 'block';
+				} else {
+					return 'none';
+				}
+			},
 			playVideo: function () {
 				this.display = 'block';
 				//document.querySelector('.main').style.overflow = 'hidden';
@@ -124,6 +138,9 @@
 				this.display = 'none';
 				this.$refs.showreel.currentTime = 0;
 				//document.querySelector('.main').style.overflow = '';
+				if(this.showPreloader === true){
+					this.preloaderShown();
+				}
 			},
 			muteVideo: function () {
 				this.$refs.showreel.muted = !this.$refs.showreel.muted;

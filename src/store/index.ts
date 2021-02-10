@@ -317,8 +317,13 @@ export default new Vuex.Store({
 				],
 			},
 		],
+		showPreloader: true,
 	},
-	mutations: {},
+	mutations: {
+		preloaderShown (state) {
+			state.showPreloader = false;
+		}
+	},
 	actions: {},
 	modules: {},
 	getters: {
@@ -330,6 +335,9 @@ export default new Vuex.Store({
 		},
 		posts: function(state) {
 			return state.posts;
+		},
+		showPreloader: function(state) {
+			return state.showPreloader;
 		},
 	},
 });
