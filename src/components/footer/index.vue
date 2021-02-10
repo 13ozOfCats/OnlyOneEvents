@@ -1,177 +1,104 @@
 <template>
-	<span></span>
-	<!--
 	<footer class="footer" id="footer">
 		<div class="container">
-			<form action="php/sender.php" method="POST" id="footer__form">
-				<div class="footer__slide" data-footer="1">
+			<form action="./php/sender.php" method="POST" id="footer__form">
+				<div class="footer__slide">
 					<div class="footer__text">Обсудить проект</div>
 					<div class="footer__flex">
 						<div class="footer__left">
 							<label class="footer__label">
 								<input
-									type="text"
-									name="name"
 									placeholder="Имя"
 									class="footer__input"
-									id="footer__name"
-									@input="name = $event.target.value"
 									:value="name"
+									@input="name = $event.target.value"
+									@focus="removeError('name')"
+									@blur="validateName"
+									:class="{'footer__input-error': errors.name}"
 								/>
 							</label>
 							<label class="footer__label">
 								<input
-									type="email"
-									name="email"
 									placeholder="E-mail"
 									class="footer__input"
-									id="footer__email"
-									@input="email = $event.target.value"
 									:value="email"
+									@input="email = $event.target.value"
+									@focus="removeError('email')"
+									@blur="validateEmail"
+									:class="{'footer__input-error': errors.email}"
 								/>
 							</label>
 						</div>
 						<div class="footer__right">
-							<div class="footer__btn footer__control" id="step-1">
+							<div class="footer__btn footer__control" id="step-1" @click="goToSlide(2)">
 								<span>Далее</span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="footer__slide" data-footer="2" style="display: none">
-					<span class="btn footer__control" data-control="prev">
-						<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
-							<path
-								class="btn__bg"
-								d="M52.4786 8.14629C47.7429 4.26128 41.9771 1.84133 35.8872 1.18266C29.7973 0.523996 23.6475 1.6552 18.1905 4.43779C12.7336 7.22039 8.20636 11.5336 5.163 16.8495C2.11963 22.1654 0.692206 28.2533 1.05545 34.368C1.41869 40.4826 3.55684 46.3587 7.20816 51.2769C10.8595 56.1951 15.8655 59.9421 21.6135 62.059C27.3615 64.176 33.602 64.5711 39.5711 63.1961C45.5402 61.8211 50.9789 58.7355 55.2214 54.3172"
-								stroke-width="1.13924"
-							/>
-							<path
-								class="btn__arrow"
-								d="M27.6464 32.6464C27.4512 32.8417 27.4512 33.1583 27.6464 33.3536L30.8284 36.5355C31.0237 36.7308 31.3403 36.7308 31.5355 36.5355C31.7308 36.3403 31.7308 36.0237 31.5355 35.8284L28.7071 33L31.5355 30.1716C31.7308 29.9763 31.7308 29.6597 31.5355 29.4645C31.3403 29.2692 31.0237 29.2692 30.8284 29.4645L27.6464 32.6464ZM38 32.5L28 32.5L28 33.5L38 33.5L38 32.5Z"
-								fill="white"
-							/>
-							<path
-								class="btn__circle"
-								d="M52.4786 8.14629C47.7429 4.26128 41.9771 1.84133 35.8872 1.18266C29.7973 0.523996 23.6475 1.6552 18.1905 4.43779C12.7336 7.22039 8.20636 11.5336 5.163 16.8495C2.11963 22.1654 0.692206 28.2533 1.05545 34.368C1.41869 40.4826 3.55684 46.3587 7.20816 51.2769C10.8595 56.1951 15.8655 59.9421 21.6135 62.059C27.3615 64.176 33.602 64.5711 39.5711 63.1961C45.5402 61.8211 50.9789 58.7355 55.2214 54.3172"
-								stroke-width="1.13924"
-							/>
-						</svg>
-						<svg width="40" height="46" viewBox="0 0 40 46" fill="none" class="btn__mobile">
-							<path
-								class="btn__bg"
-								d="M36.9533 5.99106C33.6458 3.27772 29.6189 1.58759 25.3657 1.12757C21.1124 0.667553 16.8173 1.4576 13.0061 3.401C9.1949 5.3444 6.03301 8.35683 3.90749 12.0695C1.78197 15.7822 0.785032 20.0341 1.03872 24.3046C1.29242 28.5752 2.78573 32.6791 5.33586 36.114C7.88599 39.549 11.3823 42.1659 15.3967 43.6444C19.4112 45.1229 23.7697 45.3989 27.9386 44.4385C32.1075 43.4782 35.9059 41.3232 38.8689 38.2374"
-								stroke="white"
-							/>
-							<path
-								class="btn__arrow"
-								d="M18.7531 23.2469C18.6167 23.1106 18.6167 22.8894 18.7531 22.7531L20.9754 20.5307C21.1118 20.3944 21.3329 20.3944 21.4693 20.5307C21.6056 20.6671 21.6056 20.8882 21.4693 21.0246L19.4939 23L21.4693 24.9754C21.6056 25.1118 21.6056 25.3329 21.4693 25.4693C21.3329 25.6056 21.1118 25.6056 20.9754 25.4693L18.7531 23.2469ZM27 23.3492L19 23.3492L19 22.6508L27 22.6508L27 23.3492Z"
-								fill="white"
-							/>
-							<path
-								class="btn__circle"
-								d="M36.9533 5.99106C33.6458 3.27772 29.6189 1.58759 25.3657 1.12757C21.1124 0.667553 16.8173 1.4576 13.0061 3.401C9.1949 5.3444 6.03301 8.35683 3.90749 12.0695C1.78197 15.7822 0.785032 20.0341 1.03872 24.3046C1.29242 28.5752 2.78573 32.6791 5.33586 36.114C7.88599 39.549 11.3823 42.1659 15.3967 43.6444C19.4112 45.1229 23.7697 45.3989 27.9386 44.4385C32.1075 43.4782 35.9059 41.3232 38.8689 38.2374"
-								stroke="white"
-							/>
-						</svg>
-						<span class="btn__text"> Назад </span>
-					</span>
+				<div class="footer__slide">
+					<prevBtn @click="goToSlide(1)"></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
 							<label class="footer__label">
 								<input
-									type="tel"
-									name="phone"
+									v-imask="phoneMask"
 									placeholder="Телефон"
 									class="footer__input"
-									id="footer__phone"
 									@input="phone = $event.target.value"
 									:value="phone"
+									@focus="removeError('phone')"
+									@blur="validatePhone"
+									:class="{'footer__input-error': errors.phone}"
 								/>
 							</label>
 							<label class="footer__label">
 								<input
-									type="text"
-									name="theme"
 									placeholder="Тема обращения"
 									class="footer__input"
-									id="footer__theme"
 									@input="theme = $event.target.value"
 									:value="theme"
+									@focus="removeError('theme')"
+									@blur="validateTheme"
+									:class="{'footer__input-error': errors.theme}"
 								/>
 							</label>
 							<ul class="footer__ul">
 								<li class="footer__li">
-									<span class="footer__theme">Предложить бриф</span>
+									<span class="footer__theme" @click="changeTheme('Предложить бриф')">Предложить бриф</span>
 								</li>
 								<li class="footer__li">
-									<span class="footer__theme">Запросить портфолио</span>
+									<span class="footer__theme" @click="changeTheme('Запросить портфолио')">Запросить портфолио</span>
 								</li>
 								<li class="footer__li">
-									<span class="footer__theme">Предложить свои услуги</span>
+									<span class="footer__theme" @click="changeTheme('Предложить свои услуги')">
+										Предложить свои услуги
+									</span>
 								</li>
 								<li class="footer__li">
-									<span class="footer__theme">Устроиться на работу</span>
+									<span class="footer__theme" @click="changeTheme('Устроиться на работу')">Устроиться на работу</span>
 								</li>
 							</ul>
 						</div>
 						<div class="footer__right">
-							<div class="footer__btn footer__control" id="step-2">
+							<div class="footer__btn footer__control" @click="goToSlide(3)">
 								<span>Далее</span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="footer__slide" data-footer="3" style="display: none">
-					<span class="btn footer__control" data-control="prev">
-						<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
-							<path
-								class="btn__bg"
-								d="M52.4786 8.14629C47.7429 4.26128 41.9771 1.84133 35.8872 1.18266C29.7973 0.523996 23.6475 1.6552 18.1905 4.43779C12.7336 7.22039 8.20636 11.5336 5.163 16.8495C2.11963 22.1654 0.692206 28.2533 1.05545 34.368C1.41869 40.4826 3.55684 46.3587 7.20816 51.2769C10.8595 56.1951 15.8655 59.9421 21.6135 62.059C27.3615 64.176 33.602 64.5711 39.5711 63.1961C45.5402 61.8211 50.9789 58.7355 55.2214 54.3172"
-								stroke-width="1.13924"
-							/>
-							<path
-								class="btn__arrow"
-								d="M27.6464 32.6464C27.4512 32.8417 27.4512 33.1583 27.6464 33.3536L30.8284 36.5355C31.0237 36.7308 31.3403 36.7308 31.5355 36.5355C31.7308 36.3403 31.7308 36.0237 31.5355 35.8284L28.7071 33L31.5355 30.1716C31.7308 29.9763 31.7308 29.6597 31.5355 29.4645C31.3403 29.2692 31.0237 29.2692 30.8284 29.4645L27.6464 32.6464ZM38 32.5L28 32.5L28 33.5L38 33.5L38 32.5Z"
-								fill="white"
-							/>
-							<path
-								class="btn__circle"
-								d="M52.4786 8.14629C47.7429 4.26128 41.9771 1.84133 35.8872 1.18266C29.7973 0.523996 23.6475 1.6552 18.1905 4.43779C12.7336 7.22039 8.20636 11.5336 5.163 16.8495C2.11963 22.1654 0.692206 28.2533 1.05545 34.368C1.41869 40.4826 3.55684 46.3587 7.20816 51.2769C10.8595 56.1951 15.8655 59.9421 21.6135 62.059C27.3615 64.176 33.602 64.5711 39.5711 63.1961C45.5402 61.8211 50.9789 58.7355 55.2214 54.3172"
-								stroke-width="1.13924"
-							/>
-						</svg>
-						<svg width="40" height="46" viewBox="0 0 40 46" fill="none" class="btn__mobile">
-							<path
-								class="btn__bg"
-								d="M36.9533 5.99106C33.6458 3.27772 29.6189 1.58759 25.3657 1.12757C21.1124 0.667553 16.8173 1.4576 13.0061 3.401C9.1949 5.3444 6.03301 8.35683 3.90749 12.0695C1.78197 15.7822 0.785032 20.0341 1.03872 24.3046C1.29242 28.5752 2.78573 32.6791 5.33586 36.114C7.88599 39.549 11.3823 42.1659 15.3967 43.6444C19.4112 45.1229 23.7697 45.3989 27.9386 44.4385C32.1075 43.4782 35.9059 41.3232 38.8689 38.2374"
-								stroke="white"
-							/>
-							<path
-								class="btn__arrow"
-								d="M18.7531 23.2469C18.6167 23.1106 18.6167 22.8894 18.7531 22.7531L20.9754 20.5307C21.1118 20.3944 21.3329 20.3944 21.4693 20.5307C21.6056 20.6671 21.6056 20.8882 21.4693 21.0246L19.4939 23L21.4693 24.9754C21.6056 25.1118 21.6056 25.3329 21.4693 25.4693C21.3329 25.6056 21.1118 25.6056 20.9754 25.4693L18.7531 23.2469ZM27 23.3492L19 23.3492L19 22.6508L27 22.6508L27 23.3492Z"
-								fill="white"
-							/>
-							<path
-								class="btn__circle"
-								d="M36.9533 5.99106C33.6458 3.27772 29.6189 1.58759 25.3657 1.12757C21.1124 0.667553 16.8173 1.4576 13.0061 3.401C9.1949 5.3444 6.03301 8.35683 3.90749 12.0695C1.78197 15.7822 0.785032 20.0341 1.03872 24.3046C1.29242 28.5752 2.78573 32.6791 5.33586 36.114C7.88599 39.549 11.3823 42.1659 15.3967 43.6444C19.4112 45.1229 23.7697 45.3989 27.9386 44.4385C32.1075 43.4782 35.9059 41.3232 38.8689 38.2374"
-								stroke="white"
-							/>
-						</svg>
-						<span class="btn__text"> Назад </span>
-					</span>
+				<div class="footer__slide">
+					<prevBtn></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
 							<label class="footer__label">
 								<textarea
-									name="message"
-									id=""
 									cols="30"
 									rows="10"
 									class="footer__textarea"
 									placeholder="Сообщение"
-									@input="textarea = $event.target.value"
-									:value="textarea"
+									@input="message = $event.target.value"
+									:value="message"
 								></textarea>
 							</label>
 						</div>
@@ -182,46 +109,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="footer__slide" data-footer="4" style="display: none">
-					<span class="btn footer__control" data-control="prev">
-						<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
-							<path
-								class="btn__bg"
-								d="M52.4786 8.14629C47.7429 4.26128 41.9771 1.84133 35.8872 1.18266C29.7973 0.523996 23.6475 1.6552 18.1905 4.43779C12.7336 7.22039 8.20636 11.5336 5.163 16.8495C2.11963 22.1654 0.692206 28.2533 1.05545 34.368C1.41869 40.4826 3.55684 46.3587 7.20816 51.2769C10.8595 56.1951 15.8655 59.9421 21.6135 62.059C27.3615 64.176 33.602 64.5711 39.5711 63.1961C45.5402 61.8211 50.9789 58.7355 55.2214 54.3172"
-								stroke-width="1.13924"
-							/>
-							<path
-								class="btn__arrow"
-								d="M27.6464 32.6464C27.4512 32.8417 27.4512 33.1583 27.6464 33.3536L30.8284 36.5355C31.0237 36.7308 31.3403 36.7308 31.5355 36.5355C31.7308 36.3403 31.7308 36.0237 31.5355 35.8284L28.7071 33L31.5355 30.1716C31.7308 29.9763 31.7308 29.6597 31.5355 29.4645C31.3403 29.2692 31.0237 29.2692 30.8284 29.4645L27.6464 32.6464ZM38 32.5L28 32.5L28 33.5L38 33.5L38 32.5Z"
-								fill="white"
-							/>
-							<path
-								class="btn__circle"
-								d="M52.4786 8.14629C47.7429 4.26128 41.9771 1.84133 35.8872 1.18266C29.7973 0.523996 23.6475 1.6552 18.1905 4.43779C12.7336 7.22039 8.20636 11.5336 5.163 16.8495C2.11963 22.1654 0.692206 28.2533 1.05545 34.368C1.41869 40.4826 3.55684 46.3587 7.20816 51.2769C10.8595 56.1951 15.8655 59.9421 21.6135 62.059C27.3615 64.176 33.602 64.5711 39.5711 63.1961C45.5402 61.8211 50.9789 58.7355 55.2214 54.3172"
-								stroke-width="1.13924"
-							/>
-						</svg>
-						<svg width="40" height="46" viewBox="0 0 40 46" fill="none" class="btn__mobile">
-							<path
-								class="btn__bg"
-								d="M36.9533 5.99106C33.6458 3.27772 29.6189 1.58759 25.3657 1.12757C21.1124 0.667553 16.8173 1.4576 13.0061 3.401C9.1949 5.3444 6.03301 8.35683 3.90749 12.0695C1.78197 15.7822 0.785032 20.0341 1.03872 24.3046C1.29242 28.5752 2.78573 32.6791 5.33586 36.114C7.88599 39.549 11.3823 42.1659 15.3967 43.6444C19.4112 45.1229 23.7697 45.3989 27.9386 44.4385C32.1075 43.4782 35.9059 41.3232 38.8689 38.2374"
-								stroke="white"
-							/>
-							<path
-								class="btn__arrow"
-								d="M18.7531 23.2469C18.6167 23.1106 18.6167 22.8894 18.7531 22.7531L20.9754 20.5307C21.1118 20.3944 21.3329 20.3944 21.4693 20.5307C21.6056 20.6671 21.6056 20.8882 21.4693 21.0246L19.4939 23L21.4693 24.9754C21.6056 25.1118 21.6056 25.3329 21.4693 25.4693C21.3329 25.6056 21.1118 25.6056 20.9754 25.4693L18.7531 23.2469ZM27 23.3492L19 23.3492L19 22.6508L27 22.6508L27 23.3492Z"
-								fill="white"
-							/>
-							<path
-								class="btn__circle"
-								d="M36.9533 5.99106C33.6458 3.27772 29.6189 1.58759 25.3657 1.12757C21.1124 0.667553 16.8173 1.4576 13.0061 3.401C9.1949 5.3444 6.03301 8.35683 3.90749 12.0695C1.78197 15.7822 0.785032 20.0341 1.03872 24.3046C1.29242 28.5752 2.78573 32.6791 5.33586 36.114C7.88599 39.549 11.3823 42.1659 15.3967 43.6444C19.4112 45.1229 23.7697 45.3989 27.9386 44.4385C32.1075 43.4782 35.9059 41.3232 38.8689 38.2374"
-								stroke="white"
-							/>
-						</svg>
-						<span class="btn__text"> Назад </span>
-					</span>
+				<div class="footer__slide">
+					<prevBtn></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
+							<!--
 							<div class="upload__container" id="upload__container">
 								<span class="upload__title" id="upload__top">Переместите файлы сюда</span>
 								<span class="upload__text" id="upload__mid">или</span>
@@ -235,6 +127,7 @@
 									</span>
 								</label>
 							</div>
+						-->
 						</div>
 						<div class="footer__right">
 							<div class="footer__btn footer__control">
@@ -243,8 +136,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="footer__slide" data-footer="5" style="display: none">
-					<a href="index.html" class="btn">
+				<div class="footer__slide" style="display: none">
+					<router-link to="/" class="btn">
 						<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
 							<path
 								class="btn__bg"
@@ -280,29 +173,97 @@
 							/>
 						</svg>
 						<span class="btn__text"> На главную </span>
-					</a>
+					</router-link>
 					<div class="footer__complete">
 						<h3 class="footer__title">Сообщение отправлено</h3>
-						<span class="footer__done"> Наверх </span>
+						<span class="footer__done" @click="goTop"> Наверх </span>
 					</div>
 				</div>
 			</form>
 		</div>
 	</footer>
-	-->
 </template>
 <script lang="ts">
-    import Vue from "vue";
+	import Vue from 'vue';
+	import {IMaskDirective} from 'vue-imask';
+	import prevBtn from '@/components/btn_footer/index.vue';
 
-    export default Vue.extend({
+	export default Vue.extend({
 		data: function() {
 			return {
 				name: '',
 				email: '',
 				phone: '',
 				theme: '',
-				file: '',
+				message: '',
+				errors: {
+					name: false,
+					email: false,
+					phone: false,
+					theme: false,
+				},
+				phoneMask: {
+					mask: '+{7} (000) 000 00 00',
+					lazy: true,
+				},
 			};
+		},
+		methods: {
+			validateName: function() {
+				if (this.name === '') {
+					this.errors.name = true;
+				} else {
+					this.errors.name = false;
+				}
+			},
+			validateEmail: function() {
+				const mailTmp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				if (this.email === '' || !mailTmp.test(this.email)) {
+					this.errors.email = true;
+				} else {
+					this.errors.email = false;
+				}
+			},
+			validatePhone: function() {
+				const phoneTmp = /^\+7 \(\d{3}\) \d{3}( \d{2}){2}$/im;
+				if (this.phone === '' || !phoneTmp.test(this.email)) {
+					this.errors.phone = true;
+				} else {
+					this.errors.phone = false;
+				}
+			},
+			validateTheme: function() {
+				if (this.theme === '') {
+					this.errors.theme = true;
+				} else {
+					this.errors.theme = false;
+				}
+			},
+			goToSlide: function(slide: number) {
+				console.log(slide);
+			},
+			changeTheme: function(theme: string): void {
+				this.theme = theme;
+				this.errors.theme = false;
+			},
+			removeError: function(err: string) {
+				this.errors[err] = false;
+			},
+			sendMessage: function() {
+				console.log('sendMessage');
+			},
+			goTop: function() {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth',
+				});
+			},
+		},
+		directives: {
+			imask: IMaskDirective,
+		},
+		components: {
+			prevBtn,
 		},
 	});
 </script>

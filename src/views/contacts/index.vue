@@ -7,10 +7,10 @@
 	</main>
 </template>
 <script lang="ts">
-    import Vue from "vue";
+	import Vue from 'vue';
 	import myContacts from '../../components/contacts/index.vue';
 
-    export default Vue.extend({
+	export default Vue.extend({
 		components: {
 			myContacts,
 		},
