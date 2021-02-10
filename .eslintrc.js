@@ -9,6 +9,7 @@ module.exports = {
 		'@vue/typescript/recommended',
 		'@vue/prettier',
 		'@vue/prettier/@typescript-eslint',
+		'prettier',
 	],
 	parserOptions: {
 		ecmaVersion: 2020,
@@ -16,6 +17,23 @@ module.exports = {
 	rules: {
 		'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-		"indent": "off"
+		indent: ['error', 'tab'],
+		'vue/script-indent': [
+			'error',
+			'tab',
+			{
+				baseIndent: 1,
+				switchCase: 1,
+				ignores: [],
+			},
+		],
 	},
+	overrides: [
+		{
+			"files": ["*.vue"],
+			"rules": {
+				"indent": "off"
+			}
+		}
+	],
 };
