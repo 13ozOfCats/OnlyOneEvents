@@ -81,7 +81,11 @@
 				this.background = this.posts[id - 1].mainImg;
 			},
 			goToWork: function (slug, event) {
-				this.$root.$refs.dot.goToWork(slug, event);
+				this.$eventBus.$emit('work', {
+					slug,
+					event
+				});
+				//this.$root.$refs.dot.goToWork(slug, event);
 			},
 		},
 		computed: {

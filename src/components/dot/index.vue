@@ -9,14 +9,17 @@
 		data: function() {
 			return {
 				x: 0,
-				Y: 0,
+				y: 0,
 				width: '10px',
 				height: '10px',
 			};
 		},
-		//created: function() {
-		//	this.$root.$refs.dot = this;
-		//},
+		created() {
+			this.$eventBus.$on('work', data => this.goToWork(data.slug, data.event));
+		},
+		beforeDestroy() {
+			this.$eventBus.$off('work');
+		},
 		methods: {
 			goToWork: function(slug, event) {
 				this.x = event.clientX;

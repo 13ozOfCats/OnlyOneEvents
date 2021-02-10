@@ -1,8 +1,7 @@
 <template>
 	<main class="project" :style="{background: background}">
 		<div class="project__red"></div>
-
-		<div class="project__wrapper" :style="{color: color}">
+		<div class="project__wrapper">
 			<aside class="project__aside project__aside-l" @mouseenter="prev" @mouseleave="current" @click="current">
 				<router-link :to="/works/ + post[2].slug" class="project__link">
 					<span class="project__prev"></span>
@@ -29,7 +28,7 @@
 							</div>
 							<div class="project__box" v-if="post[0].data">
 								<span class="project__big"> Дата </span>
-								<span class="project__small" v-bind:key="data" v-for="data in post[0].data">
+								<span class="project__small" :key="data" v-for="data in post[0].data">
 									{{ data }}
 								</span>
 							</div>
@@ -61,51 +60,28 @@
 				</router-link>
 			</aside>
 		</div>
-
 		<section class="project__block" v-if="post[0].gallery">
 			<div class="container">
 				<div class="project__subtitle2">Галерея</div>
 			</div>
-			<slick class="project__slider" :options="settings">
-				<div v-bind:key="pic" v-for="pic in post[0].gallery" class="project__slide">
-					<img :src="pic" class="project__photo" />
-				</div>
-			</slick>
+			<mySlider :gallery="post[0].gallery"></mySlider>
 		</section>
 	</main>
 </template>
 <script lang="js">
 	import Vue from 'vue';
 	import {mapGetters} from 'vuex';
-	import Slick from 'vue-slick';
-	import 'slick-carousel/slick/slick.css';
 	import anime from 'animejs/lib/anime.es.js';
+	import mySlider from '@/components/slider/index.vue'
 
 	export default Vue.extend({
 		data: function() {
 			return {
 				background: '',
-				settings: {
-					slidesToScroll: 1,
-					focusOnSelect: true,
-					variableWidth: true,
-					dots: false,
-					infinite: true,
-					arrows: false,
-					responsive: [
-						{
-							breakpoint: 1280,
-							settings: {
-								arrows: false,
-								focusOnSelect:false,
-							}
-						},
-					]
-				},
 			};
 		},
 		components: {
-			Slick
+			mySlider
 		},
 		methods: {
 			next: function () {
@@ -126,69 +102,64 @@
 		computed: {
 			...mapGetters(['posts']),
 			post: function () {
-				let currentPost = this.posts.filter((item) => {
+				const currentPost = this.posts.filter((item) => {
 					return item.slug.includes(this.$route.params.slug);
 				})[0];
-				if (currentPost != []) {
+				if (currentPost !== []) {
 					let prevPost;
 					let nextPost;
-					let id = parseInt(currentPost.id);
-					if (id != 1) {
+					const id = parseInt(currentPost.id);
+					if (id !== 1) {
 						prevPost = this.posts[id - 2];
 					} else {
 						prevPost = this.posts[this.posts.length - 1];
-					};
-					if (id != this.posts.length) {
+					}
+					if (id !== this.posts.length) {
 						nextPost = this.posts[id];
 					} else {
 						nextPost = this.posts[0];
-					};
-					let ppp = [currentPost, nextPost, prevPost];
-					return ppp;
+					}
+					return [currentPost, nextPost, prevPost];
 				} else {
 					return [];
 				}
+			},
 		},
-	},
-	watch: {
-		$route: function () {
+		watch: {
+			$route: function () {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth',
+				});
+			},
+		},
+		mounted() {
 			window.scrollTo({
 				top: 0,
-				behavior: 'smooth',
 			});
-		},
-	},
-	mounted() {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		});
-		this.current();
-		anime
-			.timeline({
-				autoplay: true,
-			})
-			.add({
-				targets: '.project__title',
-				opacity: [0, 1],
-				delay: 10,
-				duration: 200,
-				easing: 'easeInOutCubic',
-			})
-			.add({
-				targets: '.project__red',
-				translateX: [0, '-100%'],
-				delay: 200,
-				duration: 400,
-				easing: 'easeInOutCubic',
-			});
+			this.current();
+			anime
+				.timeline({
+					autoplay: true,
+				})
+				.add({
+					targets: '.project__title',
+					opacity: [0, 1],
+					delay: 10,
+					duration: 200,
+					easing: 'easeInOutCubic',
+				})
+				.add({
+					targets: '.project__red',
+					translateX: [0, '-100%'],
+					delay: 200,
+					duration: 400,
+					easing: 'easeInOutCubic',
+				});
 		},
 	});
 </script>
 <style lang="scss">
-	.slick-slide {
-		outline: none;
-	}
 	.project {
 		transition: 0.3s;
 		&__title {
@@ -254,31 +225,6 @@
 			&-next {
 				right: calc((100vw - 1200px) / 2 + 5%);
 			}
-		}
-		&__slider {
-			width: 100%;
-			margin-top: 20px;
-			.slick-track {
-				margin-left: 15px;
-			}
-			&:hover {
-				.project__arrow {
-					display: block;
-					opacity: 1;
-				}
-			}
-		}
-		&__slide {
-			width: fit-content;
-			height: 176px;
-			border-radius: 6px;
-			overflow: hidden;
-			outline: none;
-			margin-right: 15px;
-		}
-		&__photo {
-			height: 100%;
-			object-fit: contain;
 		}
 		&__descr {
 			margin-top: 16px;
@@ -449,15 +395,6 @@
 			&__block {
 				padding-bottom: 72px;
 			}
-			&__slider {
-				margin-top: 40px;
-			}
-			&__slide {
-				//width: 759px;
-				height: 487px;
-				margin-left: 15px;
-				margin-right: 25px;
-			}
 		}
 	}
 
@@ -529,16 +466,6 @@
 			}
 			&__block {
 				padding-bottom: 112px;
-			}
-			&__slider {
-				margin-top: 50px;
-				.slick-track {
-					margin-left: calc((100vw - 1200px) / 2 + 15px);
-				}
-			}
-			&__slide {
-				margin-left: 0;
-				margin-right: 67px;
 			}
 		}
 	}
