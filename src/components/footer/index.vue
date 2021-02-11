@@ -1,32 +1,42 @@
 <template>
-	<footer class="footer" id="footer">
-		<div class="container">
-			<form action="./php/sender.php" method="POST" id="footer__form">
-				<div class="footer__slide">
-					<div class="footer__text">Обсудить проект</div>
+	<footer class="footer" :class="{'footer-active': footerActive}" id="footer">
+		<div class="footer__wrapper" :style="{transform: 'translateX(' + -slide * 20 + '%)'}">
+			<div class="footer__slide">
+				<div class="container">
+					<div class="footer__text">
+						Обсудить проект
+					</div>
 					<div class="footer__flex">
 						<div class="footer__left">
 							<label class="footer__label">
 								<input
 									placeholder="Имя"
 									class="footer__input"
-									:value="name"
-									@input="name = $event.target.value"
-									@focus="removeError('name')"
+									:value="message.name"
+									@input="message.name = $event.target.value"
+									@focus="
+										errors.name = false;
+										errorsText.name = '\xa0';
+									"
 									@blur="validateName"
 									:class="{'footer__input-error': errors.name}"
 								/>
+								<span class="footer__error">{{ errorsText.name }}</span>
 							</label>
 							<label class="footer__label">
 								<input
 									placeholder="E-mail"
 									class="footer__input"
-									:value="email"
-									@input="email = $event.target.value"
-									@focus="removeError('email')"
+									:value="message.email"
+									@input="message.email = $event.target.value"
+									@focus="
+										errors.email = false;
+										errorsText.email = '\xa0';
+									"
 									@blur="validateEmail"
 									:class="{'footer__input-error': errors.email}"
 								/>
+								<span class="footer__error">{{ errorsText.email }}</span>
 							</label>
 						</div>
 						<div class="footer__right">
@@ -36,7 +46,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="footer__slide">
+			</div>
+			<div class="footer__slide">
+				<div class="container">
 					<prevBtn @click="goToSlide(1)"></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
@@ -45,23 +57,31 @@
 									v-imask="phoneMask"
 									placeholder="Телефон"
 									class="footer__input"
-									@input="phone = $event.target.value"
-									:value="phone"
-									@focus="removeError('phone')"
+									@input="message.phone = $event.target.value"
+									:value="message.phone"
+									@focus="
+										errors.phone = false;
+										errorsText.phone = '\xa0';
+									"
 									@blur="validatePhone"
 									:class="{'footer__input-error': errors.phone}"
 								/>
+								<span class="footer__error">{{ errorsText.phone }}</span>
 							</label>
 							<label class="footer__label">
 								<input
 									placeholder="Тема обращения"
 									class="footer__input"
-									@input="theme = $event.target.value"
-									:value="theme"
-									@focus="removeError('theme')"
+									@input="message.theme = $event.target.value"
+									:value="message.theme"
+									@focus="
+										errors.theme = false;
+										errorsText.theme = '\xa0';
+									"
 									@blur="validateTheme"
 									:class="{'footer__input-error': errors.theme}"
 								/>
+								<span class="footer__error">{{ errorsText.theme }}</span>
 							</label>
 							<ul class="footer__ul">
 								<li class="footer__li">
@@ -87,8 +107,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="footer__slide">
-					<prevBtn></prevBtn>
+			</div>
+			<div class="footer__slide">
+				<div class="container">
+					<prevBtn @click="goToSlide(2)"></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
 							<label class="footer__label">
@@ -97,23 +119,24 @@
 									rows="10"
 									class="footer__textarea"
 									placeholder="Сообщение"
-									@input="message = $event.target.value"
-									:value="message"
+									@input="message.text = $event.target.value"
+									:value="message.text"
 								></textarea>
 							</label>
 						</div>
 						<div class="footer__right">
-							<div class="footer__btn footer__control">
+							<div class="footer__btn footer__control" @click="goToSlide(4)">
 								<span>Далее</span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="footer__slide">
-					<prevBtn></prevBtn>
+			</div>
+			<div class="footer__slide">
+				<div class="container">
+					<prevBtn @click="goToSlide(3)"></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
-							<!--
 							<div class="upload__container" id="upload__container">
 								<span class="upload__title" id="upload__top">Переместите файлы сюда</span>
 								<span class="upload__text" id="upload__mid">или</span>
@@ -127,16 +150,17 @@
 									</span>
 								</label>
 							</div>
-						-->
 						</div>
 						<div class="footer__right">
-							<div class="footer__btn footer__control">
+							<div class="footer__btn footer__control" @click="sendMessage">
 								<span>Отправить</span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="footer__slide" style="display: none">
+			</div>
+			<div class="footer__slide">
+				<div class="container">
 					<router-link to="/" class="btn">
 						<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
 							<path
@@ -179,29 +203,39 @@
 						<span class="footer__done" @click="goTop"> Наверх </span>
 					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</footer>
 </template>
 <script lang="ts">
 	import Vue from 'vue';
 	import {IMaskDirective} from 'vue-imask';
-	import prevBtn from '@/components/btn_footer/index.vue';
+	import prevBtn from '../../components/btn_footer/index.vue';
 
 	export default Vue.extend({
 		data: function() {
 			return {
-				name: '',
-				email: '',
-				phone: '',
-				theme: '',
-				message: '',
+				message: {
+					name: '',
+					email: '',
+					phone: '',
+					theme: '',
+					text: '',
+				},
 				errors: {
 					name: false,
 					email: false,
 					phone: false,
 					theme: false,
 				},
+				errorsText: {
+					name: '\xa0',
+					email: '\xa0',
+					phone: '\xa0',
+					theme: '\xa0',
+				},
+				slide: 0,
+				footerActive: false,
 				phoneMask: {
 					mask: '+{7} (000) 000 00 00',
 					lazy: true,
@@ -210,47 +244,94 @@
 		},
 		methods: {
 			validateName: function() {
-				if (this.name === '') {
+				if (this.message.name === '') {
+					this.errorsText.name = 'Пожалуйста введите ваше имя';
 					this.errors.name = true;
 				} else {
+					this.errorsText.name = '\xa0';
 					this.errors.name = false;
 				}
 			},
 			validateEmail: function() {
 				const mailTmp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-				if (this.email === '' || !mailTmp.test(this.email)) {
+				if (this.message.email === '') {
+					this.errorsText.email = 'Пожалуйста введите ваш email';
+					this.errors.email = true;
+				} else if (!mailTmp.test(this.message.email)) {
+					this.errorsText.email = 'Некорректный формат почты';
 					this.errors.email = true;
 				} else {
+					this.errorsText.email = '\xa0';
 					this.errors.email = false;
 				}
 			},
 			validatePhone: function() {
-				const phoneTmp = /^\+7 \(\d{3}\) \d{3}( \d{2}){2}$/im;
-				if (this.phone === '' || !phoneTmp.test(this.email)) {
+				const phoneTmp = /^\+7 \(\d{3}\) \d{3} \d{2} \d{2}/;
+				if (this.message.phone === '') {
+					this.errorsText.phone = 'Пожалуйста введите ваш номер телефона';
+					this.errors.phone = true;
+				} else if (!phoneTmp.test(this.message.phone)) {
+					this.errorsText.phone = 'Некорректный формат номера';
 					this.errors.phone = true;
 				} else {
+					this.errorsText.phone = '\xa0';
 					this.errors.phone = false;
 				}
 			},
 			validateTheme: function() {
-				if (this.theme === '') {
+				if (this.message.theme === '') {
+					this.errorsText.theme = 'Пожалуйста напишите тему обращения или выборете из предложенных ниже';
 					this.errors.theme = true;
 				} else {
+					this.errorsText.theme = '\xa0';
 					this.errors.theme = false;
 				}
 			},
 			goToSlide: function(slide: number) {
-				console.log(slide);
+				let go = false;
+				if (slide > this.slide) {
+					if (slide === 2) {
+						this.validateName();
+						this.validateEmail();
+						if (!this.errors.name && !this.errors.email) {
+							this.footerActive = true;
+							setTimeout(function() {
+								window.scrollTo({
+									top: 10000,
+									behavior: 'smooth',
+								});
+							}, 500);
+							go = true;
+						}
+					} else if (slide === 3) {
+						this.validatePhone();
+						this.validateTheme();
+						if (!this.errors.phone && !this.errors.theme) {
+							go = true;
+						}
+					} else {
+						go = true;
+					}
+				} else {
+					if (slide === 1) {
+						this.footerActive = false;
+					}
+					go = true;
+				}
+				if (go) {
+					this.goSlide(slide);
+				}
+			},
+			goSlide: function(slide: number) {
+				this.slide = slide - 1;
 			},
 			changeTheme: function(theme: string): void {
-				this.theme = theme;
+				this.message.theme = theme;
 				this.errors.theme = false;
-			},
-			removeError: function(err: string) {
-				this.errors[err] = false;
+				this.errorsText.theme = '\xa0';
 			},
 			sendMessage: function() {
-				console.log('sendMessage');
+				this.slide = 4;
 			},
 			goTop: function() {
 				window.scrollTo({
@@ -274,9 +355,20 @@
 		padding-top: 50px;
 		position: relative;
 		z-index: 100;
-		height: 100%;
+		height: 650px;
+		width: 100%;
+		overflow: hidden;
 		&-active {
+			height: 100vh;
 			padding-top: 30px;
+		}
+		&__wrapper {
+			display: flex;
+			width: 500%;
+			transition: 0.3s;
+		}
+		&__slide {
+			width: 20%;
 		}
 		&-main {
 			transform: translate3d(0.00001px, 0.00001px, 0.00001px);
@@ -413,7 +505,8 @@
 		}
 		&__box {
 			&-adress {
-				width: min(400px, 100%);
+				width: 400px;
+				max-width: 100%;
 			}
 		}
 		&__container {
@@ -483,6 +576,13 @@
 		&__desktop {
 			display: none;
 			-webkit-text-stroke: unset;
+		}
+		&__error {
+			padding-left: 5px;
+			display: block;
+			font-size: 18px;
+			line-height: 145%;
+			color: rgba(238, 61, 67, 0.4);
 		}
 	}
 	.upload {
@@ -632,7 +732,6 @@
 		.footer {
 			padding-top: 95px;
 			padding-bottom: 180px;
-			height: fit-content;
 			&-active {
 				padding-top: 95px;
 				height: 100vh;

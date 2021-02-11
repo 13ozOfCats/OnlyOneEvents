@@ -1,5 +1,5 @@
 <template>
-	<span class="btn footer__control">
+	<span class="btn footer__control" @click="$emit('click')">
 		<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
 			<path
 				class="btn__bg"
