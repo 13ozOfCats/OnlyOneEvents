@@ -2,6 +2,7 @@
 	<div id="app">
 		<myLoader v-if="showPreloader"></myLoader>
 		<myShowreel v-if="showPreloader" :videoLink="shortcut" :displayOn="true"></myShowreel>
+		<myShowreel v-if="!showPreloader" :videoLink="showreel"></myShowreel>
 		<myHeader></myHeader>
 		<myDot v-if="this.$route.path.includes('/works')" ref="dot"></myDot>
 		<router-view />
@@ -30,7 +31,7 @@
 			myDot,
 		},
 		computed: {
-			...mapGetters(['showPreloader', 'shortcut']),
+			...mapGetters(['showPreloader', 'shortcut', 'showreel']),
 		},
 	};
 </script>

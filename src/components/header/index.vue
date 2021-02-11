@@ -26,7 +26,7 @@
 								Контакты
 							</router-link>
 						</li>
-						<li class="menu__li menu__video" v-if="this.$route.path === '/'">
+						<li class="menu__li menu__video">
 							<span class="showreal__play" @click="openShowreel">
 								<img src="./images/header__video.png" alt="" />
 							</span>

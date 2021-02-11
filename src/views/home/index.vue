@@ -1,6 +1,5 @@
 <template>
 	<div class="home">
-		<myShowreel v-if="!showPreloader" :videoLink="showreel"></myShowreel>
 		<div class="main__wrapper desktop">
 			<div class="main__inner">
 				<section class="main__section" id="welcome">
@@ -862,9 +861,6 @@
 
 	export default Vue.extend({
 		name: 'Home',
-		components: {
-			myShowreel,
-		},
 		data: function() {
 			return {
 				mainOverflow: 'hidden',
@@ -879,7 +875,7 @@
 			},
 		},
 		computed: {
-			...mapGetters(['posts', 'showPreloader', 'showreel']),
+			...mapGetters(['posts']),
 		},
 		mounted() {
 			if (!this.showPreloader) {
