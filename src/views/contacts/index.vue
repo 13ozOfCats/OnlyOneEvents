@@ -38,7 +38,7 @@
 		.contacts {
 			padding-top: 96px;
 			&__section {
-				height: 600px;
+				min-height: 600px;
 				padding-top: 70px;
 				padding-bottom: 70px;
 			}
@@ -48,7 +48,9 @@
 		.contacts {
 			padding-top: 140px;
 			&__section {
-				height: 750px;
+				min-height: 750px;
+				max-height: 1200px;
+				height: calc(100vh - 140px);
 				padding-top: 120px;
 				padding-bottom: 120px;
 			}

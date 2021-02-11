@@ -237,7 +237,7 @@
 		},
 	});
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 	.contacts {
 		&__container {
 			display: flex;
@@ -319,9 +319,6 @@
 			&__text {
 				font-size: 24px;
 				line-height: 188%;
-				& + & {
-					margin-top: 0;
-				}
 			}
 			&__hover {
 				transition: 0.4s;
@@ -351,6 +348,9 @@
 				line-height: 71px;
 				display: flex;
 				flex-direction: column;
+			}
+			&__subtitle {
+				margin-bottom: 10px;
 			}
 			&__text {
 				line-height: 161.1%;
