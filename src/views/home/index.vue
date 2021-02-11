@@ -6,50 +6,41 @@
 				<section class="main__section" id="welcome">
 					<div class="container">
 						<div class="main__string" id="string-1">
-							<span class="main__word" id="word-1"> Привет!&nbsp; </span>
-							<span class="main__word" id="word-2">
-								Мы
-								<span class="main__dot" style="opacity: 0"></span>
-							</span>
-							<span class="main__word" id="word-3"> &nbsp;маркетинговое&nbsp; </span>
+							<span class="main__word" id="word-1">Привет!{{ '\xa0' }}</span>
+							<span class="main__word" id="word-2">Мы<span class="main__dot" style="opacity: 0"></span></span>
+							<span class="main__word" id="word-3">{{ '\xa0' }}маркетинговое{{ '\xa0' }}</span>
 							<span id="string-1-2-3">
-								<span class="main__word" id="word-4">
-									агентство
-									<span class="main__dot" style="opacity: 0"></span>
-								</span>
-								<span class="main__word" id="word-5"> &nbsp;из&nbsp; </span>
-								<span class="main__word" id="word-6"> Санкт- </span>
-								<span class="main__word" id="word-7">
-									Петербурга
-									<span class="main__dot" style="opacity: 0"></span>
-								</span>
+								<span class="main__word" id="word-4">агентство<span class="main__dot" style="opacity: 0"></span></span>
+								<span class="main__word" id="word-5">{{ '\xa0' }}из{{ '\xa0' }}</span>
+								<span class="main__word" id="word-6">Санкт-</span>
+								<span class="main__word" id="word-7">Петербурга<span class="main__dot" style="opacity: 0"></span></span>
 							</span>
 						</div>
 						<div class="main__string" id="string-2">
-							<span class="main__word" id="word-11"> Продюссируем&nbsp; </span>
-							<span class="main__word" id="word-12"> ивенты </span>
-							<span class="main__word" id="word-13"> &nbsp;разрабатываем&nbsp; </span>
+							<span class="main__word" id="word-11">Продюссируем{{ '\xa0' }}</span>
+							<span class="main__word" id="word-12">ивенты<span class="main__dot" style="opacity: 0"></span></span>
+							<span class="main__word" id="word-13">{{ '\xa0' }}разрабатываем{{ '\xa0' }}</span>
 							<span id="string-2-2">
-								<span class="main__word" id="word-14"> креатив </span>
-								<span class="main__word" id="word-15"> &nbsp;проектируем&nbsp;стенды </span>
+								<span class="main__word" id="word-14">креатив<span class="main__dot" style="opacity: 0"></span></span>
+								<span class="main__word" id="word-15">{{ '\xa0' }}проектируем{{ '\xa0' }}стенды</span>
 								<span class="inline-block" id="string-2-3">
-									<span class="main__word" id="word-16"> и </span>
-									<span class="main__word">декор</span
-									><span class="main__word" id="word-18"> ации&nbsp;c 2015 года.</span>
+									<span class="main__word" id="word-16">{{ '\xa0' }}и{{ '\xa0' }}</span>
+									<span class="main__word">декор<span class="main__dot" style="opacity: 0"></span></span
+									><span class="main__word" id="word-18">ации c 2015 года.</span>
 								</span>
 							</span>
 						</div>
 						<div class="main__string" id="string-3">
-							<span class="main__word" id="word-21"> Наша&nbsp; </span>
+							<span class="main__word" id="word-21">Наша{{ '\xa0' }}</span>
 							<span class="main__word" id="word-22">
 								философия
 								<span class="main__dot" style="opacity: 0"></span>
 							</span>
-							<span class="main__word" id="word-23"> &nbsp;- f </span>
-							<span class="main__word"> o </span>
-							<span class="main__word" id="word-25"> cus&nbsp; </span>
-							<span class="main__word" id="word-26">o</span>
-							<span class="main__word" id="word-27">n&nbsp;id</span>
+							<span class="main__word" id="word-23">{{ '\xa0' }}-{{ '\xa0' }}f</span>
+							<span class="main__word">o</span>
+							<span class="main__word" id="word-25">cus{{ '\xa0' }}</span>
+							<span class="main__word" id="word-26">o<span class="main__dot" style="opacity: 0"></span></span>
+							<span class="main__word" id="word-27">n{{ '\xa0' }}id</span>
 							<span class="main__word" id="word-28">e</span>
 							<span class="main__word" id="word-29">as</span>
 						</div>
@@ -1193,8 +1184,8 @@
 				lax.addElements('.works__items', {
 					scrollY: {
 						translateX: [
-							[8500, 10000],
-							[0, '-elWidth - 300'],
+							[8500, 10500],
+							[0, '-elWidth + 600'],
 						],
 					},
 				});
