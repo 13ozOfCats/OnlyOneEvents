@@ -137,19 +137,7 @@
 					<prevBtn @click="goToSlide(3)"></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
-							<div class="upload__container" id="upload__container">
-								<span class="upload__title" id="upload__top">Переместите файлы сюда</span>
-								<span class="upload__text" id="upload__mid">или</span>
-								<label class="upload__label" id="upload__bot">
-									<input type="file" class="upload__input" id="upload__input" />
-									<input type="text" name="file" hidden id="upload__filePath" />
-									<span class="upload__text upload__link">
-										Загрузите
-										<span class="desktop"> c компьютера</span>
-										<span class="mobile"> c телефона</span>
-									</span>
-								</label>
-							</div>
+							<dropfile></dropfile>
 						</div>
 						<div class="footer__right">
 							<div class="footer__btn footer__control" @click="sendMessage">
@@ -211,6 +199,7 @@
 	import Vue from 'vue';
 	import {IMaskDirective} from 'vue-imask';
 	import prevBtn from '../../components/btn_footer/index.vue';
+	import dropfile from '../../components/dropfile/index.vue';
 
 	export default Vue.extend({
 		data: function() {
@@ -221,6 +210,7 @@
 					phone: '',
 					theme: '',
 					text: '',
+					files: [],
 				},
 				errors: {
 					name: false,
@@ -234,7 +224,7 @@
 					phone: '\xa0',
 					theme: '\xa0',
 				},
-				slide: 0,
+				slide: 3,
 				footerActive: false,
 				phoneMask: {
 					mask: '+{7} (000) 000 00 00',
@@ -345,6 +335,7 @@
 		},
 		components: {
 			prevBtn,
+			dropfile,
 		},
 	});
 </script>
@@ -585,69 +576,7 @@
 			color: rgba(238, 61, 67, 0.4);
 		}
 	}
-	.upload {
-		&__container {
-			position: relative;
-			margin-top: 20px;
-			width: 100%;
-			height: 156px;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			border: 1px dashed rgba(255, 255, 255, 0.14);
-			&-active {
-				background: rgba(255, 255, 255, 0.1);
-			}
-		}
-		&__title {
-			text-align: center;
-			font-size: 20px;
-			line-height: 114.2%;
-			color: #ffffff;
-		}
-		&__text {
-			text-align: center;
-			margin-top: 5px;
-			font-size: 16px;
-			line-height: 188%;
-			color: #ffffff;
-		}
-		&__label {
-			position: relative;
-			&:after {
-				color: var(--white);
-				top: 100%;
-				left: 0;
-				width: 100%;
-				font-family: 'Circe', sans-serif;
-				font-style: normal;
-				font-weight: 300;
-				font-size: 14px;
-				line-height: 188%;
-				position: absolute;
-				text-align: center;
-				content: 'Максимальный размер файла 15 МБ';
-			}
-		}
-		&__link {
-			display: flex;
-			cursor: pointer;
-			position: relative;
-			&:after {
-				content: '';
-				position: absolute;
-				left: 0;
-				bottom: 0;
-				width: 100%;
-				height: 1px;
-				background: #ffffff;
-			}
-		}
-		&__input {
-			display: none;
-		}
-	}
+
 	@media all and(min-width: 968px) {
 		.footer {
 			padding-top: 70px;
@@ -717,13 +646,6 @@
 				line-height: 188%;
 				width: 140px;
 				height: 140px;
-			}
-		}
-
-		.upload {
-			&__container {
-				height: 230px;
-				margin: 0 auto;
 			}
 		}
 	}
@@ -817,22 +739,6 @@
 			}
 			&__ul {
 				display: block;
-			}
-		}
-
-		.upload {
-			&__container {
-				margin-top: 0;
-				height: 300px;
-			}
-			&__title {
-				font-size: 36px;
-			}
-			&__text {
-				text-align: center;
-				margin-top: 30px;
-				font-size: 24px;
-				color: #ffffff;
 			}
 		}
 	}
