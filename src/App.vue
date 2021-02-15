@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<body id="app">
 		<myLoader v-if="showPreloader"></myLoader>
 		<myShowreel v-if="showPreloader" :videoLink="shortcut" :displayOn="true"></myShowreel>
 		<myShowreel v-if="!showPreloader" :videoLink="showreel"></myShowreel>
@@ -7,7 +7,7 @@
 		<myDot v-if="this.$route.path.includes('/works')" ref="dot"></myDot>
 		<router-view />
 		<myFooter></myFooter>
-	</div>
+	</body>
 </template>
 <script lang="ts">
 	import myFooter from './components/footer/index.vue';
