@@ -1600,18 +1600,81 @@
 			}
 		}
 	}
+	@media all and(min-width: 1300px) and (max-height: 768px) {
+		.main {
+			&__section {
+				padding-top: 185px;
+			}
+			&__chutes {
+				top: 60%;
+			}
+			&__ball {
+				left: -12%;
+				bottom: -28%;
+			}
+			&__cities {
+				margin: -120px auto 0;
+			}
+			&__bgpic {
+				top: 10%;
+				&-right {
+					right: 2%;
+				}
+				&-left {
+					left: 11%;
+				}
+			}
+			&__foi {
+				top: -37%;
+			}
+			&__foibox {
+				top: 66%;
+			}
+			&__string + &__string {
+				margin-top: 0;
+			}
+			&__end {
+				bottom: 30px;
+			}
+			&__word,
+			&__string {
+				line-height: 75px;
+			}
+		}
+		.works {
+			padding-bottom: 50px;
+			padding-top: 150px;
+			&__item {
+				height: calc(100vh - 200px);
+			}
+			&__subtitle {
+				margin-top: 20px;
+				font-size: 26px;
+				line-height: 120%;
+				height: 95px;
+			}
+			&__imge {
+				height: calc(100vh - 200px - 120px);
+			}
+		}
+	}
 	@media all and(min-width: 1281px) {
 		.main {
-			.menu__link,
-			.header__lang {
-				color: var(--bg);
-			}
 			&__mobile {
 				display: none;
 			}
 			&__wrapper {
 				display: block;
 			}
+		}
+	}
+	@media all and(max-width: 1440px) {
+		.main__string + .main__string {
+			margin-top: 15px;
+		}
+		.main__string,
+		.main__word {
+			line-height: 120%;
 		}
 	}
 </style>
