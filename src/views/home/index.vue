@@ -875,7 +875,7 @@
 			},
 		},
 		computed: {
-			...mapGetters(['posts']),
+			...mapGetters(['posts', 'showPreloader']),
 		},
 		mounted() {
 			if (!this.showPreloader) {

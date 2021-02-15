@@ -224,7 +224,7 @@
 					phone: '\xa0',
 					theme: '\xa0',
 				},
-				slide: 3,
+				slide: 0,
 				footerActive: false,
 				phoneMask: {
 					mask: '+{7} (000) 000 00 00',

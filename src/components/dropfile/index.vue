@@ -20,11 +20,6 @@
 				Максимальный размер файлов 15 МБ
 			</span>
 		</label>
-		<ul v-if="files !== []" class="upload__files">
-			<li class="upload__file" v-for="file in files" :key="file">
-				{{ file.name }} ({{ file.size | kb }} kb) <button @click="removeFile(file)" title="Remove">X</button>
-			</li>
-		</ul>
 	</div>
 </template>
 <script lang="ts">
@@ -46,9 +41,7 @@
 			dragleave: function(): void {
 				this.active = false;
 			},
-			drop: function(e: Event): void {
-				const droppedFiles = e.originalEvent.dataTransfer.files;
-				this.upload(droppedFiles[0]);
+			drop: function(): void {
 				this.active = false;
 			},
 			upload: function(file: File): void {
