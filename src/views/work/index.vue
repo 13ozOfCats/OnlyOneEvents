@@ -53,7 +53,7 @@
 					</div>
 				</section>
 			</div>
-			<aside class="project__aside project__aside-r" @mouseenter="next" @mouseleave="current" @click="current">
+			<aside class="project__aside project__aside-r" @mouseover="next" @mouseout="current" @click="current">
 				<router-link :to="/works/ + post[1].slug" class="project__link">
 					<span class="project__side project__side-r"> Next </span>
 					<span class="project__next"></span>
@@ -280,9 +280,15 @@
 			transition: 0.3s;
 			&-next {
 				transform: translateX(-70px);
+				.project__next{
+					width: 70px;
+				}
 			}
 			&-prev {
 				transform: translateX(70px);
+				.project__prev {
+					width: 70px;
+				}
 			}
 		}
 		&__prev {
@@ -300,12 +306,8 @@
 			background: rgba(255, 255, 255, 0.07);
 			position: absolute;
 			top: 0;
-			width: 70px;
+			width: 0;
 			height: 100%;
-			transition: 0.5s;
-			&-active {
-				transform: translate(0%, 0%);
-			}
 		}
 		&__aside {
 			display: none;
@@ -429,9 +431,6 @@
 				margin-top: 150px;
 				padding-bottom: 30px;
 			}
-			&__aside {
-				display: block;
-			}
 			&__title {
 				font-size: 112px;
 				line-height: 165px;
@@ -467,6 +466,12 @@
 			&__block {
 				padding-bottom: 112px;
 			}
+		}
+	}
+	@media all and(min-width: 1300px) and (max-height: 768px) {
+		.project__side-r,
+		.project__side-l {
+			padding: 20px 0 0 0;
 		}
 	}
 </style>
