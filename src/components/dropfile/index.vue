@@ -9,8 +9,8 @@
 	>
 		<span class="upload__title">Переместите файлы сюда</span>
 		<span class="upload__text">или</span>
-		<label class="upload__clickbox" @click="upload">
-			<input type="file" class="upload__input" />
+		<label class="upload__clickbox" @click="upload($event)">
+			<input type="file" class="upload__input" multiple="True" @change="fileInput" />
 			<span class="upload__text upload__link">
 				Загрузите
 				<span class="desktop">{{ '\xa0' }}c компьютера</span>
@@ -44,8 +44,17 @@
 			drop: function(e: Event): void {
 				this.active = false;
 				const droppedFiles = e.dataTransfer.files;
-				console.log(droppedFiles);
-				this.upload(droppedFiles[0]);
+				if (!droppedFiles) return;
+				[...droppedFiles].forEach((f) => {
+					this.files.push(f);
+				});
+			},
+			fileInput: function(e: Event): void {
+				const inputFiles = e.target.files;
+				if (!inputFiles) return;
+				[...inputFiles].forEach((f) => {
+					this.files.push(f);
+				});
 			},
 			upload: function(file: File): void {
 				const formData = new FormData();
