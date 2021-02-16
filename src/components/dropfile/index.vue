@@ -20,6 +20,12 @@
 				Максимальный размер файлов 15 МБ
 			</span>
 		</label>
+		<ul v-if="files !== []">
+			<li v-for="(file, index) in files" :key="file">
+				{{ file.name }} ({{ file.size }} b)
+				<button @click="removeFile(index)">X</button>
+			</li>
+		</ul>
 	</div>
 </template>
 <script lang="ts">
@@ -45,16 +51,19 @@
 				this.active = false;
 				const droppedFiles = e.dataTransfer.files;
 				if (!droppedFiles) return;
-				[...droppedFiles].forEach((f) => {
+				[...droppedFiles].forEach((f: any) => {
 					this.files.push(f);
 				});
 			},
 			fileInput: function(e: Event): void {
 				const inputFiles = e.target.files;
 				if (!inputFiles) return;
-				[...inputFiles].forEach((f) => {
+				[...inputFiles].forEach((f: any) => {
 					this.files.push(f);
 				});
+			},
+			removeFile(fileKey: number) {
+				this.files.splice(fileKey, 1);
 			},
 			upload: function(file: File): void {
 				const formData = new FormData();
