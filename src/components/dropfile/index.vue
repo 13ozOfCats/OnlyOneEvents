@@ -5,7 +5,7 @@
 		:class="{'upload__container-active': active}"
 		@dragover.prevent="dragover"
 		@dragleave.prevent="dragleave"
-		@drop.prevent="drop"
+		@drop.prevent="drop($event)"
 	>
 		<span class="upload__title">Переместите файлы сюда</span>
 		<span class="upload__text">или</span>
@@ -41,8 +41,11 @@
 			dragleave: function(): void {
 				this.active = false;
 			},
-			drop: function(): void {
+			drop: function(e: Event): void {
 				this.active = false;
+				const droppedFiles = e.dataTransfer.files;
+				console.log(droppedFiles);
+				this.upload(droppedFiles[0]);
 			},
 			upload: function(file: File): void {
 				const formData = new FormData();
