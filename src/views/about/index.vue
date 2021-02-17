@@ -1,5 +1,5 @@
 <template>
-	<main class="aboutUs">
+	<main class="aboutUs" v-scroll="scrollPage">
 		<section class="aboutMobile__main">
 			<div class="container">
 				<div class="aboutMobile__title">Мы one only events</div>
@@ -81,7 +81,9 @@
 					</svg>
 				</div>
 			</div>
-			<div class="aboutUs__bigRedCircle"></div>
+			<div class="aboutUs__bigRedContainer">
+				<div class="aboutUs__bigRedCircle"></div>
+			</div>
 		</section>
 		<section class="aboutMobile__services">
 			<div class="container">
@@ -182,13 +184,43 @@
 		</section>
 	</main>
 </template>
-<script lang="ts">
+<script lang="js">
 	import Vue from 'vue';
 	import myContacts from '../../components/contacts/index.vue';
 	import section1 from './components/section-1.vue';
 	import section3 from './components/section-3.vue';
+	import anime from 'animejs/lib/anime.es.js';
 
 	export default Vue.extend({
+		methods: {
+			scrollPage: function (evt) {
+				//console.log(evt);
+				//console.log(window.scrollY);
+				//console.log(document.querySelector('.aboutUs__main').clientHeight);
+				const scroll = window.scrollY;
+				const section1 = document.querySelector('.aboutUs__main');
+				if((scroll > 0) && (scroll < section1.clientHeight)){
+				  /*
+					anime
+						.timeline({
+							loop: false,
+							autoplay: true,
+							duration: 1500,
+						})
+						.add({
+							targets: '.aboutUs__bigRedCircle',
+							easing: 'linear',
+							scale: [1, 5]
+						})
+						.add({
+							targets: '.aboutUs__video',
+							easing: 'easeInCubic',
+							translateY: ['100%', 0]
+						}, 0)
+				   */
+				}
+			}
+		},
 		components: {
 			myContacts,
 			section1,
@@ -501,8 +533,6 @@
 		}
 		&__main {
 			height: calc(100vh - 140px);
-			padding-bottom: 60px;
-			padding-top: 20px;
 		}
 		&__supatitle {
 			font-size: 32px;
@@ -637,11 +667,13 @@
 			z-index: 1005;
 			transform: translateY(100%);
 		}
-		&__bigRedCircle {
+		&__bigRedContainer {
+			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			position: absolute;
+		}
+		&__bigRedCircle {
 			background: var(--red);
 			border-radius: 100%;
 			width: 50vh;
