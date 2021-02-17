@@ -28,7 +28,7 @@
 		</ul>
 	</div>
 </template>
-<script lang="ts">
+<script lang="js">
 	import Vue from 'vue';
 
 	export default Vue.extend({
@@ -39,33 +39,33 @@
 			};
 		},
 		methods: {
-			dragover: function(): void {
+			dragover: function() {
 				if (!this.active) {
 					this.active = true;
 				}
 			},
-			dragleave: function(): void {
+			dragleave: function() {
 				this.active = false;
 			},
-			drop: function(e: Event): void {
+			drop: function(e){
 				this.active = false;
 				const droppedFiles = e.dataTransfer.files;
 				if (!droppedFiles) return;
-				[...droppedFiles].forEach((f: any) => {
+				[...droppedFiles].forEach((f) => {
 					this.files.push(f);
 				});
 			},
-			fileInput: function(e: Event): void {
+			fileInput: function(e) {
 				const inputFiles = e.target.files;
 				if (!inputFiles) return;
-				[...inputFiles].forEach((f: any) => {
+				[...inputFiles].forEach((f) => {
 					this.files.push(f);
 				});
 			},
-			removeFile(fileKey: number) {
+			removeFile(fileKey) {
 				this.files.splice(fileKey, 1);
 			},
-			upload: function(file: File): void {
+			upload: function(file) {
 				const formData = new FormData();
 				formData.append('file', file);
 				fetch('https://httpbin.org/post', {
