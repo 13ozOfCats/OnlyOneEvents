@@ -55,7 +55,7 @@
 					<svg width="390" height="330" viewBox="0 0 390 330" fill="none">
 						<g id="bubble-1" class="aboutUs__item">
 							<path
-								d="M172.356 289.672C222.355 269.672 333.355 296.174 355.356 280.673C377.356 265.172 402.873 199.055 346.873 135.557C290.873 72.0583 221.5 18.597 148.373 16.0563C18.8729 11.5586 7.35538 119.672 7.35537 199.672C7.35535 279.672 52.3555 339.672 172.356 289.672Z"
+								d="M171.984 289.664C222.06 269.856 332.957 296.785 355.017 281.369C377.076 265.953 402.848 199.935 347.093 136.222C291.337 72.5081 222.171 18.7802 149.054 15.9581C19.5722 10.9621 7.63877 119.03 7.33091 199.029C7.02304 279.029 51.7919 339.201 171.984 289.664Z"
 								class="aboutUs__conturs"
 								fill="none"
 								stroke="#EE3D43"
@@ -63,7 +63,7 @@
 							></path>
 							<path
 								class="aboutUs__bgs"
-								d="M172.356 289.672C222.355 269.672 333.355 296.174 355.356 280.673C377.356 265.172 402.873 199.055 346.873 135.557C290.873 72.0583 221.5 18.597 148.373 16.0563C18.8729 11.5586 7.35538 119.672 7.35537 199.672C7.35535 279.672 52.3555 339.672 172.356 289.672Z"
+								d="M171.984 289.664C222.06 269.856 332.957 296.785 355.017 281.369C377.076 265.953 402.848 199.935 347.093 136.222C291.337 72.5081 222.171 18.7802 149.054 15.9581C19.5722 10.9621 7.63877 119.03 7.33091 199.029C7.02304 279.029 51.7919 339.201 171.984 289.664Z"
 								fill="#EE3D43"
 							></path>
 							<path
@@ -351,10 +351,14 @@
 					targets: ['#bubble-1 .aboutUs__conturs', '#bubble-1 .aboutUs__bgs'],
 					easing: 'linear',
 					d: [
-						'M172 261C218.736 234.246 331.5 285.33 356.5 242.499C381.5 199.669 394 133.498 338 69.9996C282 6.5011 210.127 72.5409 137 70.0002C7.50011 65.5025 7.3555 119.671 7.35548 199.671C7.35546 279.671 34.0001 339.999 172 261Z',
-						'M228 305.003C278 285.003 325.5 274.001 357 231.502C388.5 189.002 389.5 90.4999 346 54.5002C302.5 18.5004 216.127 66.0416 143 63.5008C133 63.1534 6.00006 24.0034 6.00005 130.003C6.00004 236.003 108 355.003 228 305.003Z',
-						'M172.356 289.672C222.355 269.672 333.355 296.174 355.356 280.673C377.356 265.172 402.873 199.055 346.873 135.557C290.873 72.0583 221.5 18.597 148.373 16.0563C18.8729 11.5586 7.35538 119.672 7.35537 199.672C7.35535 279.672 52.3555 339.672 172.356 289.672Z',
-						'M66 279.5C117 307 238.5 329 329 253.5C419.5 178 330.5 46.5046 262.5 32.5016C194.5 18.4986 166.5 54.5022 105 32.5015C43.4999 10.5007 13.4998 81.0003 13.4998 107.501C13.4998 134.002 -5.49363 240.949 66 279.5Z',
+						'M241.073 263.129C308.232 256.043 377.367 216.16 370.5 160.5C363.632 104.84 340.872 36.4356 256.394 30.8082C171.917 25.1809 64.6415 43.7674 31.3207 85.8036C-2.00006 127.84 -13.3832 308.936 60.5584 315.468C134.5 322 157 272 241.073 263.129Z',
+						'M370 222.259C412.478 169.759 327.81 19.7409 247.5 55.5002C167.19 91.2596 111.213 -0.254513 47.4999 55.5007C-16.2136 111.256 9.49286 168.972 15.6556 222.258C21.8184 275.543 143 311.501 211 295.501C279 279.5 316.824 287.98 370 222.259Z',
+						'M309 93.5C268.245 67.1452 251.5 47.9997 150.595 41.9574C49.6903 35.9151 14.8015 98.9019 9.17416 183.379C3.54683 267.856 75.3223 311.034 128.5 304.001C189 296 299.731 308.899 336.5 249.501C373.269 190.104 384 142 309 93.5Z',
+						'M216.912 30.4798C169.917 18.3546 118.123 13.4221 42.4999 80.5001C-33.1232 147.578 9.95692 269.043 112.5 298.002C215.043 326.961 277.96 318.571 327.5 298.002C413 262.501 378.833 162.188 346.667 121.344C314.5 80.5001 263.5 42.5001 216.912 30.4798Z',
+						'M76.5 72C-2.5002 120.5 3.00003 170.5 25.5 221C47.9999 271.5 133.137 248.001 255.907 286.501C378.677 325.001 346.785 219.964 367.27 170.389C402.625 84.8281 307.533 38.0557 255.907 31.92C204.281 25.7844 117 47.136 76.5 72Z',
+						'M16 215.5C49.5908 297 94.5 254 115 297C135.5 339.999 254.5 320.999 293 296.999C331.5 273 348.715 240.67 351.538 167.553C356.534 38.0712 248.465 26.1379 168.466 25.8301C88.4666 25.5222 -33.5378 95.3083 16 215.5Z',
+						'M104.367 259.573C155.668 243.196 202.501 300.803 229 305.501C255.5 310.198 363.873 296.978 369.5 212.501C375.127 128.024 344.206 114.697 294.5 61C257.176 20.6792 93.3668 -9 43.5003 61C-6.36609 131 -39.4997 305.501 104.367 259.573Z',
+						'M171.984 289.664C222.06 269.856 332.957 296.785 355.017 281.369C377.076 265.953 402.848 199.935 347.093 136.222C291.337 72.5081 222.171 18.7802 149.054 15.9581C19.5722 10.9621 7.63877 119.03 7.33091 199.029C7.02304 279.029 51.7919 339.201 171.984 289.664Z',
 					],
 				});
 			const bubble2 = anime
@@ -392,41 +396,47 @@
 						'M269.106 39.9241C159.972 49.466 138.868 0.981425 81.5488 7.26832C24.2297 13.5552 -7.01678 82.0253 20.4627 154.42C47.9422 226.814 103.444 262.417 145.535 291.702C226.249 347.853 333.354 321.786 365.092 253.802C410.611 156.3 357.724 32.176 269.106 39.9241Z',
 					],
 				});
-			document.getElementById('bubble-1')!.addEventListener('mouseover', () => {
-				bubble1.play();
-				this.bubbleActive.none = false;
-				this.bubbleActive.one = true;
-			});
-			document.getElementById('bubble-1')!.addEventListener('mouseout', () => {
-				bubble1.pause();
-				this.bubbleActive.none = true;
-				this.bubbleActive.one = false;
-			});
-			document.getElementById('bubble-2')!.addEventListener('mouseover', () => {
-				bubble2.play();
-				this.bubbleActive.none = false;
-				this.bubbleActive.two = true;
-			});
-			document.getElementById('bubble-2')!.addEventListener('mouseout', () => {
-				bubble2.pause();
-				this.bubbleActive.none = true;
-				this.bubbleActive.two = false;
-			});
-			document.getElementById('bubble-3')!.addEventListener('mouseover', () => {
-				bubble3.play();
-				this.bubbleActive.none = false;
-				this.bubbleActive.three = true;
-			});
-			document.getElementById('bubble-3')!.addEventListener('mouseout', () => {
-				bubble3.pause();
-				this.bubbleActive.none = true;
-				this.bubbleActive.three = false;
-			});
+			const bubbleItem1 = document.getElementById('bubble-1');
+			const bubbleItem2 = document.getElementById('bubble-2');
+			const bubbleItem3 = document.getElementById('bubble-3');
+			if (bubbleItem1) {
+				bubbleItem1.addEventListener('mouseover', () => {
+					bubble1.play();
+					this.bubbleActive.none = false;
+					this.bubbleActive.one = true;
+				});
+				bubbleItem1.addEventListener('mouseout', () => {
+					bubble1.pause();
+					this.bubbleActive.none = true;
+					this.bubbleActive.one = false;
+				});
+			}
+			if (bubbleItem2) {
+				bubbleItem2.addEventListener('mouseover', () => {
+					bubble2.play();
+					this.bubbleActive.none = false;
+					this.bubbleActive.two = true;
+				});
+				bubbleItem2.addEventListener('mouseout', () => {
+					bubble2.pause();
+					this.bubbleActive.none = true;
+					this.bubbleActive.two = false;
+				});
+			}
+			if (bubbleItem3) {
+				bubbleItem3.addEventListener('mouseover', () => {
+					bubble3.play();
+					this.bubbleActive.none = false;
+					this.bubbleActive.three = true;
+				});
+				bubbleItem3.addEventListener('mouseout', () => {
+					bubble3.pause();
+					this.bubbleActive.none = true;
+					this.bubbleActive.three = false;
+				});
+			}
 		},
 		methods: {
-			scroll1: function() {
-				console.log('weeeeee');
-			},
 			changeWord: function(word: number) {
 				for (const item of this.wordActive) {
 					item.active = item.id === word;
@@ -548,10 +558,12 @@
 			z-index: 2;
 			&-one {
 				display: none;
-				width: min(720px, 100%);
+				width: 720px;
+				max-width: 100%;
 			}
 			&-two {
-				width: min(660px, 100%);
+				width: 660px;
+				max-width: 100%;
 			}
 		}
 		&__clients {
