@@ -9,13 +9,11 @@
 			<div class="header__right">
 				<nav class="menu">
 					<ul class="menu__ul">
-						<!--
 						<li class="menu__li" :class="{'menu__li-active': aboutActive}">
 							<router-link to="/about" class="menu__link" :style="{color: color}">
 								О нас
 							</router-link>
 						</li>
-						-->
 						<li class="menu__li" :class="{'menu__li-active': worksActive}">
 							<router-link to="/works" class="menu__link" :style="{color: color}">
 								Работы
@@ -417,7 +415,8 @@
 				margin-top: 10px;
 			}
 			&__item {
-				width: min(25vw, 375px);
+				width: 375px;
+				max-width: 25vw;
 				height: calc(100vh - 190px);
 			}
 			&__subtitle {

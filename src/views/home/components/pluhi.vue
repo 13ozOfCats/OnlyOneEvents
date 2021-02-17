@@ -28,7 +28,6 @@
 				<image x="0" y="0" width="600" height="600" xlink:href="../images/pluha-2.jpg" mask="url(#pluhaBg_2)"></image>
 			</svg>
 		</div>
-
 		<div class="pluha pluha-left" id="pluha_3">
 			<svg width="600" height="600" viewBox="0 0 600 600" fill="none">
 				<defs>
@@ -57,7 +56,6 @@
 				<image x="0" y="0" width="600" height="600" xlink:href="../images/pluha-4.jpg" mask="url(#pluhaBg_4)"></image>
 			</svg>
 		</div>
-
 		<div class="pluha pluha-left" id="pluha_5">
 			<svg width="600" height="600" viewBox="0 0 600 600" fill="none">
 				<defs>

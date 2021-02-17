@@ -1,7 +1,7 @@
 <template>
 	<slick ref="slick" class="project__slider" :options="settings">
 		<div v-for="pic in gallery" :key="pic" class="project__slide">
-			<img :src="pic" class="project__photo" />
+			<img :src="pic" class="project__photo" alt="OOE" />
 		</div>
 	</slick>
 </template>

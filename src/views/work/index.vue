@@ -14,7 +14,7 @@
 						<div class="project__main">
 							<h1 class="project__title" v-if="post[0].title" v-html="post[0].title"></h1>
 							<div class="project__imgs" v-if="post[0].mainImg">
-								<img :src="post[0].mainImg" class="project__img" />
+								<img :src="post[0].mainImg" class="project__img" :alt="post[0].title" />
 							</div>
 						</div>
 					</div>
@@ -280,7 +280,7 @@
 			transition: 0.3s;
 			&-next {
 				transform: translateX(-70px);
-				.project__next{
+				.project__next {
 					width: 70px;
 				}
 			}
