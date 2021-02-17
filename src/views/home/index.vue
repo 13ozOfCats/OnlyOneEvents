@@ -58,7 +58,7 @@
 								<path
 									d="M55 0C24.6728 0 0 24.6728 0 54.9997C0 92.6363 49.2196 147.889 51.3152 150.223C53.2835 152.415 56.7201 152.411 58.6848 150.223C60.7804 147.889 110 92.6363 110 54.9997C109.999 24.6728 85.3269 0 55 0ZM55 82.6716C39.7416 82.6716 27.3284 70.258 27.3284 54.9997C27.3284 39.7414 39.7419 27.3281 55 27.3281C70.2581 27.3281 82.6713 39.7416 82.6713 55C82.6713 70.2583 70.2581 82.6716 55 82.6716Z"
 									fill="white"
-								/>
+								></path>
 							</svg>
 							<div class="main__text">
 								С опытом работы в Москве, Сочи, Екатеринбурге, Геленджике, Перми, а также в Финляндии.
@@ -789,6 +789,7 @@
 								</defs>
 							</svg>
 						</div>
+						<pluhs></pluhs>
 					</div>
 				</section>
 			</div>
@@ -857,7 +858,7 @@
 	import Vue from 'vue';
 	import {mapGetters} from 'vuex';
 	import lax from 'lax.js';
-	import myShowreel from '@/components/showreel/index.vue';
+	import pluhs from './components/pluhi';
 
 	export default Vue.extend({
 		name: 'Home',
@@ -865,6 +866,9 @@
 			return {
 				mainOverflow: 'hidden',
 			};
+		},
+		components: {
+			pluhs,
 		},
 		methods: {
 			changeMainOverflow: function () {
@@ -1260,7 +1264,6 @@
 			color: #ffffff;
 		}
 	}
-
 	.foi__text {
 		font-family: 'Circe', sans-serif;
 		font-style: normal;
