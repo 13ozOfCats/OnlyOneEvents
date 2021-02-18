@@ -49,7 +49,7 @@
 			</div>
 		</section>
 		<section1 v-on:next="down1"></section1>
-		<section class="aboutUs__video">
+		<section class="aboutUs__video" @wheel.prevent="videoWheel">
 			<div class="aboutUs__wrapper">
 				<div class="container aboutUs__videoContainer" id="about__video">
 					<h2 class="aboutUs__supatitle aboutUs__supatitle-white">Шоурил</h2>
@@ -61,6 +61,7 @@
 							frameborder="0"
 							allow="autoplay; fullscreen"
 							allowfullscreen
+							@wheel.prevent="videoWheel"
 						></iframe>
 					</div>
 				</div>
@@ -194,7 +195,8 @@
 	export default Vue.extend({
 		data(){
 			return{
-				scrollAnimation: null,
+				scrollAnimationUp: null,
+				scrollAnimationDown: null,
 				activeSection: 1,
 			};
 		},
@@ -209,15 +211,52 @@
 				}
 			},
 			down1: function () {
-				this.scrollAnimation.play();
+				this.scrollAnimationUp.play();
 				this.activeSection = 2;
-			}
+			},
+			videoWheel: function (e) {
+				if (e.deltaY > 0) {
+					this.down2();
+				} else {
+					this.up1();
+				}
+			},
+			down2: function () {
+				this.activeSection = 3;
+				this.scrollAnimationDown.play();
+			},
+			up1: function () {
+				this.activeSection = 1;
+				this.scrollAnimationUp.reverse();
+				this.scrollAnimationUp.play();
+				this.scrollAnimationUp.finished.then(() => {
+					this.scrollAnimationUp.reverse();
+				});
+			},
+			up2: function () {
+				this.activeSection = 2;
+			},
 		},
 		mounted () {
-			this.scrollAnimation = anime.timeline({
+			this.scrollAnimationDown = anime.timeline({
 				loop: false,
 				autoplay: false,
-				duration: 1500,
+				duration: 1000,
+			})
+				.add({
+					targets: '.aboutUs__video',
+					easing: 'easeInCubic',
+					translateY: [0, '-100%'],
+				})
+				.add({
+					targets: '.aboutUs__bigRedCircle',
+					easing: 'linear',
+					scale: [5, 1]
+				}, '-=300');
+			this.scrollAnimationUp = anime.timeline({
+				loop: false,
+				autoplay: false,
+				duration: 1000,
 			})
 				.add({
 					targets: '.aboutUs__bigRedCircle',
@@ -227,8 +266,8 @@
 				.add({
 					targets: '.aboutUs__video',
 					easing: 'easeInCubic',
-					translateY: ['100%', 0]
-				}, 0)
+					translateY: ['100%', 0],
+				}, 0);
 		},
 		components: {
 			myContacts,
