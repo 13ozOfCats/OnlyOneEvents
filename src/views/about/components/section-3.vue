@@ -120,9 +120,11 @@
 		}
 	}
 	@media all and(min-width: 968px) {
-		&__we {
-			display: flex;
-			align-items: center;
+		.aboutUs {
+			&__we {
+				display: flex;
+				align-items: center;
+			}
 		}
 	}
 </style>
