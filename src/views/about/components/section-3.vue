@@ -56,4 +56,73 @@
 		},
 	});
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+	.aboutUs {
+		&__we {
+			display: none;
+			height: 100vh;
+		}
+		&__text2 {
+			margin-top: 20px;
+			margin-bottom: 50px;
+			font-size: 18px;
+			line-height: 140%;
+			color: #363636;
+		}
+		&__row {
+			display: flex;
+		}
+		&__left {
+			display: flex;
+			flex-direction: column;
+			flex-basis: 50%;
+			padding-bottom: 50px;
+		}
+		&__right {
+			margin-left: auto;
+			flex-basis: 41.6666%;
+			position: relative;
+		}
+		&__circle {
+			position: absolute;
+			right: 0;
+			top: 100px;
+			z-index: 1;
+			opacity: 1;
+			transition: 0.5s;
+			&:first-child {
+				z-index: -60;
+			}
+			&-hidden {
+				transition-property: transform, opacity;
+				transition-duration: 0s, 0.4s;
+				transition-delay: 0.4s, 0s;
+				transform: scale(0);
+				opacity: 0;
+			}
+		}
+		&__weCan {
+			font-style: normal;
+			font-weight: bold;
+			font-size: 60px;
+			line-height: 100%;
+			color: #363636;
+			transition: 0.4s;
+			cursor: pointer;
+			transform-origin: 0 50%;
+			&-active {
+				transform: scale(1.2);
+				color: rgba(238, 61, 67, 0.85) !important;
+			}
+			& + & {
+				margin-top: 45px;
+			}
+		}
+	}
+	@media all and(min-width: 968px) {
+		&__we {
+			display: flex;
+			align-items: center;
+		}
+	}
+</style>

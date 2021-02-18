@@ -221,6 +221,7 @@
 <style scoped lang="scss">
 	.aboutUs {
 		&__main {
+			display: none;
 			height: calc(100vh - 140px);
 		}
 		&__items {
@@ -253,6 +254,16 @@
 			height: 165px;
 			&-hidden {
 				display: none;
+			}
+		}
+		&__text {
+			font-weight: 300;
+			font-family: 'Circe', sans-serif;
+			font-size: 24px;
+			line-height: 120%;
+			color: #363636;
+			& + & {
+				margin-top: 20px;
 			}
 		}
 	}
