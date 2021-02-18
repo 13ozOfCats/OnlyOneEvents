@@ -218,4 +218,48 @@
 		},
 	});
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+	.aboutUs {
+		&__main {
+			height: calc(100vh - 140px);
+		}
+		&__items {
+			margin-top: 25px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		&__bgs {
+			opacity: 0;
+		}
+		&__bgs,
+		&__conturs,
+		&__letters {
+			transition: 0.3s;
+		}
+		&__item {
+			cursor: pointer;
+			&:hover {
+				.aboutUs__bgs {
+					opacity: 1;
+				}
+				.aboutUs__letters {
+					fill: #ffffff;
+				}
+			}
+		}
+		&__textbox {
+			margin-top: 35px;
+			height: 165px;
+			&-hidden {
+				display: none;
+			}
+		}
+	}
+	@media all and(min-width: 968px) {
+		&__main {
+			display: flex;
+			align-items: center;
+		}
+	}
+</style>

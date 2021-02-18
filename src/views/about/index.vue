@@ -528,12 +528,6 @@
 
 	.aboutUs {
 		padding-top: 84px;
-		.header {
-			position: fixed;
-		}
-		&__main {
-			height: calc(100vh - 140px);
-		}
 		&__supatitle {
 			font-size: 32px;
 			line-height: 130%;
@@ -541,38 +535,6 @@
 			&-white {
 				padding-bottom: 10px;
 				color: #363636;
-			}
-		}
-		&__items {
-			margin-top: 25px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-		&__bgs {
-			opacity: 0;
-		}
-		&__bgs,
-		&__conturs,
-		&__letters {
-			transition: 0.3s;
-		}
-		&__item {
-			cursor: pointer;
-			&:hover {
-				.aboutUs__bgs {
-					opacity: 1;
-				}
-				.aboutUs__letters {
-					fill: #ffffff;
-				}
-			}
-		}
-		&__textbox {
-			margin-top: 35px;
-			height: 165px;
-			&-hidden {
-				display: none;
 			}
 		}
 		&__title {
@@ -869,8 +831,7 @@
 			&__bgWrapper {
 				display: block;
 			}
-			&__we,
-			&__main {
+			&__we {
 				display: flex;
 				align-items: center;
 			}
