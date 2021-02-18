@@ -1,5 +1,5 @@
 <template>
-	<main class="aboutUs" v-scroll="scrollPage">
+	<main class="aboutUs">
 		<section class="aboutMobile__main">
 			<div class="container">
 				<div class="aboutMobile__title">Мы one only events</div>
@@ -48,7 +48,7 @@
 				</div>
 			</div>
 		</section>
-		<section1></section1>
+		<section1 v-on:next="down1"></section1>
 		<section class="aboutUs__video">
 			<div class="aboutUs__wrapper">
 				<div class="container aboutUs__videoContainer" id="about__video">
@@ -192,34 +192,43 @@
 	import anime from 'animejs/lib/anime.es.js';
 
 	export default Vue.extend({
+		data(){
+			return{
+				scrollAnimation: null,
+				activeSection: 1,
+			};
+		},
 		methods: {
-			scrollPage: function (evt) {
-				//console.log(evt);
-				//console.log(window.scrollY);
-				//console.log(document.querySelector('.aboutUs__main').clientHeight);
+			scrollPage: function (e) {
+				e.preventDefault();
 				const scroll = window.scrollY;
 				const section1 = document.querySelector('.aboutUs__main');
+				console.log(144444);
 				if((scroll > 0) && (scroll < section1.clientHeight)){
-				  /*
-					anime
-						.timeline({
-							loop: false,
-							autoplay: true,
-							duration: 1500,
-						})
-						.add({
-							targets: '.aboutUs__bigRedCircle',
-							easing: 'linear',
-							scale: [1, 5]
-						})
-						.add({
-							targets: '.aboutUs__video',
-							easing: 'easeInCubic',
-							translateY: ['100%', 0]
-						}, 0)
-				   */
+					//this.scrollAnimation.play();
 				}
+			},
+			down1: function () {
+				this.scrollAnimation.play();
+				this.activeSection = 2;
 			}
+		},
+		mounted () {
+			this.scrollAnimation = anime.timeline({
+				loop: false,
+				autoplay: false,
+				duration: 1500,
+			})
+				.add({
+					targets: '.aboutUs__bigRedCircle',
+					easing: 'linear',
+					scale: [1, 5]
+				})
+				.add({
+					targets: '.aboutUs__video',
+					easing: 'easeInCubic',
+					translateY: ['100%', 0]
+				}, 0)
 		},
 		components: {
 			myContacts,

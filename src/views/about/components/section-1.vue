@@ -1,5 +1,5 @@
 <template>
-	<section class="aboutUs__main">
+	<section class="aboutUs__main" @wheel.prevent="onWheel">
 		<div class="container">
 			<h1 class="aboutUs__supatitle">Мы one only events</h1>
 			<div class="aboutUs__items">
@@ -105,7 +105,7 @@
 		</div>
 	</section>
 </template>
-<script lang="ts">
+<script lang="js">
 	import Vue from 'vue';
 	import anime from 'animejs/lib/anime.es.js';
 
@@ -119,6 +119,16 @@
 					three: false,
 				},
 			};
+		},
+		methods: {
+			onWheel: function(e) {
+				if (e.deltaY > 0) {
+					this.next();
+				}
+			},
+			next: function() {
+				this.$emit('next');
+			},
 		},
 		mounted() {
 			const bubble1 = anime
@@ -268,9 +278,11 @@
 		}
 	}
 	@media all and(min-width: 968px) {
-		&__main {
-			display: flex;
-			align-items: center;
+		.aboutUs {
+			&__main {
+				display: flex;
+				align-items: center;
+			}
 		}
 	}
 </style>
