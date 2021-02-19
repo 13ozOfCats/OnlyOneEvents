@@ -1,5 +1,5 @@
 <template>
-	<section class="aboutUs__main" @wheel.prevent="onWheel">
+	<section class="aboutUs__main" :class="{'aboutUs__main-hidden': hide}" @wheel.prevent="onWheel">
 		<div class="container">
 			<h1 class="aboutUs__supatitle">Мы one only events</h1>
 			<div class="aboutUs__items">
@@ -110,6 +110,7 @@
 	import anime from 'animejs/lib/anime.es.js';
 
 	export default Vue.extend({
+		props: [ 'hide' ],
 		data: function() {
 			return {
 				bubbleActive: {
@@ -282,6 +283,9 @@
 			&__main {
 				display: flex;
 				align-items: center;
+				&-hidden {
+					display: none;
+				}
 			}
 		}
 	}

@@ -48,7 +48,7 @@
 				</div>
 			</div>
 		</section>
-		<section1 v-on:next="down1"></section1>
+		<section1 @next="down1" :hide="hideSection1"></section1>
 		<section class="aboutUs__video" @wheel.prevent="videoWheel">
 			<div class="aboutUs__wrapper">
 				<div class="container aboutUs__videoContainer" id="about__video">
@@ -58,7 +58,6 @@
 							src="https://player.vimeo.com/video/313998647"
 							width="100%"
 							height="100%"
-							frameborder="0"
 							allow="autoplay; fullscreen"
 							allowfullscreen
 							@wheel.prevent="videoWheel"
@@ -130,7 +129,7 @@
 				</div>
 			</div>
 		</section>
-		<section3></section3>
+		<section3 @prev="up2"></section3>
 		<section class="about__clients">
 			<div class="container">
 				<h2 class="aboutUs__supatitle">Наши клиенты</h2>
@@ -198,6 +197,7 @@
 				scrollAnimationUp: null,
 				scrollAnimationDown: null,
 				activeSection: 1,
+				hideSection1: false,
 			};
 		},
 		methods: {
@@ -213,6 +213,9 @@
 			down1: function () {
 				this.scrollAnimationUp.play();
 				this.activeSection = 2;
+				this.scrollAnimationUp.finished.then(() => {
+					this.hideSection1 = true;
+				});
 			},
 			videoWheel: function (e) {
 				if (e.deltaY > 0) {
@@ -227,6 +230,7 @@
 			},
 			up1: function () {
 				this.activeSection = 1;
+				this.hideSection1 = false;
 				this.scrollAnimationUp.reverse();
 				this.scrollAnimationUp.play();
 				this.scrollAnimationUp.finished.then(() => {
@@ -235,6 +239,11 @@
 			},
 			up2: function () {
 				this.activeSection = 2;
+				this.scrollAnimationDown.reverse();
+				this.scrollAnimationDown.play();
+				this.scrollAnimationDown.finished.then(() => {
+					this.scrollAnimationDown.reverse();
+				});
 			},
 		},
 		mounted () {

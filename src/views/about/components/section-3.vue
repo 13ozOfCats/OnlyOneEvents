@@ -1,5 +1,5 @@
 <template>
-	<section class="aboutUs__we">
+	<section class="aboutUs__we" @wheel.prevent="onWheel">
 		<div class="container">
 			<div class="aboutUs__row">
 				<div class="aboutUs__left">
@@ -34,7 +34,7 @@
 		</div>
 	</section>
 </template>
-<script lang="ts">
+<script lang="js">
 	import Vue from 'vue';
 
 	export default Vue.extend({
@@ -48,7 +48,15 @@
 			};
 		},
 		methods: {
-			changeWord: function(word: number) {
+			onWheel: function(e) {
+				if (e.deltaY < 0) {
+					this.prev();
+				}
+			},
+			prev: function() {
+				this.$emit('prev');
+			},
+			changeWord: function(word) {
 				for (const item of this.wordActive) {
 					item.active = item.id === word;
 				}
