@@ -38,6 +38,7 @@
 	import Vue from 'vue';
 
 	export default Vue.extend({
+		props: [ 'lastWheel' ],
 		data: function() {
 			return {
 				wordActive: [
@@ -49,9 +50,13 @@
 		},
 		methods: {
 			onWheel: function(e) {
-				if (e.deltaY < 0) {
-					this.prev();
+				const now = Date.now();
+				if(now - this.lastWheel > 150) {
+					if (e.deltaY < 0) {
+						this.prev();
+					}
 				}
+				this.$emit('lastWheel', now);
 			},
 			prev: function() {
 				this.$emit('prev');

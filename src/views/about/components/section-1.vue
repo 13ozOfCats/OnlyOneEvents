@@ -110,7 +110,7 @@
 	import anime from 'animejs/lib/anime.es.js';
 
 	export default Vue.extend({
-		props: [ 'hide' ],
+		props: [ 'hide', 'lastWheel' ],
 		data: function() {
 			return {
 				bubbleActive: {
@@ -123,9 +123,13 @@
 		},
 		methods: {
 			onWheel: function(e) {
-				if (e.deltaY > 0) {
-					this.next();
+				const now = Date.now();
+				if(now - this.lastWheel > 150) {
+					if (e.deltaY > 0) {
+						this.next();
+					}
 				}
+				this.$emit('lastWheel', now);
 			},
 			next: function() {
 				this.$emit('next');

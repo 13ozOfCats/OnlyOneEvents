@@ -48,7 +48,7 @@
 				</div>
 			</div>
 		</section>
-		<section1 @next="down1" :hide="hideSection1"></section1>
+		<section1 @next="down1" @lastWheel="newWheel" :lastWheel="lastWheel" :hide="hideSection1"></section1>
 		<section class="aboutUs__video" @wheel.prevent="videoWheel">
 			<div class="aboutUs__wrapper">
 				<div class="container aboutUs__videoContainer" id="about__video">
@@ -129,7 +129,7 @@
 				</div>
 			</div>
 		</section>
-		<section3 @prev="up2"></section3>
+		<section3 @prev="up2" @lastWheel="newWheel" :lastWheel="lastWheel"></section3>
 		<section class="about__clients">
 			<div class="container">
 				<h2 class="aboutUs__supatitle">Наши клиенты</h2>
@@ -198,6 +198,7 @@
 				scrollAnimationDown: null,
 				activeSection: 1,
 				hideSection1: false,
+				lastWheel: Date.now(),
 			};
 		},
 		methods: {
@@ -218,11 +219,15 @@
 				});
 			},
 			videoWheel: function (e) {
-				if (e.deltaY > 0) {
-					this.down2();
-				} else {
-					this.up1();
+				const now = Date.now();
+				if(now - this.lastWheel > 150) {
+					if (e.deltaY > 0) {
+						this.down2();
+					} else {
+						this.up1();
+					}
 				}
+				this.lastWheel = now;
 			},
 			down2: function () {
 				this.activeSection = 3;
@@ -245,6 +250,9 @@
 					this.scrollAnimationDown.reverse();
 				});
 			},
+			newWheel: function(now) {
+				this.lastWheel = now;
+			}
 		},
 		mounted () {
 			this.scrollAnimationDown = anime.timeline({
