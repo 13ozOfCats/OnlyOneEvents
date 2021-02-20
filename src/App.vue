@@ -1,5 +1,5 @@
 <template>
-	<body id="app">
+	<body id="app" :class="{overflowHidden: overflowHidden}">
 		<myLoader v-if="showPreloader"></myLoader>
 		<myShowreel v-if="showPreloader" :videoLink="shortcut" :displayOn="true"></myShowreel>
 		<myShowreel v-if="!showPreloader" :videoLink="showreel"></myShowreel>
@@ -9,7 +9,7 @@
 		<myFooter></myFooter>
 	</body>
 </template>
-<script lang="ts">
+<script lang="js">
 	import myFooter from './components/footer/index.vue';
 	import myHeader from './components/header/index.vue';
 	import myDot from './components/dot/index.vue';
@@ -21,6 +21,7 @@
 		data: function() {
 			return {
 				goWork: false,
+				overflowHidden: false,
 			};
 		},
 		components: {
@@ -29,6 +30,17 @@
 			myFooter,
 			myHeader,
 			myDot,
+		},
+		methods: {
+			overflow: function(bool) {
+				this.overflowHidden = bool;
+			},
+		},
+		created() {
+			this.$eventBus.$on('overflow', this.overflow);
+		},
+		beforeDestroy() {
+			this.$eventBus.$off('overflow');
 		},
 		computed: {
 			...mapGetters(['showPreloader', 'shortcut', 'showreel']),
@@ -260,6 +272,10 @@
 		&-h100 {
 			height: 100%;
 		}
+	}
+
+	.overflowHidden {
+		overflow: hidden;
 	}
 
 	@media (min-width: 576px) {
