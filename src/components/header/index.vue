@@ -1,5 +1,5 @@
 <template>
-	<header class="header header-active" :style="{position: position}">
+	<header class="header" :class="{'header-hidden': headerHidden}" :style="{position: position}">
 		<div class="header__container container">
 			<div class="header__left">
 				<router-link to="/">
@@ -66,6 +66,7 @@
 				aboutActive: false,
 				worksActive: false,
 				contactsActive: false,
+				headerHidden: false,
 			};
 		},
 		methods: {
@@ -119,6 +120,15 @@
 					this.headerOn();
 				}
 			},
+			headerHide: function (bool) {
+				this.headerHidden = bool;
+			},
+		},
+		created() {
+			this.$eventBus.$on('headerHide', this.headerHide);
+		},
+		beforeDestroy() {
+			this.$eventBus.$off('headerHide');
 		},
 		watch: {
 			$route: function() {
@@ -166,6 +176,9 @@
 		top: 0;
 		left: 0;
 		z-index: 1000;
+		&-hidden {
+			display: none;
+		}
 		&-black {
 			&.header-active {
 				.menu__link {

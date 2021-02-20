@@ -37,10 +37,10 @@
 			},
 		},
 		created() {
-			this.$eventBus.$on('overflow', this.overflow);
+			this.$eventBus.$on('overflowHidden', this.overflow);
 		},
 		beforeDestroy() {
-			this.$eventBus.$off('overflow');
+			this.$eventBus.$off('overflowHidden');
 		},
 		computed: {
 			...mapGetters(['showPreloader', 'shortcut', 'showreel']),
@@ -261,6 +261,9 @@
 		font-family: 'Circe', sans-serif;
 		font-style: normal;
 		font-weight: normal;
+		&::-webkit-scrollbar {
+			width: 0;
+		}
 	}
 
 	.container {

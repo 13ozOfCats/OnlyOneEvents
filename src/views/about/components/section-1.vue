@@ -237,7 +237,8 @@
 	.aboutUs {
 		&__main {
 			display: none;
-			height: calc(100vh - 140px);
+			height: 100vh;
+			padding-top: 140px;
 		}
 		&__items {
 			margin-top: 25px;

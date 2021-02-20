@@ -231,6 +231,7 @@
 					this.scrollAnimationUp.play();
 					this.scrollAnimationUp.finished.then(() => {
 						this.hideSection1 = true;
+						this.$eventBus.$emit('headerHide', true);
 						this.canPlay = true;
 					});
 				}
@@ -241,7 +242,7 @@
 					this.canPlay = false;
 					this.scrollAnimationDown.play();
 					this.scrollAnimationDown.finished.then(() => {
-						this.$eventBus.$emit('overflow', false);
+						this.$eventBus.$emit('overflowHidden', false);
 						this.canPlay = true;
 					});
 				}
@@ -250,6 +251,7 @@
 				if (this.canPlay) {
 					this.activeSection = 1;
 					this.hideSection1 = false;
+					this.$eventBus.$emit('headerHide', false);
 					this.canPlay = false;
 					this.scrollAnimationUp.reverse();
 					this.scrollAnimationUp.play();
@@ -267,7 +269,7 @@
 					this.scrollAnimationDown.play();
 					this.scrollAnimationDown.finished.then(() => {
 						this.scrollAnimationDown.reverse();
-						this.$eventBus.$emit('overflow', true);
+						this.$eventBus.$emit('overflowHidden', true);
 						this.canPlay = true;
 					});
 				}
@@ -310,6 +312,10 @@
 					easing: 'easeInCubic',
 					translateY: ['100%', 0],
 				}, 0);
+		},
+		beforeDestroy() {
+			this.$eventBus.$emit('overflowHidden', false);
+			this.$eventBus.$emit('headerHide', false);
 		},
 		components: {
 			myContacts,
@@ -617,7 +623,6 @@
 	}
 
 	.aboutUs {
-		padding-top: 84px;
 		&__supatitle {
 			font-size: 32px;
 			line-height: 130%;
@@ -845,7 +850,6 @@
 		}
 
 		.aboutUs {
-			padding-top: 140px;
 			&__ooe,
 			&__bgWrapper {
 				display: block;
