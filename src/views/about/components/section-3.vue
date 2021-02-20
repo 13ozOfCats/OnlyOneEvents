@@ -1,5 +1,5 @@
 <template>
-	<section class="aboutUs__we" @wheel.prevent="onWheel">
+	<section class="aboutUs__we" @wheel="onWheel">
 		<div class="container">
 			<div class="aboutUs__row">
 				<div class="aboutUs__left">
@@ -50,13 +50,15 @@
 		},
 		methods: {
 			onWheel: function(e) {
-				const now = Date.now();
-				if(now - this.lastWheel > 150) {
-					if (e.deltaY < 0) {
-						this.prev();
+				if(window.scrollY === 0) {
+					const now = Date.now();
+					if (now - this.lastWheel > 150) {
+						if (e.deltaY < 0) {
+							this.prev();
+						}
 					}
+					this.$emit('lastWheel', now);
 				}
-				this.$emit('lastWheel', now);
 			},
 			prev: function() {
 				this.$emit('prev');
