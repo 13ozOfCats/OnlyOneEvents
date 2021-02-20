@@ -199,6 +199,7 @@
 				activeSection: 1,
 				hideSection1: false,
 				lastWheel: Date.now(),
+				canPlay: true,
 			};
 		},
 		methods: {
@@ -211,13 +212,7 @@
 					//this.scrollAnimation.play();
 				}
 			},
-			down1: function () {
-				this.scrollAnimationUp.play();
-				this.activeSection = 2;
-				this.scrollAnimationUp.finished.then(() => {
-					this.hideSection1 = true;
-				});
-			},
+
 			videoWheel: function (e) {
 				const now = Date.now();
 				if(now - this.lastWheel > 150) {
@@ -229,32 +224,62 @@
 				}
 				this.lastWheel = now;
 			},
+			down1: function () {
+				if (this.canPlay) {
+					this.activeSection = 2;
+					this.canPlay = false;
+					this.scrollAnimationUp.play();
+					this.scrollAnimationUp.finished.then(() => {
+						this.hideSection1 = true;
+						this.canPlay = true;
+					});
+				}
+			},
 			down2: function () {
-				this.activeSection = 3;
-				this.scrollAnimationDown.play();
+				if (this.canPlay) {
+					this.activeSection = 3;
+					this.canPlay = false;
+					this.scrollAnimationDown.play();
+					this.scrollAnimationDown.finished.then(() => {
+						this.$eventBus.$emit('overflow', false);
+						this.canPlay = true;
+					});
+				}
 			},
 			up1: function () {
-				this.activeSection = 1;
-				this.hideSection1 = false;
-				this.scrollAnimationUp.reverse();
-				this.scrollAnimationUp.play();
-				this.scrollAnimationUp.finished.then(() => {
+				if (this.canPlay) {
+					this.activeSection = 1;
+					this.hideSection1 = false;
+					this.canPlay = false;
 					this.scrollAnimationUp.reverse();
-				});
+					this.scrollAnimationUp.play();
+					this.scrollAnimationUp.finished.then(() => {
+						this.scrollAnimationUp.reverse();
+						this.canPlay = true;
+					});
+				}
 			},
 			up2: function () {
-				this.activeSection = 2;
-				this.scrollAnimationDown.reverse();
-				this.scrollAnimationDown.play();
-				this.scrollAnimationDown.finished.then(() => {
+				if (this.canPlay) {
+					this.activeSection = 2;
+					this.canPlay = false;
 					this.scrollAnimationDown.reverse();
-				});
+					this.scrollAnimationDown.play();
+					this.scrollAnimationDown.finished.then(() => {
+						this.scrollAnimationDown.reverse();
+						this.$eventBus.$emit('overflow', true);
+						this.canPlay = true;
+					});
+				}
 			},
 			newWheel: function(now) {
 				this.lastWheel = now;
 			}
 		},
 		mounted () {
+
+			this.$eventBus.$emit('overflow', true);
+
 			this.scrollAnimationDown = anime.timeline({
 				loop: false,
 				autoplay: false,
