@@ -1,53 +1,7 @@
 <template>
 	<main class="aboutUs">
-		<section class="aboutMobile__main">
-			<div class="container">
-				<div class="aboutMobile__title">Мы one only events</div>
-				<div class="aboutMobile__items">
-					<div class="aboutMobile__item">
-						<div class="aboutMobile__left">
-							<img src="./images/about_main-1-small.svg" alt="" />
-						</div>
-						<div class="aboutMobile__right">
-							<div class="aboutMobile__subtitle">
-								C 2015 года создающая яркие зрелищные проекты в сфере event - маркетинга.
-							</div>
-							<div class="aboutMobile__text">
-								Все сотрудники имеют общирный предопыт работы в индустрии,в ведущих коммуникационных агентствах Москвы и
-								Петербурга.
-							</div>
-						</div>
-					</div>
-					<div class="aboutMobile__item">
-						<div class="aboutMobile__left">
-							<img src="./images/about_main-2-small.svg" alt="" />
-						</div>
-						<div class="aboutMobile__right">
-							<div class="aboutMobile__subtitle">
-								Цель каждого нашего проекта - создать особый новый опыт, позволяющий усилить связь с брендом.
-							</div>
-							<div class="aboutMobile__text">
-								Мы проживаем проект глазами участника. Используем нестандартные решения для формирования уникального
-								характера каждого события. Каждый проект является по-настоящему интересным творческим продуктом,
-								приносящим целевой результат.
-							</div>
-						</div>
-					</div>
-					<div class="aboutMobile__item">
-						<div class="aboutMobile__left">
-							<img src="./images/about_main-3-small.svg" alt="" />
-						</div>
-						<div class="aboutMobile__right">
-							<div class="aboutMobile__subtitle">Мы любим мероприятия.</div>
-							<div class="aboutMobile__text">
-								Деловые, музыкальные, спортивные, развлекательные. Мы посещаем их сами и интересуемся всем, что
-								происходит в этой сфере, ежедневно обновляя представления о возможном.
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		<mobile1></mobile1>
+		<mobile2></mobile2>
 		<section1 @next="down1" @lastWheel="newWheel" :lastWheel="lastWheel" :hide="hideSection1"></section1>
 		<section class="aboutUs__video" @wheel.prevent="videoWheel">
 			<div class="aboutUs__wrapper">
@@ -83,50 +37,6 @@
 			</div>
 			<div class="aboutUs__bigRedContainer">
 				<div class="aboutUs__bigRedCircle"></div>
-			</div>
-		</section>
-		<section class="aboutMobile__services">
-			<div class="container">
-				<div class="aboutMobile__title">Наши услуги</div>
-				<div class="aboutMobile__descr">
-					Мы предлагаем решения, которые будут актуальны не только сегодня, с трепетом относимся к вещам, которые
-					создаем, находим вдохновение во вне. В фокусе агентства:
-				</div>
-				<div class="aboutMobile__service">
-					<div class="aboutMobile__name">Event Marketing</div>
-					<div class="aboutMobile__bot aboutMobile__bot-red">
-						<p class="aboutMobile__p">
-							Креативная разработка и реализация имиджевых маркетинговых событий: launch-мероприятий, автомобильных
-							презентаций, организация конференций, mice-выездов, спонсорских интеграций в фестивальные события. Офлайн
-							и онлайн форматы мероприятий.
-						</p>
-					</div>
-				</div>
-				<div class="aboutMobile__service">
-					<div class="aboutMobile__name">Décor Production</div>
-					<div class="aboutMobile__bot aboutMobile__bot-shit">
-						<p class="aboutMobile__p">
-							Разработка и производство декораций для мероприятий, выставочных стендов, спонсорских зон,
-							презентационного и торгового оборудования.
-						</p>
-						<p class="aboutMobile__p">
-							Внедрение современных и креативных решений, учитывающих уникальные особенности бренда, для достижения
-							WOM-эффекта.
-						</p>
-					</div>
-				</div>
-				<div class="aboutMobile__service">
-					<div class="aboutMobile__name">Сreative & Design</div>
-					<div class="aboutMobile__bot aboutMobile__bot-blue">
-						<p class="aboutMobile__p">
-							Разработка креативных концепций, сценариев, идей для мероприятий и инсталляций, режиссура проектов.
-						</p>
-						<p class="aboutMobile__p">
-							Дизайн для мероприятий: создание айдентики, 3D-дизайн объектов, верстка макетов полиграфии и сувенирной
-							продукции. Проектирование декораций и инсталляций.
-						</p>
-					</div>
-				</div>
 			</div>
 		</section>
 		<section3 @prev="up2" @lastWheel="newWheel" :lastWheel="lastWheel"></section3>
@@ -189,6 +99,8 @@
 	import myContacts from '../../components/contacts/index.vue';
 	import section1 from './components/section-1.vue';
 	import section3 from './components/section-3.vue';
+	import mobile1 from './components/mobile-1.vue';
+	import mobile2 from './components/mobile-2.vue';
 	import anime from 'animejs/lib/anime.es.js';
 
 	export default Vue.extend({
@@ -203,16 +115,6 @@
 			};
 		},
 		methods: {
-			scrollPage: function (e) {
-				e.preventDefault();
-				const scroll = window.scrollY;
-				const section1 = document.querySelector('.aboutUs__main');
-				console.log(144444);
-				if((scroll > 0) && (scroll < section1.clientHeight)){
-					//this.scrollAnimation.play();
-				}
-			},
-
 			videoWheel: function (e) {
 				const now = Date.now();
 				if(now - this.lastWheel > 150) {
@@ -321,6 +223,8 @@
 			myContacts,
 			section1,
 			section3,
+			mobile1,
+			mobile2
 		},
 	});
 </script>
@@ -696,85 +600,6 @@
 		&__ooe,
 		&__bgWrapper {
 			display: none;
-		}
-	}
-
-	.aboutMobile {
-		&__items {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-		}
-		&__item {
-			margin-top: 20px;
-			width: 100%;
-			display: flex;
-			align-items: center;
-		}
-		&__title {
-			font-size: 32px;
-			line-height: 130%;
-			color: #363636;
-		}
-		&__subtitle {
-			font-size: 10px;
-			line-height: 100%;
-			color: #363636;
-		}
-		&__text {
-			margin-top: 10px;
-			font-family: 'Circe', sans-serif;
-			font-weight: 300;
-			font-size: 10px;
-			line-height: 120%;
-			color: #363636;
-		}
-		&__left,
-		&__right {
-			flex-basis: 50%;
-		}
-		&__service {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			& + & {
-				padding-top: 20px;
-			}
-		}
-		&__descr {
-			margin-top: 15px;
-			margin-bottom: 15px;
-			font-size: 14px;
-			line-height: 140%;
-			color: #363636;
-		}
-		&__name {
-			font-weight: bold;
-			font-size: 20px;
-			line-height: 140%;
-			color: #363636;
-		}
-		&__bot {
-			margin-left: -15px;
-			margin-right: -15px;
-			padding: 15px;
-			font-size: 13px;
-			line-height: 140%;
-			color: #ffffff;
-			&-red {
-				background: url('./images/about_main-bg-red.png') center center / cover;
-			}
-			&-shit {
-				background: url('./images/about_main-bg-shit.png') center center / cover;
-			}
-			&-blue {
-				background: url('./images/about_main-bg-blue.png') center center / cover;
-			}
-		}
-		&__p {
-			& + & {
-				margin-top: 10px;
-			}
 		}
 	}
 
