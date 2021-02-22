@@ -237,6 +237,7 @@
 			color: var(--bg);
 			font-size: 28px;
 			line-height: 120%;
+			overflow: hidden;
 		}
 		&__slider {
 			width: 500%;
