@@ -5,7 +5,7 @@
 		<section1 @next="down1" @lastWheel="newWheel" :lastWheel="lastWheel" :hide="hideSection1"></section1>
 		<section class="aboutUs__video" @wheel.prevent="videoWheel">
 			<div class="aboutUs__wrapper">
-				<div class="container aboutUs__videoContainer" id="about__video">
+				<div class="container aboutUs__videoContainer">
 					<h2 class="aboutUs__supatitle aboutUs__supatitle-white">Шоурил</h2>
 					<div class="aboutUs__player">
 						<iframe
@@ -104,7 +104,7 @@
 	import anime from 'animejs/lib/anime.es.js';
 
 	export default Vue.extend({
-		data(){
+		data () {
 			return{
 				scrollAnimationUp: null,
 				scrollAnimationDown: null,
@@ -230,122 +230,6 @@
 </script>
 <style lang="scss">
 	.about {
-		background: var(--bg);
-		color: var(--white);
-		&__main {
-			padding-top: 104px;
-			padding-bottom: 215px;
-			position: relative;
-		}
-		&__container {
-			height: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-		}
-		&__supatitle,
-		&__supatitle-mobile {
-			font-weight: normal;
-			text-align: center;
-			font-size: 36px;
-			line-height: 120%;
-			color: #ffffff;
-			user-select: none;
-		}
-		&__supatitle {
-			display: none;
-		}
-		&__textbox {
-			display: none;
-			font-size: 18px;
-			line-height: 160%;
-			user-select: none;
-			&-one {
-				margin: 15px auto 0;
-				text-align: center;
-				width: 83.333%;
-			}
-			&-two {
-				margin-top: 40px;
-				width: 58.3333%;
-			}
-			&-three {
-				margin-top: 12px;
-				margin-left: auto;
-				width: 66.666%;
-			}
-		}
-		&__bg {
-			position: absolute;
-			z-index: -1;
-			left: 0;
-			width: 100%;
-			height: 200%;
-			background: url('../../assets/images/main__bg-2.svg') no-repeat center top / cover;
-			&-one {
-				top: 60%;
-			}
-			&-two {
-				top: 62.5%;
-			}
-		}
-		&__video {
-			background: #000000;
-			width: 100%;
-			height: 56vw;
-			position: relative;
-		}
-		&__player {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-		&__philosophy {
-			background: var(--bg);
-			position: relative;
-			padding-top: 48px;
-			padding-bottom: 390px;
-		}
-		&__services {
-			display: none;
-			background: var(--bg);
-			position: relative;
-			overflow: hidden;
-		}
-		&__title {
-			font-size: 28px;
-			line-height: 120%;
-			position: relative;
-			z-index: 2;
-			&-left {
-				color: var(--bg);
-				text-align: left;
-			}
-			&-center {
-				text-align: center;
-				color: #ffffff;
-			}
-		}
-		&__text {
-			text-align: center;
-			font-size: 14px;
-			line-height: 150%;
-			color: #ffffff;
-		}
-		&__subtitle {
-			margin: 17px auto 0;
-			position: relative;
-			z-index: 2;
-			&-one {
-				display: none;
-				width: 720px;
-				max-width: 100%;
-			}
-			&-two {
-				width: 660px;
-				max-width: 100%;
-			}
-		}
 		&__clients {
 			padding-top: 48px;
 			padding-bottom: 42px;
@@ -385,144 +269,6 @@
 			background: var(--bg);
 			padding-top: 48px;
 			padding-bottom: 44px;
-		}
-		&__footer {
-			padding-top: 95px;
-			background: #141414;
-			padding-bottom: 180px;
-			position: relative;
-			z-index: 100;
-		}
-		&__link {
-			margin-right: 24px;
-		}
-		&__svgbg {
-			overflow: hidden;
-			position: absolute;
-			z-index: 0;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
-		&__foi {
-			margin-top: 70px;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			.line {
-				&:nth-child(1) {
-					opacity: 1;
-				}
-				&:nth-child(2) {
-					opacity: 0.9;
-				}
-				&:nth-child(3) {
-					opacity: 0.8;
-				}
-				&:nth-child(4) {
-					opacity: 0.7;
-				}
-				&:nth-child(5) {
-					opacity: 0.6;
-				}
-				&:nth-child(6) {
-					opacity: 0.55;
-				}
-				&:nth-child(7) {
-					opacity: 0.5;
-				}
-				&:nth-child(8) {
-					opacity: 0.45;
-				}
-				&:nth-child(9) {
-					opacity: 0.4;
-				}
-				&:nth-child(10) {
-					opacity: 0.35;
-				}
-				&:nth-child(11) {
-					opacity: 0.3;
-				}
-				&:nth-child(12) {
-					opacity: 0.25;
-				}
-				&:nth-child(13) {
-					opacity: 0.2;
-				}
-				&:nth-child(14) {
-					opacity: 0.15;
-				}
-				&:nth-child(15) {
-					opacity: 0.1;
-				}
-			}
-		}
-		&__circles {
-			display: flex;
-			position: absolute;
-			bottom: 100px;
-			width: 100%;
-			justify-content: center;
-		}
-		&__event {
-			margin: 0 -120px;
-		}
-		&__service {
-			position: absolute;
-			top: 100px;
-			left: 0;
-			width: 100%;
-		}
-		&__mobile {
-			padding-top: 48px;
-			padding-bottom: 48px;
-			background: #141414;
-			position: relative;
-		}
-		&__servicebox {
-			margin-top: 32px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			& + & {
-				margin-top: 20px;
-			}
-		}
-		&__num {
-			margin-bottom: 8px;
-			text-align: center;
-			font-size: 20px;
-			line-height: 140%;
-			color: var(--red);
-		}
-		&__serv {
-			margin-bottom: 8px;
-			font-size: 20px;
-			line-height: 140%;
-			text-align: center;
-			color: #ffffff;
-		}
-		&__textserv {
-			font-size: 14px;
-			line-height: 140%;
-			text-align: center;
-			color: #ffffff;
-		}
-		&__img {
-			height: 100%;
-			object-fit: contain;
-		}
-		&__socials {
-			display: none;
-			justify-content: space-between;
-			align-items: center;
-		}
-		&__on {
-			&.line {
-				opacity: 0.5;
-			}
 		}
 	}
 
@@ -603,62 +349,16 @@
 		}
 	}
 
+	.aboutMobile {
+		&__title {
+			font-size: 32px;
+			line-height: 130%;
+			color: #363636;
+		}
+	}
+
 	@media all and(min-width: 968px) {
 		.about {
-			&__main {
-				padding-top: 130px;
-				padding-bottom: 325px;
-			}
-			&__supatitle {
-				font-size: 48px;
-				line-height: 130%;
-			}
-			&__title {
-				font-size: 44px;
-				line-height: 130%;
-			}
-			&__subtitle {
-				&-one {
-					display: block;
-				}
-				&-mobile {
-					display: none;
-				}
-			}
-			&__text {
-				font-size: 18px;
-				line-height: 160%;
-				& + & {
-					margin-top: 24px;
-				}
-			}
-			&__philosophy {
-				padding-top: 72px;
-				padding-bottom: 232px;
-			}
-			&__mobile {
-				padding-top: 48px;
-				padding-bottom: 48px;
-				background: #141414;
-				position: relative;
-			}
-			&__servicebox {
-				margin-top: 48px;
-				margin-left: auto;
-				margin-right: auto;
-				width: 50%;
-				& + & {
-					margin-top: 48px;
-				}
-			}
-			&__serv {
-				font-size: 36px;
-				line-height: 140%;
-			}
-			&__textserv {
-				font-size: 16px;
-				line-height: 140%;
-			}
 			&__clients {
 				padding-top: 72px;
 				padding-bottom: 72px;
@@ -669,8 +369,9 @@
 				padding-top: 72px;
 				padding-bottom: 72px;
 			}
-			&__foi {
-				margin-top: 160px;
+			&__slider {
+				width: 250%;
+				margin-top: 60px;
 			}
 		}
 
@@ -689,111 +390,20 @@
 				}
 			}
 		}
-
-		.aboutMobile {
-			&__main,
-			&__services {
-				display: none;
-			}
-		}
-
-		.about__slider {
-			width: 250%;
-			margin-top: 60px;
-		}
 	}
 
 	@media all and(min-width: 1281px) {
 		.about {
-			&__supatitle {
-				font-size: 56px;
-				line-height: 130%;
-				opacity: 0;
-				display: block;
-				&-mobile {
-					display: none;
-				}
-			}
-			&__textbox {
-				display: block;
-				opacity: 0;
-			}
-			&__main {
-				padding-top: 0;
-				height: calc(100vh - 140px);
-				padding-bottom: 160px;
-			}
-			&__video {
-				height: 100vh;
-			}
-			&__title {
-				font-size: 48px;
-				line-height: 140%;
-			}
-			&__text {
-				& + & {
-					margin-top: 30px;
-				}
-			}
-			&__philosophy,
-			&__services {
-				height: 100vh;
-				padding-top: 100px;
-			}
-			&__services {
-				display: block;
-			}
-			&__mobile {
-				display: none;
-			}
 			&__clients {
 				padding-top: 100px;
 				padding-bottom: 100px;
 				font-size: 48px;
 				line-height: 72px;
 			}
-			&__socials {
-				margin-top: 120px;
-				display: flex;
-			}
 			&__contacts {
 				height: 700px;
 				padding-top: 100px;
 				padding-bottom: 100px;
-			}
-			&__bg {
-				&-one {
-					top: 60%;
-				}
-				&-two {
-					top: 60%;
-				}
-			}
-			&__wrapper {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				overflow: hidden;
-				z-index: 1;
-			}
-			&__inner {
-				transition: 0.5s;
-				display: flex;
-				flex-direction: column;
-			}
-			&__first {
-				overflow: hidden;
-			}
-			&__last {
-				transition: 0.5s;
-				overflow: auto;
-				height: 100vh;
-				overflow: -moz-scrollbars-none;
-				&::-webkit-scrollbar {
-					width: 0;
-				}
 			}
 		}
 	}
