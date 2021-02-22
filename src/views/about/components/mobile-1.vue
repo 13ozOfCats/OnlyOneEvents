@@ -5,7 +5,7 @@
 			<div class="aboutMobile__items">
 				<div class="aboutMobile__item">
 					<div class="aboutMobile__left">
-						<img src="./images/about_main-1-small.svg" alt="" />
+						<img src="../images/about_main-1-small.svg" alt="" />
 					</div>
 					<div class="aboutMobile__right">
 						<div class="aboutMobile__subtitle">
@@ -19,7 +19,7 @@
 				</div>
 				<div class="aboutMobile__item">
 					<div class="aboutMobile__left">
-						<img src="./images/about_main-2-small.svg" alt="" />
+						<img src="../images/about_main-2-small.svg" alt="" />
 					</div>
 					<div class="aboutMobile__right">
 						<div class="aboutMobile__subtitle">
@@ -34,7 +34,7 @@
 				</div>
 				<div class="aboutMobile__item">
 					<div class="aboutMobile__left">
-						<img src="./images/about_main-3-small.svg" alt="" />
+						<img src="../images/about_main-3-small.svg" alt="" />
 					</div>
 					<div class="aboutMobile__right">
 						<div class="aboutMobile__subtitle">Мы любим мероприятия.</div>
@@ -49,7 +49,7 @@
 	</section>
 </template>
 <script lang="js"></script>
-<style lang="scss">
+<style scoped lang="scss">
 	.aboutMobile {
 		&__items {
 			width: 100%;
@@ -61,11 +61,6 @@
 			width: 100%;
 			display: flex;
 			align-items: center;
-		}
-		&__title {
-			font-size: 32px;
-			line-height: 130%;
-			color: #363636;
 		}
 		&__subtitle {
 			font-size: 10px;
@@ -84,47 +79,11 @@
 		&__right {
 			flex-basis: 50%;
 		}
-		&__service {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			& + & {
-				padding-top: 20px;
-			}
-		}
-		&__descr {
-			margin-top: 15px;
-			margin-bottom: 15px;
-			font-size: 14px;
-			line-height: 140%;
-			color: #363636;
-		}
-		&__name {
-			font-weight: bold;
-			font-size: 20px;
-			line-height: 140%;
-			color: #363636;
-		}
-		&__bot {
-			margin-left: -15px;
-			margin-right: -15px;
-			padding: 15px;
-			font-size: 13px;
-			line-height: 140%;
-			color: #ffffff;
-			&-red {
-				background: url('./images/about_main-bg-red.png') center center / cover;
-			}
-			&-shit {
-				background: url('./images/about_main-bg-shit.png') center center / cover;
-			}
-			&-blue {
-				background: url('./images/about_main-bg-blue.png') center center / cover;
-			}
-		}
-		&__p {
-			& + & {
-				margin-top: 10px;
+	}
+	@media all and(min-width: 968px) {
+		.aboutMobile {
+			&__main {
+				display: none;
 			}
 		}
 	}
