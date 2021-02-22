@@ -44,7 +44,7 @@
 					target="_blank"
 					class="contacts__text contacts__address contacts__hover"
 				>
-					199043, Санкт-Петербург, Васильевский остров, 17-я линия, д.4-6. лит Е, офис Т-529
+					199043, Санкт-Петербург, Васильевский остров, 17-я линия, <br> д.4-6. лит Е, офис Т-529
 				</a>
 			</div>
 			<div class="contacts__links">
