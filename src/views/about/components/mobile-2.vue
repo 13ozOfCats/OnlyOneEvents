@@ -45,4 +45,57 @@
 	</section>
 </template>
 <script lang="js"></script>
-<style lang="scss"></style>
+<style scoped lang="scss">
+	.aboutMobile {
+		&__service {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			& + & {
+				padding-top: 20px;
+			}
+		}
+		&__descr {
+			margin-top: 15px;
+			margin-bottom: 15px;
+			font-size: 14px;
+			line-height: 140%;
+			color: #363636;
+		}
+		&__name {
+			font-weight: bold;
+			font-size: 20px;
+			line-height: 140%;
+			color: #363636;
+		}
+		&__bot {
+			margin-left: -15px;
+			margin-right: -15px;
+			padding: 15px;
+			font-size: 13px;
+			line-height: 140%;
+			color: #ffffff;
+			&-red {
+				background: url('../images/about_main-bg-red.png') center center / cover;
+			}
+			&-shit {
+				background: url('../images/about_main-bg-shit.png') center center / cover;
+			}
+			&-blue {
+				background: url('../images/about_main-bg-blue.png') center center / cover;
+			}
+		}
+		&__p {
+			& + & {
+				margin-top: 10px;
+			}
+		}
+	}
+	@media all and(min-width: 968px) {
+		.aboutMobile {
+			&__services {
+				display: none;
+			}
+		}
+	}
+</style>
