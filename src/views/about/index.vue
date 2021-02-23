@@ -1,9 +1,8 @@
 <template>
 	<main class="aboutUs">
 		<mobile1 v-if="!desktop"></mobile1>
-		<mobile2 v-if="!desktop"></mobile2>
 		<section1 v-if="desktop" @next="down1" @lastWheel="newWheel" :lastWheel="lastWheel" :hide="hideSection1"></section1>
-		<section v-if="desktop" class="aboutUs__video" @wheel.prevent="videoWheel">
+		<section class="aboutUs__video" @wheel.prevent="videoWheel">
 			<div class="aboutUs__wrapper">
 				<div class="container aboutUs__videoContainer">
 					<h2 class="aboutUs__supatitle aboutUs__supatitle-white">Шоурил</h2>
@@ -39,6 +38,7 @@
 				<div class="aboutUs__bigRedCircle"></div>
 			</div>
 		</section>
+		<mobile2 v-if="!desktop"></mobile2>
 		<section3 v-if="desktop" @prev="up2" @lastWheel="newWheel" :lastWheel="lastWheel"></section3>
 		<section class="about__clients">
 			<div class="container">
@@ -137,15 +137,17 @@
 				}
 			},
 			videoWheel: function (e) {
-				const now = Date.now();
-				if(now - this.lastWheel > 150) {
-					if (e.deltaY > 0) {
-						this.down2();
-					} else {
-						this.up1();
+				if(window.innerWidth > 1300) {
+					const now = Date.now();
+					if (now - this.lastWheel > 150) {
+						if (e.deltaY > 0) {
+							this.down2();
+						} else {
+							this.up1();
+						}
 					}
+					this.lastWheel = now;
 				}
-				this.lastWheel = now;
 			},
 			down1: function () {
 				if (this.canPlay) {
@@ -217,37 +219,38 @@
 		mounted () {
 
 			this.$eventBus.$emit('overflow', true);
-
-			this.scrollAnimationDown = anime.timeline({
-				loop: false,
-				autoplay: false,
-				duration: 1000,
-			})
-				.add({
-					targets: '.aboutUs__video',
-					easing: 'easeInCubic',
-					translateY: [0, '-100%'],
+			if(window.innerWidth > 1300) {
+				this.scrollAnimationDown = anime.timeline({
+					loop: false,
+					autoplay: false,
+					duration: 1000,
 				})
-				.add({
-					targets: '.aboutUs__bigRedCircle',
-					easing: 'linear',
-					scale: [5, 1]
-				}, '-=300');
-			this.scrollAnimationUp = anime.timeline({
-				loop: false,
-				autoplay: false,
-				duration: 1000,
-			})
-				.add({
-					targets: '.aboutUs__bigRedCircle',
-					easing: 'linear',
-					scale: [1, 5]
+					.add({
+						targets: '.aboutUs__video',
+						easing: 'easeInCubic',
+						translateY: [0, '-100%'],
+					})
+					.add({
+						targets: '.aboutUs__bigRedCircle',
+						easing: 'linear',
+						scale: [5, 1]
+					}, '-=300');
+				this.scrollAnimationUp = anime.timeline({
+					loop: false,
+					autoplay: false,
+					duration: 1000,
 				})
-				.add({
-					targets: '.aboutUs__video',
-					easing: 'easeInCubic',
-					translateY: ['100%', 0],
-				}, 0);
+					.add({
+						targets: '.aboutUs__bigRedCircle',
+						easing: 'linear',
+						scale: [1, 5]
+					})
+					.add({
+						targets: '.aboutUs__video',
+						easing: 'easeInCubic',
+						translateY: ['100%', 0],
+					}, 0);
+			}
 		},
 		beforeDestroy() {
 			this.$eventBus.$emit('overflowHidden', false);
@@ -267,7 +270,7 @@
 <style lang="scss">
 	.about {
 		&__clients {
-			padding-top: 48px;
+			padding-top: 50px;
 			padding-bottom: 42px;
 			background: #ffffff;
 			color: var(--bg);
@@ -303,6 +306,7 @@
 		}
 		&__contacts {
 			width: 100%;
+			height: 480px;
 			background: var(--bg);
 			padding-top: 48px;
 			padding-bottom: 44px;
@@ -314,6 +318,7 @@
 			font-size: 32px;
 			line-height: 130%;
 			color: #363636;
+			font-weight: normal;
 			&-white {
 				padding-bottom: 10px;
 				color: #363636;
@@ -328,21 +333,16 @@
 			}
 		}
 		&__player {
-			width: 89%;
-			height: 600px;
+			width: 100%;
+			height: 170px;
 		}
 		&__video {
-			height: 100%;
-			width: 100%;
-			position: fixed;
-			top: 0;
-			left: 0;
+			margin-top: 50px;
 			display: flex;
 			align-items: center;
-			z-index: 1005;
-			transform: translateY(100%);
 		}
 		&__bigRedContainer {
+			display: none;
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -441,6 +441,25 @@
 				height: 700px;
 				padding-top: 100px;
 				padding-bottom: 100px;
+			}
+		}
+		.aboutUs {
+			&__player {
+				width: 89%;
+				height: 600px;
+			}
+			&__bigRedContainer {
+				display: block;
+			}
+			&__video {
+				margin-top: 0;
+				height: 100%;
+				width: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 1005;
+				transform: translateY(100%);
 			}
 		}
 	}

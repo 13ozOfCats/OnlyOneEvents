@@ -51,6 +51,9 @@
 <script lang="js"></script>
 <style scoped lang="scss">
 	.aboutMobile {
+		&__main {
+			padding-top: 84px;
+		}
 		&__items {
 			width: 100%;
 			display: flex;

@@ -47,6 +47,9 @@
 <script lang="js"></script>
 <style scoped lang="scss">
 	.aboutMobile {
+		&__services {
+			margin-top: 50px;
+		}
 		&__service {
 			width: 100%;
 			display: flex;
