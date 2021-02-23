@@ -105,7 +105,7 @@
 
 	export default Vue.extend({
 		data () {
-			return{
+			return {
 				scrollAnimationUp: null,
 				scrollAnimationDown: null,
 				activeSection: 1,
@@ -116,6 +116,26 @@
 			};
 		},
 		methods: {
+			onArrowDown: function(e) {
+				if(this.activeSection === 1) {
+					e.preventDefault();
+					this.down1();
+				} else if(this.activeSection === 2) {
+					e.preventDefault();
+					this.down2();
+				}
+			},
+			onArrowUp: function (e) {
+				if (this.activeSection === 2) {
+					e.preventDefault();
+					this.up1();
+				} else if (this.activeSection === 3) {
+					if (window.scrollY === 0) {
+						e.preventDefault();
+						this.up2();
+					}
+				}
+			},
 			videoWheel: function (e) {
 				const now = Date.now();
 				if(now - this.lastWheel > 150) {
@@ -191,6 +211,8 @@
 		created () {
 			this.onResize();
 			window.addEventListener('resize', this.onResize);
+			this.$eventBus.$on('onArrowup', this.onArrowUp);
+			this.$eventBus.$on('onArrowdown', this.onArrowDown);
 		},
 		mounted () {
 
@@ -230,6 +252,8 @@
 		beforeDestroy() {
 			this.$eventBus.$emit('overflowHidden', false);
 			this.$eventBus.$emit('headerHide', false);
+			this.$eventBus.$off('onArrowup');
+			this.$eventBus.$off('onArrowdown');
 		},
 		components: {
 			myContacts,

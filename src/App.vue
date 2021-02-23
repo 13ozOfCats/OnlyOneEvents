@@ -1,5 +1,5 @@
 <template>
-	<body id="app" :class="{overflowHidden: overflowHidden}">
+	<body id="app" :class="{overflowHidden: overflowHidden}" @keydown="onKeydown">
 		<myLoader v-if="showPreloader"></myLoader>
 		<myShowreel v-if="showPreloader" :videoLink="shortcut" :displayOn="true"></myShowreel>
 		<myShowreel v-if="!showPreloader" :videoLink="showreel"></myShowreel>
@@ -34,6 +34,13 @@
 		methods: {
 			overflow: function(bool) {
 				this.overflowHidden = bool;
+			},
+			onKeydown: function(e) {
+				if(e.code === 'ArrowUp'){
+					this.$eventBus.$emit('onArrowup', e)
+				} else if (e.code === 'ArrowDown'){
+					this.$eventBus.$emit('onArrowdown', e)
+				}
 			},
 		},
 		created() {
