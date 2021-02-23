@@ -1,9 +1,9 @@
 <template>
 	<main class="aboutUs">
-		<mobile1></mobile1>
-		<mobile2></mobile2>
-		<section1 @next="down1" @lastWheel="newWheel" :lastWheel="lastWheel" :hide="hideSection1"></section1>
-		<section class="aboutUs__video" @wheel.prevent="videoWheel">
+		<mobile1 v-if="!desktop"></mobile1>
+		<mobile2 v-if="!desktop"></mobile2>
+		<section1 v-if="desktop" @next="down1" @lastWheel="newWheel" :lastWheel="lastWheel" :hide="hideSection1"></section1>
+		<section v-if="desktop" class="aboutUs__video" @wheel.prevent="videoWheel">
 			<div class="aboutUs__wrapper">
 				<div class="container aboutUs__videoContainer">
 					<h2 class="aboutUs__supatitle aboutUs__supatitle-white">Шоурил</h2>
@@ -39,7 +39,7 @@
 				<div class="aboutUs__bigRedCircle"></div>
 			</div>
 		</section>
-		<section3 @prev="up2" @lastWheel="newWheel" :lastWheel="lastWheel"></section3>
+		<section3 v-if="desktop" @prev="up2" @lastWheel="newWheel" :lastWheel="lastWheel"></section3>
 		<section class="about__clients">
 			<div class="container">
 				<h2 class="aboutUs__supatitle">Наши клиенты</h2>
@@ -112,6 +112,7 @@
 				hideSection1: false,
 				lastWheel: Date.now(),
 				canPlay: true,
+				desktop: true,
 			};
 		},
 		methods: {
@@ -178,7 +179,18 @@
 			},
 			newWheel: function(now) {
 				this.lastWheel = now;
-			}
+			},
+			onResize: function() {
+				if(window.innerWidth > 1300) {
+					this.desktop = true;
+				} else {
+					this.desktop = false;
+				}
+			},
+		},
+		created () {
+			this.onResize();
+			window.addEventListener('resize', this.onResize);
 		},
 		mounted () {
 
