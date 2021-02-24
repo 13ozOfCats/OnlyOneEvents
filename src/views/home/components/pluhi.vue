@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="pluha pluha-left" id="pluha_1">
+		<div class="pluha pluha-left" :class="{'pluha-active': event}" id="pluha_1">
 			<svg width="600" height="600" viewBox="0 0 600 600" fill="none">
 				<defs>
 					<mask id="pluhaBg_1">
@@ -14,7 +14,7 @@
 				<image x="0" y="0" width="600" height="600" xlink:href="../images/pluha-1.jpg" mask="url(#pluhaBg_1)"></image>
 			</svg>
 		</div>
-		<div class="pluha pluha-right" id="pluha_2">
+		<div class="pluha pluha-right" :class="{'pluha-active': event}" id="pluha_2">
 			<svg width="600" height="600" viewBox="0 0 600 600" fill="none">
 				<defs>
 					<mask id="pluhaBg_2">
@@ -28,7 +28,7 @@
 				<image x="0" y="0" width="600" height="600" xlink:href="../images/pluha-2.jpg" mask="url(#pluhaBg_2)"></image>
 			</svg>
 		</div>
-		<div class="pluha pluha-left" id="pluha_3">
+		<div class="pluha pluha-left" :class="{'pluha-active': creative}" id="pluha_3">
 			<svg width="600" height="600" viewBox="0 0 600 600" fill="none">
 				<defs>
 					<mask id="pluhaBg_3">
@@ -42,7 +42,7 @@
 				<image x="0" y="0" width="600" height="600" xlink:href="../images/pluha-3.jpg" mask="url(#pluhaBg_3)"></image>
 			</svg>
 		</div>
-		<div class="pluha pluha-right" id="pluha_4">
+		<div class="pluha pluha-right" :class="{'pluha-active': creative}" id="pluha_4">
 			<svg width="600" height="600" viewBox="0 0 600 600" fill="none">
 				<defs>
 					<mask id="pluhaBg_4">
@@ -56,7 +56,7 @@
 				<image x="0" y="0" width="600" height="600" xlink:href="../images/pluha-4.jpg" mask="url(#pluhaBg_4)"></image>
 			</svg>
 		</div>
-		<div class="pluha pluha-left" id="pluha_5">
+		<div class="pluha pluha-left" :class="{'pluha-active': decor}" id="pluha_5">
 			<svg width="600" height="600" viewBox="0 0 600 600" fill="none">
 				<defs>
 					<mask id="pluhaBg_5">
@@ -70,7 +70,7 @@
 				<image x="0" y="0" width="600" height="600" xlink:href="../images/pluha-5.jpg" mask="url(#pluhaBg_5)"></image>
 			</svg>
 		</div>
-		<div class="pluha pluha-right" id="pluha_6">
+		<div class="pluha pluha-right" :class="{'pluha-active': decor}" id="pluha_6">
 			<svg width="600" height="600" viewBox="0 0 600 600" fill="none">
 				<defs>
 					<mask id="pluhaBg_6">
@@ -91,6 +91,13 @@
 	import anime from 'animejs/lib/anime.es.js';
 
 	export default Vue.extend({
+		data() {
+			return {
+				event: false,
+				creative: false,
+				decor: false,
+			}
+		},
 		mounted() {
 
 			const pluha1 = anime.timeline({
@@ -201,31 +208,45 @@
 					],
 				});
 
-			this.$eventBus.$on('event_play', () => {
-				pluha1.play();
-				pluha2.play();
-			});
-			this.$eventBus.$on('event_stop', () => {
-				pluha1.pause();
-				pluha2.pause();
-			});
-			this.$eventBus.$on('creative_play', () => {
-				pluha3.play();
-				pluha4.play();
-			});
-			this.$eventBus.$on('creative_stop', () => {
-				pluha3.pause();
-				pluha4.pause();
-			});
-			this.$eventBus.$on('decor_play', () => {
-				pluha5.play();
-				pluha6.play();
-			});
-			this.$eventBus.$on('decor_stop', () => {
-				pluha5.pause();
-				pluha6.pause();
+			this.$eventBus.$on('event', (bool) => {
+				if (bool) {
+					pluha1.play();
+					pluha2.play();
+				} else {
+					pluha1.pause();
+					pluha2.pause();
+				}
+				this.event = bool;
 			});
 
+			this.$eventBus.$on('creative', (bool) => {
+				if (bool) {
+					pluha3.play();
+					pluha4.play();
+				} else {
+					pluha3.pause();
+					pluha4.pause();
+				}
+				this.creative = bool;
+			});
+
+			this.$eventBus.$on('decor', (bool) => {
+				if (bool) {
+					pluha5.play();
+					pluha6.play();
+				} else {
+					pluha5.pause();
+					pluha6.pause();
+				}
+				this.decor = bool;
+
+			});
+
+		},
+		beforeDestroy() {
+			this.$eventBus.$off('event');
+			this.$eventBus.$off('creative');
+			this.$eventBus.$off('decor');
 		}
 	});
 </script>
@@ -233,11 +254,15 @@
 	.pluha {
 		position: absolute;
 		top: calc(50% - 300px);
+		display: none;
 		&-left {
 			left: calc(50% - 600px);
 		}
 		&-right {
 			right: calc(50% - 600px);
+		}
+		&-active {
+			display: block;
 		}
 	}
 </style>

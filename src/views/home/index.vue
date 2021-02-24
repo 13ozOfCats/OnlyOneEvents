@@ -17,14 +17,14 @@
 						</div>
 						<div class="main__string" id="string-2">
 							<span class="main__word" id="word-11">Продюссируем{{ '\xa0' }}</span>
-							<span class="main__word" id="word-12">ивенты<span class="main__dot" style="opacity: 0"></span></span>
+							<span class="main__word" id="word-12" @mouseover="eventOn" @mouseout="eventOff">ивенты<span class="main__dot" style="opacity: 0"></span></span>
 							<span class="main__word" id="word-13">{{ '\xa0' }}разрабатываем{{ '\xa0' }}</span>
 							<span id="string-2-2">
-								<span class="main__word" id="word-14">креатив<span class="main__dot" style="opacity: 0"></span></span>
+								<span class="main__word" id="word-14" @mouseover="creativeOn" @mouseout="creativeOff">креатив<span class="main__dot" style="opacity: 0"></span></span>
 								<span class="main__word" id="word-15">{{ '\xa0' }}проектируем{{ '\xa0' }}стенды</span>
 								<span class="inline-block" id="string-2-3">
 									<span class="main__word" id="word-16">{{ '\xa0' }}и{{ '\xa0' }}</span>
-									<span class="main__word">декор<span class="main__dot" style="opacity: 0"></span></span
+									<span class="main__word" @mouseover="decorOn" @mouseout="decorOff">декор<span class="main__dot" style="opacity: 0"></span></span
 									><span class="main__word" id="word-18">ации c 2015 года.</span>
 								</span>
 							</span>
@@ -799,7 +799,6 @@
 			</div>
 			<div class="meet__bg"></div>
 		</section>
-
 		<div class="main__mobile">
 			<section class="mobile__main">
 				<div class="container">
@@ -854,6 +853,24 @@
 			},
 			openShowreel: function() {
 				this.$eventBus.$emit('showreel');
+			},
+			eventOn: function() {
+				this.$eventBus.$emit('event', true);
+			},
+			eventOff: function() {
+				this.$eventBus.$emit('event', false);
+			},
+			creativeOn: function() {
+				this.$eventBus.$emit('creative', true);
+			},
+			creativeOff: function() {
+				this.$eventBus.$emit('creative', false);
+			},
+			decorOn: function() {
+				this.$eventBus.$emit('decor', true);
+			},
+			decorOff: function() {
+				this.$eventBus.$emit('decor', false);
 			},
 		},
 		computed: {
