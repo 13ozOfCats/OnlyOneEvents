@@ -781,7 +781,7 @@
 			<div class="main__bg main__bg-red"></div>
 		</div>
 
-		<section class="works desktop" style="transform: translateY(100%)">
+		<section class="works desktop" @wheel="goToMeet">
 			<div class="container container-h100">
 				<div class="works__items">
 					<div class="works__first">
@@ -798,12 +798,12 @@
 				</div>
 			</div>
 		</section>
-		<section class="meet desktop">
+		<section class="meet desktop" @wheel="backFromMeet">
 			<div class="meet__box">
 				<div class="meet__title">
 					Обсудим проект?
 				</div>
-				<div class="meet__btn btn" @click="goToFooter">
+				<div class="meet__btn btn">
 					<span class="btn__text"> Обсудить </span>
 					<svg width="64" height="72" viewBox="0 0 72 72" class="btn__svg">
 						<path
@@ -824,7 +824,7 @@
 				</div>
 			</div>
 			<div class="meet__inner">
-				<div class="meet__bg"></div>
+				<div class="meet__bg" :class="{'meet__bg-active': this.meetBg}"></div>
 			</div>
 		</section>
 		<div class="main__mobile">
@@ -864,23 +864,53 @@
 	import {mapGetters} from 'vuex';
 	import lax from 'lax.js';
 	import pluhs from './components/pluhi';
+	import anime from "animejs/lib/anime.es.js";
 
 	export default Vue.extend({
 		name: 'Home',
 		data: function() {
 			return {
-				mainOverflow: 'hidden',
+				goMeet: null,
+				canPlay: true,
+				meetBg: false,
 			};
 		},
 		components: {
 			pluhs,
 		},
 		methods: {
-			changeMainOverflow: function () {
-				this.mainOverflow = 'scroll';
-			},
 			openShowreel: function() {
 				this.$eventBus.$emit('showreel');
+			},
+			goToMeet: function(e) {
+				if (e.deltaY > 0) {
+					if ((window.innerHeight + window.scrollY) === document.body.scrollHeight) {
+						e.preventDefault();
+						if (this.canPlay) {
+							this.canPlay = false;
+							this.goMeet.play();
+							this.goMeet.finished.then(() => {
+								this.meetBg = true;
+								this.canPlay = true;
+							});
+						}
+					}
+				}
+			},
+			backFromMeet: function(e) {
+				e.preventDefault();
+				if (e.deltaY < 0) {
+					if (this.canPlay) {
+						this.canPlay = false;
+						this.meetBg = false;
+						this.goMeet.reverse();
+						this.goMeet.play();
+						this.goMeet.finished.then(() => {
+							this.goMeet.reverse();
+							this.canPlay = true;
+						});
+					}
+				}
 			},
 			eventOn: function() {
 				this.$eventBus.$emit('event', true);
@@ -905,6 +935,23 @@
 			...mapGetters(['posts', 'showPreloader']),
 		},
 		mounted() {
+			this.goMeet = anime.timeline({
+				loop: false,
+				autoplay: false,
+			})
+				.add({
+					targets: '.meet',
+					easing: 'easeInOutCirc',
+					translateX: ['100%', 0],
+					duration: 1000,
+				})
+				.add({
+					targets: '.meet__bg',
+					easing: 'easeInOutCubic',
+					scaleY: [0, 1],
+					delay: 100,
+					duration: 600,
+				});
 			if (!this.showPreloader) {
 				window.scrollTo({
 					top: document.getElementById('main').offsetTop,
