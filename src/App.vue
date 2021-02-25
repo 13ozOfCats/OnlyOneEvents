@@ -564,6 +564,14 @@
 			transform: scale(1);
 		}
 	}
+	@keyframes meet {
+		0% {
+			transform: translateY(-5%);
+		}
+		100% {
+			transform: translateY(-47%);
+		}
+	}
 
 	body * {
 		-webkit-font-smoothing: antialiased;
