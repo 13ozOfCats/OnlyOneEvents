@@ -1,10 +1,74 @@
 <template>
-	<footer class="footer" :class="{'footer-active': footerActive}" id="footer">
+	<footer
+		class="footer"
+		:class="{'footer-active': footerActive, 'footer-main': mainPage, 'footer-meet': footerMeet}"
+		id="footer"
+	>
 		<div class="footer__wrapper" :style="{transform: 'translateX(' + -slide * 20 + '%)'}">
 			<div class="footer__slide">
-				<div class="container">
-					<div class="footer__text">
-						Обсудить проект
+				<div class="container footer__container">
+					<div v-if="mainPage" class="footer__start  footer__desktop">
+						<a href="/#main" class="btn" id="backFromFooter">
+							<svg class="btn__svg" width="56" height="65" viewBox="0 0 56 65" fill="none">
+								<path
+									class="btn__bg"
+									d="M52.4786 8.14629C47.7429 4.26128 41.9771 1.84133 35.8872 1.18266C29.7973 0.523996 23.6475 1.6552 18.1905 4.43779C12.7336 7.22039 8.20636 11.5336 5.163 16.8495C2.11963 22.1654 0.692206 28.2533 1.05545 34.368C1.41869 40.4826 3.55684 46.3587 7.20816 51.2769C10.8595 56.1951 15.8655 59.9421 21.6135 62.059C27.3615 64.176 33.602 64.5711 39.5711 63.1961C45.5402 61.8211 50.9789 58.7355 55.2214 54.3172"
+									stroke-width="1.13924"
+								/>
+								<path
+									class="btn__arrow"
+									d="M27.6464 32.6464C27.4512 32.8417 27.4512 33.1583 27.6464 33.3536L30.8284 36.5355C31.0237 36.7308 31.3403 36.7308 31.5355 36.5355C31.7308 36.3403 31.7308 36.0237 31.5355 35.8284L28.7071 33L31.5355 30.1716C31.7308 29.9763 31.7308 29.6597 31.5355 29.4645C31.3403 29.2692 31.0237 29.2692 30.8284 29.4645L27.6464 32.6464ZM38 32.5L28 32.5L28 33.5L38 33.5L38 32.5Z"
+									fill="white"
+								/>
+								<path
+									class="btn__circle"
+									d="M52.4786 8.14629C47.7429 4.26128 41.9771 1.84133 35.8872 1.18266C29.7973 0.523996 23.6475 1.6552 18.1905 4.43779C12.7336 7.22039 8.20636 11.5336 5.163 16.8495C2.11963 22.1654 0.692206 28.2533 1.05545 34.368C1.41869 40.4826 3.55684 46.3587 7.20816 51.2769C10.8595 56.1951 15.8655 59.9421 21.6135 62.059C27.3615 64.176 33.602 64.5711 39.5711 63.1961C45.5402 61.8211 50.9789 58.7355 55.2214 54.3172"
+									stroke-width="1.13924"
+								/>
+							</svg>
+							<svg class="btn__mobile" width="40" height="46" viewBox="0 0 40 46" fill="none">
+								<path
+									class="btn__bg"
+									d="M36.9533 5.99106C33.6458 3.27772 29.6189 1.58759 25.3657 1.12757C21.1124 0.667553 16.8173 1.4576 13.0061 3.401C9.1949 5.3444 6.03301 8.35683 3.90749 12.0695C1.78197 15.7822 0.785032 20.0341 1.03872 24.3046C1.29242 28.5752 2.78573 32.6791 5.33586 36.114C7.88599 39.549 11.3823 42.1659 15.3967 43.6444C19.4112 45.1229 23.7697 45.3989 27.9386 44.4385C32.1075 43.4782 35.9059 41.3232 38.8689 38.2374"
+									stroke="white"
+								/>
+								<path
+									class="btn__arrow"
+									d="M18.7531 23.2469C18.6167 23.1106 18.6167 22.8894 18.7531 22.7531L20.9754 20.5307C21.1118 20.3944 21.3329 20.3944 21.4693 20.5307C21.6056 20.6671 21.6056 20.8882 21.4693 21.0246L19.4939 23L21.4693 24.9754C21.6056 25.1118 21.6056 25.3329 21.4693 25.4693C21.3329 25.6056 21.1118 25.6056 20.9754 25.4693L18.7531 23.2469ZM27 23.3492L19 23.3492L19 22.6508L27 22.6508L27 23.3492Z"
+									fill="white"
+								/>
+								<path
+									class="btn__circle"
+									d="M36.9533 5.99106C33.6458 3.27772 29.6189 1.58759 25.3657 1.12757C21.1124 0.667553 16.8173 1.4576 13.0061 3.401C9.1949 5.3444 6.03301 8.35683 3.90749 12.0695C1.78197 15.7822 0.785032 20.0341 1.03872 24.3046C1.29242 28.5752 2.78573 32.6791 5.33586 36.114C7.88599 39.549 11.3823 42.1659 15.3967 43.6444C19.4112 45.1229 23.7697 45.3989 27.9386 44.4385C32.1075 43.4782 35.9059 41.3232 38.8689 38.2374"
+									stroke="white"
+								/>
+							</svg>
+							<span class="btn__text">
+								Назад
+							</span>
+						</a>
+						<a href="about.html" class="btn">
+							<span class="btn__text">
+								О нас
+							</span>
+							<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
+								<path
+									class="btn__bg"
+									d="M3.52136 8.14629C8.25714 4.26128 14.0229 1.84133 20.1128 1.18266C26.2027 0.523996 32.3525 1.6552 37.8095 4.43779C43.2664 7.22039 47.7936 11.5336 50.837 16.8495C53.8804 22.1654 55.3078 28.2533 54.9446 34.368C54.5813 40.4826 52.4432 46.3587 48.7918 51.2769C45.1405 56.1951 40.1345 59.9421 34.3865 62.059C28.6385 64.176 22.398 64.5711 16.4289 63.1961C10.4598 61.8211 5.02109 58.7355 0.778572 54.3172"
+									stroke="white"
+								/>
+								<path
+									class="btn__arrow"
+									d="M28.3536 32.6464C28.5488 32.8417 28.5488 33.1583 28.3536 33.3536L25.1716 36.5355C24.9763 36.7308 24.6597 36.7308 24.4645 36.5355C24.2692 36.3403 24.2692 36.0237 24.4645 35.8284L27.2929 33L24.4645 30.1716C24.2692 29.9763 24.2692 29.6597 24.4645 29.4645C24.6597 29.2692 24.9763 29.2692 25.1716 29.4645L28.3536 32.6464ZM18 32.5L28 32.5L28 33.5L18 33.5L18 32.5Z"
+									fill="white"
+								/>
+								<path
+									class="btn__circle"
+									d="M3.52136 8.14629C8.25714 4.26128 14.0229 1.84133 20.1128 1.18266C26.2027 0.523996 32.3525 1.6552 37.8095 4.43779C43.2664 7.22039 47.7936 11.5336 50.837 16.8495C53.8804 22.1654 55.3078 28.2533 54.9446 34.368C54.5813 40.4826 52.4432 46.3587 48.7918 51.2769C45.1405 56.1951 40.1345 59.9421 34.3865 62.059C28.6385 64.176 22.398 64.5711 16.4289 63.1961C10.4598 61.8211 5.02109 58.7355 0.778572 54.3172"
+									stroke="white"
+								/>
+							</svg>
+						</a>
 					</div>
 					<div class="footer__flex">
 						<div class="footer__left">
@@ -48,7 +112,7 @@
 				</div>
 			</div>
 			<div class="footer__slide">
-				<div class="container">
+				<div class="container footer__container">
 					<prevBtn @click="goToSlide(1)"></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
@@ -59,10 +123,7 @@
 									class="footer__input"
 									@input="message.phone = $event.target.value"
 									:value="message.phone"
-									@focus="
-										errors.phone = false;
-										errorsText.phone = '\xa0';
-									"
+									@focus="(errors.phone = false), (errorsText.phone = '\xa0')"
 									@blur="validatePhone"
 									:class="{'footer__input-error': errors.phone}"
 								/>
@@ -109,7 +170,7 @@
 				</div>
 			</div>
 			<div class="footer__slide">
-				<div class="container">
+				<div class="container footer__container">
 					<prevBtn @click="goToSlide(2)"></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
@@ -133,7 +194,7 @@
 				</div>
 			</div>
 			<div class="footer__slide">
-				<div class="container">
+				<div class="container footer__container">
 					<prevBtn @click="goToSlide(3)"></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
@@ -148,7 +209,7 @@
 				</div>
 			</div>
 			<div class="footer__slide">
-				<div class="container">
+				<div class="container  footer__container">
 					<router-link to="/" class="btn">
 						<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
 							<path
@@ -195,7 +256,7 @@
 		</div>
 	</footer>
 </template>
-<script lang="ts">
+<script lang="js">
 	import Vue from 'vue';
 	import {IMaskDirective} from 'vue-imask';
 	import prevBtn from '../../components/btn_footer/index.vue';
@@ -204,6 +265,8 @@
 	export default Vue.extend({
 		data: function() {
 			return {
+				mainPage: false,
+				footerMeet: false,
 				message: {
 					name: '',
 					email: '',
@@ -231,6 +294,17 @@
 					lazy: true,
 				},
 			};
+		},
+		watch: {
+			$route: function() {
+				this.mainPage = this.$route.path === '/';
+			},
+		},
+		created(){
+			this.$eventBus.$on('footerMeet', this.fMeet);
+		},
+		beforeDestroy() {
+			this.$eventBus.$off('footerMeet');
 		},
 		methods: {
 			validateName: function() {
@@ -277,7 +351,7 @@
 					this.errors.theme = false;
 				}
 			},
-			goToSlide: function(slide: number) {
+			goToSlide: function(slide) {
 				let go = false;
 				if (slide > this.slide) {
 					if (slide === 2) {
@@ -312,10 +386,10 @@
 					this.goSlide(slide);
 				}
 			},
-			goSlide: function(slide: number) {
+			goSlide: function(slide) {
 				this.slide = slide - 1;
 			},
-			changeTheme: function(theme: string): void {
+			changeTheme: function(theme){
 				this.message.theme = theme;
 				this.errors.theme = false;
 				this.errorsText.theme = '\xa0';
@@ -328,6 +402,9 @@
 					top: 0,
 					behavior: 'smooth',
 				});
+			},
+			fMeet: function(bool) {
+				this.footerMeet = bool;
 			},
 		},
 		directives: {
@@ -353,24 +430,22 @@
 			height: 100vh;
 			padding-top: 30px;
 		}
+		&-main {
+			transform: translate3d(0.00001px, 0.00001px, 0.00001px);
+			height: 100vh;
+			width: 100%;
+		}
+		&-meet {
+			z-index: 1010;
+		}
 		&__wrapper {
 			display: flex;
 			width: 500%;
+			height: 100%;
 			transition: 0.3s;
 		}
 		&__slide {
 			width: 20%;
-		}
-		&-main {
-			transform: translate3d(0.00001px, 0.00001px, 0.00001px);
-			background: #141414;
-			padding-bottom: 50px;
-			padding-top: 50px;
-			position: fixed;
-			z-index: 200;
-			width: 100%;
-			top: 0;
-			left: 0;
 		}
 		&__desctop {
 			display: none;
@@ -660,8 +735,14 @@
 			}
 			&-main {
 				height: 100vh;
-				padding-top: 80px;
+				padding-top: 140px;
 				padding-bottom: 85px;
+			}
+			&__container {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				height: 100%;
 			}
 			&__desktop {
 				display: flex;
