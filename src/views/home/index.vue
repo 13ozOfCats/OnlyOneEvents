@@ -4,52 +4,78 @@
 			<div class="main__inner">
 				<section class="main__section" id="welcome">
 					<div class="container">
-						<div class="main__string" id="string-1">
+						<div
+							class="main__string"
+							:class="{'main__string-white': dots.events || dots.creative || dots.decor}"
+							id="string-1"
+						>
 							<span class="main__word" id="word-1">Привет!{{ '\xa0' }}</span>
-							<span class="main__word" id="word-2">Мы<span class="main__dot" :class="{'main__dot-active': dots.we}" style="opacity: 0"></span></span>
+							<span class="main__word" id="word-2" @mouseover="we(true)" @mouseout="we(false)"
+								>Мы<span class="main__dot" :class="{'main__dot-active': dots.we}" style="opacity: 0"></span
+							></span>
 							<span class="main__word" id="word-3">{{ '\xa0' }}маркетинговое{{ '\xa0' }}</span>
 							<span id="string-1-2-3">
-								<span class="main__word" id="word-4">агентство<span class="main__dot" :class="{'main__dot-active': dots.agency}" style="opacity: 0"></span></span>
+								<span class="main__word" id="word-4" @mouseover="agency(true)" @mouseout="agency(false)"
+									>агентство<span class="main__dot" :class="{'main__dot-active': dots.agency}" style="opacity: 0"></span
+								></span>
 								<span class="main__word" id="word-5">{{ '\xa0' }}из{{ '\xa0' }}</span>
 								<span class="main__word" id="word-6">Санкт-</span>
-								<span class="main__word" id="word-7">Петербурга<span class="main__dot" :class="{'main__dot-active': dots.spb}" style="opacity: 0"></span></span>
+								<span class="main__word" id="word-7" @mouseover="spb(true)" @mouseout="spb(false)"
+									>Петербурга<span class="main__dot" :class="{'main__dot-active': dots.spb}" style="opacity: 0"></span
+								></span>
 							</span>
 						</div>
-						<div class="main__string" id="string-2">
+						<div
+							class="main__string"
+							:class="{'main__string-white': dots.events || dots.creative || dots.decor}"
+							id="string-2"
+						>
 							<span class="main__word" id="word-11">Продюссируем{{ '\xa0' }}</span>
-							<span class="main__word" id="word-12" @mouseover="eventOn" @mouseout="eventOff"
+							<span class="main__word" id="word-12" @mouseover="events(true)" @mouseout="events(false)"
 								>ивенты<span class="main__dot" :class="{'main__dot-active': dots.events}" style="opacity: 0"></span
 							></span>
 							<span class="main__word" id="word-13">{{ '\xa0' }}разрабатываем{{ '\xa0' }}</span>
 							<span id="string-2-2">
-								<span class="main__word" id="word-14" @mouseover="creativeOn" @mouseout="creativeOff"
+								<span class="main__word" id="word-14" @mouseover="creative(true)" @mouseout="creative(false)"
 									>креатив<span class="main__dot" :class="{'main__dot-active': dots.creative}" style="opacity: 0"></span
 								></span>
 								<span class="main__word" id="word-15">{{ '\xa0' }}проектируем{{ '\xa0' }}стенды</span>
 								<span class="inline-block" id="string-2-3">
 									<span class="main__word" id="word-16">{{ '\xa0' }}и{{ '\xa0' }}</span>
-									<span class="main__word" @mouseover="decorOn" @mouseout="decorOff"
-										>декор<span class="main__dot" :class="{'main__dot-active': dots.decor}" style="opacity: 0"></span></span
+									<span class="main__word" @mouseover="decor(true)" @mouseout="decor(false)"
+										>декор<span
+											class="main__dot"
+											:class="{'main__dot-active': dots.decor}"
+											style="opacity: 0"
+										></span></span
 									><span class="main__word" id="word-18">ации c 2015 года.</span>
 								</span>
 							</span>
 						</div>
-						<div class="main__string" id="string-3">
+						<div
+							class="main__string"
+							:class="{'main__string-white': dots.events || dots.creative || dots.decor}"
+							id="string-3"
+						>
 							<span class="main__word" id="word-21">Наша{{ '\xa0' }}</span>
-							<span class="main__word" id="word-22">
+							<span class="main__word" id="word-22" @mouseover="philosophy(true)" @mouseout="philosophy(false)">
 								философия
-								<span class="main__dot" :class="{'main__dot-active': dots.filosofi}" style="opacity: 0"></span>
+								<span class="main__dot" :class="{'main__dot-active': dots.philosophy}" style="opacity: 0"></span>
 							</span>
-							<span class="main__word" id="word-23">{{ '\xa0' }}-{{ '\xa0' }}f</span>
-							<span class="main__word">o</span>
-							<span class="main__word" id="word-25">cus{{ '\xa0' }}</span>
-							<span class="main__word" id="word-26">o<span class="main__dot" :class="{'main__dot-active': dots.ooe}" style="opacity: 0"></span></span>
-							<span class="main__word" id="word-27">n{{ '\xa0' }}id</span>
-							<span class="main__word" id="word-28">e</span>
-							<span class="main__word" id="word-29">as</span>
+							<span @mouseover="ooe(true)" @mouseout="ooe(false)">
+								<span class="main__word" id="word-23">{{ '\xa0' }}-{{ '\xa0' }}f</span>
+								<span class="main__word">o</span>
+								<span class="main__word" id="word-25">cus{{ '\xa0' }}</span>
+								<span class="main__word" id="word-26"
+									>o<span class="main__dot" :class="{'main__dot-active': dots.ooe}" style="opacity: 0"></span
+								></span>
+								<span class="main__word" id="word-27">n{{ '\xa0' }}id</span>
+								<span class="main__word" id="word-28">e</span>
+								<span class="main__word" id="word-29">as</span>
+							</span>
 						</div>
 						<div class="main__scroll">scroll</div>
-						<div class="main__logo">
+						<div class="main__logo" :class="{'main__logo-active': dots.we}">
 							<img src="./images/main_megalogo.svg" loading="lazy" alt="" />
 						</div>
 						<div class="main__aboutBg"></div>
@@ -57,7 +83,7 @@
 							”Мы - команда увлеченных профессионалов, с 2015 года создающая яркие зрелищные проекты в сфере
 							event-маркетинга.”
 						</span>
-						<div class="main__cities">
+						<div class="main__cities" :class="{'main__bg-active': dots.spb}">
 							<svg width="110" height="163" viewBox="0 0 110 163" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<ellipse cx="55" cy="153" rx="38" ry="10" fill="black" fill-opacity="0.25"></ellipse>
 								<path
@@ -775,11 +801,16 @@
 						<pluhs></pluhs>
 					</div>
 				</section>
+				<div class="main__bg main__bg-red"
+					 :class="{'main__bg-active': dots.spb}"
+				></div>
 			</div>
 			<div id="main"></div>
 			<div class="main__bg main__bg-black"></div>
-			<div class="main__bg main__bg-red"></div>
-			<div class="main__bg main__bg-blue" :class="{'main__bg-active': dots.events || dots.creative || dots.decor}"></div>
+			<div
+				class="main__bg main__bg-blue"
+				:class="{'main__bg-active': dots.events || dots.creative || dots.decor}"
+			></div>
 		</div>
 		<section class="works desktop" @wheel="goToMeet">
 			<div class="container container-h100">
@@ -880,7 +911,7 @@
 					events: false,
 					creative: false,
 					decor: false,
-					filosofi: false,
+					philosophy: false,
 					ooe: false,
 				},
 			};
@@ -922,29 +953,67 @@
 					}
 				}
 			},
-			eventOn: function() {
-				this.$eventBus.$emit('event', true);
-				this.dots.events = true;
+			we: function(bool) {
+				if (bool) {
+					this.dots.we = true;
+				} else {
+					this.dots.we = false;
+				}
 			},
-			eventOff: function() {
-				this.$eventBus.$emit('event', false);
-				this.dots.events = false;
+			agency: function(bool) {
+				if (bool) {
+					this.dots.agency = true;
+				} else {
+					this.dots.agency = false;
+				}
 			},
-			creativeOn: function() {
-				this.$eventBus.$emit('creative', true);
-				this.dots.creative = true;
+			spb: function(bool) {
+				if (bool) {
+					this.dots.spb = true;
+				} else {
+					this.dots.spb = false;
+				}
 			},
-			creativeOff: function() {
-				this.$eventBus.$emit('creative', false);
-				this.dots.creative = false;
+			events: function(bool) {
+				if (bool) {
+					this.$eventBus.$emit('event', true);
+					this.dots.events = true;
+				} else {
+					this.$eventBus.$emit('event', false);
+					this.dots.events = false;
+				}
 			},
-			decorOn: function() {
-				this.$eventBus.$emit('decor', true);
-				this.dots.decor = true;
+			creative: function(bool) {
+				if (bool) {
+					this.$eventBus.$emit('creative', true);
+					this.dots.creative = true;
+				} else {
+					this.$eventBus.$emit('creative', false);
+					this.dots.creative = false;
+				}
 			},
-			decorOff: function() {
-				this.$eventBus.$emit('decor', false);
-				this.dots.decor = false;
+			decor: function(bool) {
+				if (bool) {
+					this.$eventBus.$emit('decor', true);
+					this.dots.decor = true;
+				} else {
+					this.$eventBus.$emit('decor', false);
+					this.dots.decor = false;
+				}
+			},
+			philosophy: function(bool) {
+				if (bool) {
+					this.dots.philosophy = true;
+				} else {
+					this.dots.philosophy = false;
+				}
+			},
+			ooe: function(bool) {
+				if (bool) {
+					this.dots.ooe = true;
+				} else {
+					this.dots.ooe = false;
+				}
 			},
 		},
 		computed: {
@@ -1171,12 +1240,12 @@
 				lax.addElements('.main__bg-red', {
 					scrollY: {
 						opacity: [
-							[2500, 2800],
-							[0, 1],
+							[2500, 2800,3800, 3801],
+							[0, 1, 1, 0],
 						],
 						translateX: [
-							[3400, 3800],
-							[0, '-screenWidth'],
+							[3400, 3800, 3801, 3802],
+							[0, '-screenWidth', '-screenWidth', 0],
 						],
 					},
 				});
@@ -1222,12 +1291,12 @@
 							[50, 0],
 						],
 						opacity: [
-							[2700, 3100],
-							[0, 1],
+							[2700, 3100, 3800, 3801],
+							[0, 1, 1, 0],
 						],
 						translateX: [
-							[3300, 3800],
-							[0, '-screenWidth'],
+							[3300, 3800, 3801, 3802],
+							[0, '-screenWidth', '-screenWidth', 0],
 						],
 					},
 				});
@@ -1291,6 +1360,9 @@
 	#main {
 		position: absolute;
 		top: 7500px;
+	}
+	#word-2 {
+		z-index: 1;
 	}
 	.works {
 		height: 100vh;
@@ -1402,6 +1474,9 @@
 			& + & {
 				margin-top: 20px;
 			}
+			&-white {
+				color: var(--white);
+			}
 		}
 		&__section {
 			padding-top: 270px;
@@ -1410,8 +1485,8 @@
 			position: relative;
 			font-size: 64px;
 			line-height: 94px;
-			color: var(--bg);
 			display: inline-block;
+			cursor: default;
 		}
 		&__dot {
 			position: absolute;
@@ -1431,11 +1506,18 @@
 			position: absolute;
 			left: 0;
 			bottom: 0;
+			opacity: 0;
+			transition: 0.3s;
+			&-active {
+				opacity: 1 !important;
+			}
 		}
 		&__bg {
 			position: absolute;
 			width: 100%;
 			height: 100%;
+			top: 0;
+			left: 0;
 			&-black {
 				background: var(--bg);
 				z-index: -10;
