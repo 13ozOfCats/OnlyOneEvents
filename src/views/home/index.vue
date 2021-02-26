@@ -801,12 +801,12 @@
 						<pluhs></pluhs>
 					</div>
 				</section>
-				<div class="main__bg main__bg-red"
-					 :class="{'main__bg-active': dots.spb}"
-				></div>
 			</div>
 			<div id="main"></div>
 			<div class="main__bg main__bg-black"></div>
+			<div class="main__bg main__bg-red"
+				 :class="{'main__bg-active': dots.spb}"
+			></div>
 			<div
 				class="main__bg main__bg-blue"
 				:class="{'main__bg-active': dots.events || dots.creative || dots.decor}"
@@ -834,7 +834,7 @@
 				<div class="meet__title">
 					Обсудим проект?
 				</div>
-				<div class="meet__btn btn">
+				<div class="meet__btn btn" @click="goToForm">
 					<span class="btn__text"> Обсудить </span>
 					<svg width="64" height="72" viewBox="0 0 72 72" class="btn__svg">
 						<path
@@ -855,7 +855,7 @@
 				</div>
 			</div>
 			<div class="meet__inner">
-				<div class="meet__bg" :class="{'meet__bg-active': this.meetBg}"></div>
+				<div class="meet__bg" :class="{'meet__bg-active': this.meetBg,'meet__bg-top': this.meetBgTop }"></div>
 			</div>
 		</section>
 		<div class="main__mobile">
@@ -902,8 +902,10 @@
 		data: function() {
 			return {
 				goMeet: null,
+				goForm: null,
 				canPlay: true,
 				meetBg: false,
+				meetBgTop: false,
 				dots: {
 					we: false,
 					agency: false,
@@ -952,6 +954,16 @@
 						});
 					}
 				}
+			},
+			goToForm: function() {
+				this.canPlay = false;
+				this.meetBg = false;
+				this.meetBgTop = true;
+				this.goForm.play()
+				this.goForm.finished.then(() => {
+					this.canPlay = true;
+					this.meetBgTop = false;
+				});
 			},
 			we: function(bool) {
 				if (bool) {
@@ -1020,6 +1032,24 @@
 			...mapGetters(['posts', 'showPreloader']),
 		},
 		mounted() {
+			this.goForm = anime.timeline({
+				loop: false,
+				autoplay: false,
+			})
+				.add({
+					targets: '.meet__bg',
+					easing: 'easeInOutCubic',
+					scaleY: [1, 0],
+					delay: 100,
+					duration: 800,
+				})
+				.add({
+					targets: '.meet',
+					easing: 'easeInOutCirc',
+					translateX: [0, 0],
+					translateY: [0, '-100%'],
+					duration: 1000,
+				}, '-=300');
 			this.goMeet = anime.timeline({
 				loop: false,
 				autoplay: false,
@@ -1796,6 +1826,10 @@
 			background: url('./images/meet__bg.svg') center center / cover;
 			opacity: 0.5;
 			transform: scaleY(0);
+			transform-origin: 50% 100%;
+			&-top {
+				transform-origin: 50% 0;
+			}
 			&-active {
 				animation: meet 5s linear infinite;
 			}
