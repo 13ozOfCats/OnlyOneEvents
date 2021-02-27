@@ -2,6 +2,7 @@
 	<div class="home">
 		<div class="main__wrapper desktop">
 			<div class="main__inner">
+				<div class="hover__spbbg" :class="{'hover__spbbg-active': dots.spb}"></div>
 				<section class="main__section" id="welcome">
 					<div class="container">
 						<div
@@ -83,7 +84,7 @@
 							”Мы - команда увлеченных профессионалов, с 2015 года создающая яркие зрелищные проекты в сфере
 							event-маркетинга.”
 						</span>
-						<div class="main__cities" :class="{'main__bg-active': dots.spb}">
+						<div class="main__cities" :class="{'main__cities-active': dots.spb}">
 							<svg width="110" height="163" viewBox="0 0 110 163" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<ellipse cx="55" cy="153" rx="38" ry="10" fill="black" fill-opacity="0.25"></ellipse>
 								<path
@@ -825,7 +826,7 @@
 			</div>
 			<div id="main"></div>
 			<div class="main__bg main__bg-black"></div>
-			<div class="main__bg main__bg-red" :class="{'main__bg-active': dots.spb}"></div>
+			<div class="main__bg main__bg-red"></div>
 			<div
 				class="main__bg main__bg-blue"
 				:class="{'main__bg-active': dots.events || dots.creative || dots.decor}"
@@ -1429,6 +1430,24 @@
 	#word-2 {
 		z-index: 1;
 	}
+	#string-1 {
+		z-index: 12;
+	}
+	.hover {
+		&__spbbg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: var(--red);
+			z-index: 11;
+			display: none;
+			&-active {
+				display: block;
+			}
+		}
+	}
 	.works {
 		height: 100vh;
 		width: 100%;
@@ -1630,6 +1649,11 @@
 			margin: -50px auto 0;
 			display: flex;
 			align-items: center;
+			position: relative;
+			&-active {
+				opacity: 1 !important;
+				z-index: 12;
+			}
 		}
 		&__text {
 			margin-left: 45px;
