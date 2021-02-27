@@ -1,16 +1,4 @@
 <svg width="1442" height="1071" viewBox="0 0 1442 1071" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <style>
-        #svgbg {
-        animation: swing 5s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
-        }
-        @keyframes swing {
-        0% {
-        transform: translateY(0);
-        }
-        100% {
-        transform: translateY(20px);
-        }
-    </style>
     <g id="svgbg">
         <path d="M1441 272.502C1441 224.108 1401.13 184.877 1351.85 184.877C1302.66 184.877 1262.79 224.108 1262.79 272.502" stroke="url(#paint0_linear)" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M1283.32 333.792C1283.32 285.398 1243.44 246.167 1194.16 246.167C1144.98 246.167 1105.1 285.398 1105.1 333.792" stroke="url(#paint1_linear)" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>

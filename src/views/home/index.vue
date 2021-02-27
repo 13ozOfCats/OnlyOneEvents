@@ -1350,13 +1350,13 @@
 				});
 				lax.addElements('.main__bg-red', {
 					scrollY: {
-						opacity: [
-							[2500, 2800,3800, 3801],
-							[0, 1, 1, 0],
+						translateY: [
+							[2400, 2800],
+							['-screenHeight', 0]
 						],
 						translateX: [
-							[3400, 3800, 3801, 3802],
-							[0, '-screenWidth', '-screenWidth', 0],
+							[3400, 3800],
+							[0, '-screenWidth'],
 						],
 					},
 				});
@@ -1389,10 +1389,14 @@
 				});
 				lax.addElements('.main__aboutBg', {
 					scrollY: {
-						opacity: [
-							[1600, 1900, 2100, 2400],
-							[0, 1, 1, 0],
+						translateY: [
+							[1600, 2100],
+							['2 * screenHeight', '-screenHeight'],
 						],
+						scaleY: [
+							[2100, 2400],
+							[1, 0]
+						]
 					},
 				});
 				lax.addElements('.main__cities', {
@@ -1647,7 +1651,7 @@
 			}
 		}
 		&__bg {
-			position: absolute;
+			position: fixed;
 			width: 100%;
 			height: 100%;
 			top: 0;
@@ -1686,8 +1690,8 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 100%;
-			background: url('./images/main__bg-2.svg') no-repeat center top/cover;
+			height: 200%;
+			background: url('./images/main__bg-2.svg') center top / cover;
 		}
 		&__ball {
 			position: absolute;
