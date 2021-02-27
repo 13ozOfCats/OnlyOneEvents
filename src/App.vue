@@ -395,6 +395,10 @@
 		align-items: center;
 	}
 
+	.pointer {
+		cursor: pointer !important;
+	}
+
 	.btn {
 		cursor: pointer;
 		width: fit-content;
@@ -570,6 +574,14 @@
 		}
 		100% {
 			transform: translateY(-47%);
+		}
+	}
+	@keyframes hover__chutes {
+		0% {
+			transform: translateY(-0%);
+		}
+		100% {
+			transform: translateY(-46%);
 		}
 	}
 

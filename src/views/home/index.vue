@@ -2,12 +2,17 @@
 	<div class="home">
 		<div class="main__wrapper desktop">
 			<div class="main__inner">
-				<div class="hover__spbbg" :class="{'hover__spbbg-active': dots.spb}"></div>
+				<div class="hover__bg hover__bg-spb" :class="{'hover__bg-active': dots.spb}"></div>
+				<div class="hover__bg hover__bg-agency" :class="{'hover__bg-active': dots.agency}">
+					<div class="hover__chutes"></div>
+				</div>
 				<section class="main__section" id="welcome">
 					<div class="container">
 						<div
 							class="main__string"
-							:class="{'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy}"
+							:class="{
+								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy || dots.agency,
+							}"
 							id="string-1"
 						>
 							<span class="main__word" id="word-1">Привет!{{ '\xa0' }}</span>
@@ -16,9 +21,13 @@
 							></span>
 							<span class="main__word" id="word-3">{{ '\xa0' }}маркетинговое{{ '\xa0' }}</span>
 							<span id="string-1-2-3">
-								<span class="main__word" id="word-4" @mouseover="agency(true)" @mouseout="agency(false)"
-									>агентство<span class="main__dot" :class="{'main__dot-active': dots.agency}" style="opacity: 0"></span
-								></span>
+								<span class="main__word" id="word-4" :class="{'pointer': dots.agency}" @mouseover="agency(true)" @mouseout="agency(false)"
+									>агентство
+									<span class="hover__descr" :class="{'hover__descr-active': dots.agency}">
+										нажмите, чтобы узнать больше о нас
+									</span>
+									<span class="main__dot" :class="{'main__dot-hidden': dots.agency}" style="opacity: 0"></span>
+								</span>
 								<span class="main__word" id="word-5">{{ '\xa0' }}из{{ '\xa0' }}</span>
 								<span class="main__word" id="word-6">Санкт-</span>
 								<span class="main__word" id="word-7" @mouseover="spb(true)" @mouseout="spb(false)"
@@ -28,7 +37,9 @@
 						</div>
 						<div
 							class="main__string"
-							:class="{'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy}"
+							:class="{
+								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy || dots.agency,
+							}"
 							id="string-2"
 						>
 							<span class="main__word" id="word-11">Продюссируем{{ '\xa0' }}</span>
@@ -55,7 +66,9 @@
 						</div>
 						<div
 							class="main__string"
-							:class="{'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy}"
+							:class="{
+								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy || dots.agency,
+							}"
 							id="string-3"
 						>
 							<span class="main__word" id="word-21">Наша{{ '\xa0' }}</span>
@@ -80,7 +93,7 @@
 							<img src="./images/main_megalogo.svg" loading="lazy" alt="" />
 						</div>
 						<div class="main__aboutBg"></div>
-						<span class="main__about">
+						<span class="main__about" :class="{'main__about-active': dots.agency}">
 							”Мы - команда увлеченных профессионалов, с 2015 года создающая яркие зрелищные проекты в сфере
 							event-маркетинга.”
 						</span>
@@ -1488,14 +1501,44 @@
 		z-index: 12;
 	}
 	.hover {
-		&__spbbg {
+		&__bg {
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: var(--red);
-			z-index: 11;
+			display: none;
+			&-active {
+				display: block;
+			}
+			&-spb {
+				z-index: 11;
+				background: var(--red);
+			}
+			&-agency {
+				z-index: -11;
+				background: var(--bg);
+			}
+		}
+		&__chutes {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 200%;
+			background: url('./images/main__bg-2.svg') center top/cover;
+			animation: hover__chutes 5s linear infinite;
+		}
+		&__descr {
+			position: absolute;
+			bottom: -5px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 14px;
+			line-height: 21px;
+			text-align: center;
+			text-decoration-line: underline;
+			color: #ffffff;
 			display: none;
 			&-active {
 				display: block;
@@ -1639,6 +1682,9 @@
 			&-active {
 				background: #ee3d43;
 			}
+			&-hidden {
+				opacity: 0 !important;
+			}
 		}
 		&__logo {
 			position: absolute;
@@ -1677,13 +1723,16 @@
 		&__about {
 			display: none;
 			position: absolute;
-			top: 50%;
+			top: 62%;
 			left: calc(50% - 355px);
 			width: 710px;
 			font-size: 24px;
 			line-height: 35px;
 			text-align: center;
 			color: var(--white);
+			&-active {
+				display: block;
+			}
 		}
 		&__aboutBg {
 			position: absolute;
