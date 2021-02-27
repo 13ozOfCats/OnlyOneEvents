@@ -402,7 +402,7 @@
 						</div>
 						<div class="main__end">
 							<div class="container main__flex">
-								<span class="main__workbtn btn btn__gray" >
+								<router-link to="/works" class="main__workbtn btn btn__gray">
 									<span class="btn__text">
 										Наши работы
 									</span>
@@ -422,7 +422,7 @@
 											stroke-width="1.13924"
 										/>
 									</svg>
-								</span>
+								</router-link>
 								<div class="main__links">
 									<a target="_blank" href="https://www.facebook.com/ooevents" class="main__link link">
 										<svg width="73" height="73" viewBox="0 0 73 73">
@@ -987,6 +987,11 @@
 					this.meetBgTop = false;
 				});
 			},
+			scrollFromMeet: function() {
+				window.scrollTo({
+					top: document.getElementById('main').offsetTop,
+				});
+			},
 			we: function(bool) {
 				if (bool) {
 					this.dots.we = true;
@@ -1052,6 +1057,9 @@
 		},
 		computed: {
 			...mapGetters(['posts', 'showPreloader']),
+		},
+		created() {
+			this.$eventBus.$on('scrollFromMeet', this.scrollFromMeet);
 		},
 		mounted() {
 			this.goForm = anime.timeline({
@@ -1405,6 +1413,11 @@
 					},
 				});
 			}
+		},
+		beforeDestroy() {
+			this.$eventBus.$off('scrollFromMeet');
+			this.$eventBus.$emit('footerMeet', false);
+			this.$eventBus.$emit('overflowHidden', false);
 		},
 	});
 </script>

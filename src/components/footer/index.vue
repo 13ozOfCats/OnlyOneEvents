@@ -8,7 +8,7 @@
 			<div class="footer__slide">
 				<div class="container footer__container">
 					<div v-if="mainPage" class="footer__start  footer__desktop">
-						<a href="/#main" class="btn" id="backFromFooter">
+						<span class="btn" @click="hideMeet">
 							<svg class="btn__svg" width="56" height="65" viewBox="0 0 56 65" fill="none">
 								<path
 									class="btn__bg"
@@ -46,8 +46,8 @@
 							<span class="btn__text">
 								Назад
 							</span>
-						</a>
-						<a href="about.html" class="btn">
+						</span>
+						<router-link to="/about" class="btn">
 							<span class="btn__text">
 								О нас
 							</span>
@@ -68,7 +68,7 @@
 									stroke="white"
 								/>
 							</svg>
-						</a>
+						</router-link>
 					</div>
 					<div class="footer__flex">
 						<div class="footer__left">
@@ -405,6 +405,11 @@
 			},
 			fMeet: function(bool) {
 				this.footerMeet = bool;
+			},
+			hideMeet: function() {
+				this.$eventBus.$emit('overflowHidden', false);
+				this.$eventBus.$emit('scrollFromMeet');
+				this.footerMeet = false;
 			},
 		},
 		directives: {
