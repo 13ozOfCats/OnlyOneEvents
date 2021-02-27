@@ -7,7 +7,7 @@
 					<div class="container">
 						<div
 							class="main__string"
-							:class="{'main__string-white': dots.events || dots.creative || dots.decor}"
+							:class="{'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy}"
 							id="string-1"
 						>
 							<span class="main__word" id="word-1">Привет!{{ '\xa0' }}</span>
@@ -28,7 +28,7 @@
 						</div>
 						<div
 							class="main__string"
-							:class="{'main__string-white': dots.events || dots.creative || dots.decor}"
+							:class="{'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy}"
 							id="string-2"
 						>
 							<span class="main__word" id="word-11">Продюссируем{{ '\xa0' }}</span>
@@ -55,7 +55,7 @@
 						</div>
 						<div
 							class="main__string"
-							:class="{'main__string-white': dots.events || dots.creative || dots.decor}"
+							:class="{'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy}"
 							id="string-3"
 						>
 							<span class="main__word" id="word-21">Наша{{ '\xa0' }}</span>
@@ -401,7 +401,7 @@
 								Мы всегда в поиске новых идей для создания эффективных и оригинальных маркетинговых коммуникаций
 							</div>
 						</div>
-						<div class="main__end">
+						<div class="main__end" :class="{'main__end-hide': dots.philosophy}">
 							<div class="container main__flex">
 								<router-link to="/works" class="main__workbtn btn btn__gray">
 									<span class="btn__text">
@@ -538,8 +538,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="main__svgbg" style="opacity: 0">
-							<svg width="1800" height="1800" viewBox="0 0 1800 1800" fill="none" class="about__foi">
+						<div class="main__svgbg" :class="{'main__svgbg-active': dots.philosophy}" style="opacity: 0">
+							<svg width="1800" height="1800" viewBox="0 0 1800 1800" fill="none" class="main__foi">
 								<g id="about__ideas" style="opacity: 0">
 									<circle
 										class="about__ideas line"
@@ -923,6 +923,7 @@
 			return {
 				goMeet: null,
 				goForm: null,
+				foi: null,
 				canPlay: true,
 				meetBg: false,
 				meetBgTop: false,
@@ -994,11 +995,7 @@
 				});
 			},
 			we: function(bool) {
-				if (bool) {
-					this.dots.we = true;
-				} else {
-					this.dots.we = false;
-				}
+				this.dots.we = bool;
 			},
 			agency: function(bool) {
 				if (bool) {
@@ -1008,11 +1005,7 @@
 				}
 			},
 			spb: function(bool) {
-				if (bool) {
-					this.dots.spb = true;
-				} else {
-					this.dots.spb = false;
-				}
+				this.dots.spb = bool;
 			},
 			events: function(bool) {
 				if (bool) {
@@ -1043,8 +1036,10 @@
 			},
 			philosophy: function(bool) {
 				if (bool) {
+					this.foi.play();
 					this.dots.philosophy = true;
 				} else {
+					this.foi.pause();
 					this.dots.philosophy = false;
 				}
 			},
@@ -1063,6 +1058,61 @@
 			this.$eventBus.$on('scrollFromMeet', this.scrollFromMeet);
 		},
 		mounted() {
+			this.foi = anime.timeline({
+				autoplay: true,
+				loop: true,
+			}).add({
+				targets: '#about__focus',
+				opacity: 1,
+				delay: 100,
+				duration: 500,
+			}).add({
+				targets: '.about__focus.line',
+				strokeDashoffset: [anime.setDashoffset, 0],
+				easing: 'easeInOutSine',
+				duration: 300,
+				delay: function(el, i) { return i * 200 },
+				direction: 'alternate-reverse',
+			}).add({
+				targets: '#about__focus .foi__text',
+				opacity: 0,
+				delay: 300,
+				duration: 100,
+			}).add({
+				targets: '#about__on',
+				opacity: 1,
+				delay: 100,
+				duration: 500,
+			}).add({
+				targets: '.about__on.line',
+				strokeDashoffset: [anime.setDashoffset, 0],
+				easing: 'easeInOutSine',
+				duration: 400,
+				delay: function(el, i) { return i * 150 },
+				direction: 'alternate-reverse',
+			}).add({
+				targets: '#about__on .foi__text',
+				opacity: 0,
+				delay: 300,
+				duration: 100,
+			}).add({
+				targets: '#about__ideas',
+				opacity: 1,
+				delay: 100,
+				duration: 500,
+			}).add({
+				targets: '.about__ideas.line',
+				strokeDashoffset: [anime.setDashoffset, 0],
+				easing: 'easeInOutSine',
+				duration: 500,
+				delay: function(el, i) { return i * 100 },
+				direction: 'alternate-reverse',
+			}).add({
+				targets: '#about__ideas, #about__on,  #about__focus',
+				opacity: 0,
+				delay: 300,
+				duration: 100,
+			});
 			this.goForm = anime.timeline({
 				loop: false,
 				autoplay: false,
@@ -1733,6 +1783,9 @@
 			bottom: 90px;
 			left: 0;
 			width: 100%;
+			&-hide {
+				display: none;
+			}
 		}
 		&__links {
 			margin-left: 106px;
@@ -1759,6 +1812,9 @@
 			height: 100%;
 			background: var(--bg);
 			transition: 0.2s;
+			&-active {
+				opacity: 1 !important;
+			}
 		}
 		&__scroll {
 			position: absolute;
@@ -1771,6 +1827,59 @@
 			font-size: 27.3418px;
 			line-height: 188%;
 			color: rgba(0, 0, 0, 0.42);
+		}
+		&__foi {
+			position: absolute;
+			top: 70%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			.line {
+				&:nth-child(1) {
+					opacity: 1;
+				}
+				&:nth-child(2) {
+					opacity: 0.9;
+				}
+				&:nth-child(3) {
+					opacity: 0.8;
+				}
+				&:nth-child(4) {
+					opacity: 0.7;
+				}
+				&:nth-child(5) {
+					opacity: 0.6;
+				}
+				&:nth-child(6) {
+					opacity: 0.55;
+				}
+				&:nth-child(7) {
+					opacity: 0.5;
+				}
+				&:nth-child(8) {
+					opacity: 0.45;
+				}
+				&:nth-child(9) {
+					opacity: 0.4;
+				}
+				&:nth-child(10) {
+					opacity: 0.35;
+				}
+				&:nth-child(11) {
+					opacity: 0.3;
+				}
+				&:nth-child(12) {
+					opacity: 0.25;
+				}
+				&:nth-child(13) {
+					opacity: 0.2;
+				}
+				&:nth-child(14) {
+					opacity: 0.15;
+				}
+				&:nth-child(15) {
+					opacity: 0.1;
+				}
+			}
 		}
 	}
 	.mobile {
@@ -1955,9 +2064,6 @@
 				&-left {
 					left: 11%;
 				}
-			}
-			&__foi {
-				top: -37%;
 			}
 			&__foibox {
 				top: 66%;
