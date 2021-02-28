@@ -33,28 +33,33 @@
 						>
 							<span class="main__word" id="word-1">Привет!{{ '\xa0' }}</span>
 							<span class="main__word" id="word-2" @mouseover="we(true)" @mouseout="we(false)"
-								>Мы<span class="main__dot" :class="{'main__dot-active': dots.we}" style="opacity: 0"></span
+								><span class="hover__we" :class="{'hover__we-active': dots.ooe}">Мы</span> <span class="main__dot" :class="{'main__dot-active': dots.we,'main__dot-hidden': dots.ooe}" style="opacity: 0"></span
 							></span>
 							<span class="main__word" id="word-3">{{ '\xa0' }}маркетинговое{{ '\xa0' }}</span>
 							<span id="string-1-2-3">
-								<span
-									class="main__word"
-									id="word-4"
-									:class="{pointer: dots.agency}"
-									@mouseover="agency(true)"
-									@mouseout="agency(false)"
-									@click="agencyClick"
-									>агентство
-									<span class="hover__descr" :class="{'hover__descr-active': dots.agency}">
-										нажмите, чтобы узнать больше о нас
+								<span class="hover__string" :class="{'hover__string-hidden': dots.ooe}">
+									<span
+										class="main__word hover__word"
+										id="word-4"
+										:class="{pointer: dots.agency}"
+										@mouseover="agency(true)"
+										@mouseout="agency(false)"
+										@click="agencyClick"
+										>агентство
+										<span class="hover__descr" :class="{'hover__descr-active': dots.agency}">
+											нажмите, чтобы узнать больше о нас
+										</span>
+										<span class="main__dot" :class="{'main__dot-hidden': dots.agency}" style="opacity: 0"></span>
 									</span>
-									<span class="main__dot" :class="{'main__dot-hidden': dots.agency}" style="opacity: 0"></span>
+									<span class="main__word hover__word" id="word-5">{{ '\xa0' }}из{{ '\xa0' }}</span>
+									<span class="main__word hover__word" id="word-6">Санкт-</span>
+									<span class="main__word hover__word" id="word-7" @mouseover="spb(true)" @mouseout="spb(false)"
+										>Петербурга<span class="main__dot" :class="{'main__dot-active': dots.spb}" style="opacity: 0"></span
+									></span>
 								</span>
-								<span class="main__word" id="word-5">{{ '\xa0' }}из{{ '\xa0' }}</span>
-								<span class="main__word" id="word-6">Санкт-</span>
-								<span class="main__word" id="word-7" @mouseover="spb(true)" @mouseout="spb(false)"
-									>Петербурга<span class="main__dot" :class="{'main__dot-active': dots.spb}" style="opacity: 0"></span
-								></span>
+								<span class="main__word hover__ooe" :class="{'hover__ooe-active': dots.ooe}">
+									one only events
+								</span>
 							</span>
 						</div>
 						<div
@@ -1567,78 +1572,6 @@
 	#string-1 {
 		z-index: 12;
 	}
-	.hover {
-		&__bg {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			visibility: hidden;
-			transition: 0.4s;
-			&-spb {
-				z-index: 11;
-				background: var(--red);
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				transform: translateX(100%);
-			}
-			&-agency {
-				opacity: 0;
-				z-index: -11;
-				background: var(--bg);
-			}
-			&-active {
-				opacity: 1 !important;
-				visibility: visible !important;
-				transform: translateX(0) !important;
-			}
-		}
-		&__logo {
-			position: absolute;
-			left: 0;
-			bottom: 0;
-			transition: 0.4s;
-			transform: translateX(-100%);
-			visibility: hidden;
-			&-active {
-				visibility: visible;
-				transform: translateX(0);
-			}
-		}
-		&__chutes {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 200%;
-			background: url('./images/main__bg-2.svg') center top/cover;
-			animation: hover__chutes 5s linear infinite;
-		}
-		&__cities {
-			margin-top: 50px;
-			width: fit-content;
-			display: flex;
-			align-items: center;
-			position: relative;
-		}
-		&__descr {
-			position: absolute;
-			bottom: -5px;
-			left: 50%;
-			transform: translateX(-50%);
-			font-size: 14px;
-			line-height: 21px;
-			text-align: center;
-			text-decoration-line: underline;
-			color: #ffffff;
-			visibility: hidden;
-			&-active {
-				visibility: visible;
-			}
-		}
-	}
 	.works {
 		height: 100vh;
 		width: 100%;
@@ -2021,6 +1954,107 @@
 				&:nth-child(15) {
 					opacity: 0.1;
 				}
+			}
+		}
+	}
+	.hover {
+		&__bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			visibility: hidden;
+			transition: 0.4s;
+			&-spb {
+				z-index: 11;
+				background: var(--red);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transform: translateX(100%);
+			}
+			&-agency {
+				opacity: 0;
+				z-index: -11;
+				background: var(--bg);
+			}
+			&-active {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateX(0) !important;
+			}
+		}
+		&__string {
+			opacity: 1;
+			transition: 0.2s;
+			&-hidden {
+				opacity: 0;
+			}
+		}
+		&__we {
+			display: block;
+			transition: 0.3s;
+			&-active {
+				transition-delay: 0.2s;
+				transform: translateX(130px);
+			}
+		}
+		&__logo {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			transition: 0.4s;
+			transform: translateX(-100%);
+			visibility: hidden;
+			&-active {
+				visibility: visible;
+				transform: translateX(0);
+			}
+		}
+		&__chutes {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 200%;
+			background: url('./images/main__bg-2.svg') center top/cover;
+			animation: hover__chutes 5s linear infinite;
+		}
+		&__cities {
+			margin-top: 50px;
+			width: fit-content;
+			display: flex;
+			align-items: center;
+			position: relative;
+		}
+		&__descr {
+			position: absolute;
+			bottom: -5px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 14px;
+			line-height: 21px;
+			text-align: center;
+			text-decoration-line: underline;
+			color: #ffffff;
+			visibility: hidden;
+			&-active {
+				visibility: visible;
+			}
+		}
+		&__ooe {
+			color: var(--red);
+			visibility: hidden;
+			opacity: 0;
+			transition: 0.2s;
+			position: absolute;
+			left: 0;
+			&-active {
+				transform: translateX(130px);
+				transition-delay: 0.2s;
+				visibility: visible;
+				opacity: 1;
 			}
 		}
 	}
