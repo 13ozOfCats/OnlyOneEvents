@@ -27,13 +27,18 @@
 						<div
 							class="main__string"
 							:class="{
-								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy || dots.agency,
+								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy || dots.agency || dots.spb
 							}"
 							id="string-1"
 						>
 							<span class="main__word" id="word-1">Привет!{{ '\xa0' }}</span>
 							<span class="main__word" id="word-2" @mouseover="we(true)" @mouseout="we(false)"
-								><span class="hover__we" :class="{'hover__we-active': dots.ooe}">Мы</span> <span class="main__dot" :class="{'main__dot-active': dots.we,'main__dot-hidden': dots.ooe}" style="opacity: 0"></span
+								><span class="hover__we" :class="{'hover__we-active': dots.ooe}">Мы</span>
+								<span
+									class="main__dot"
+									:class="{'main__dot-active': dots.we, 'main__dot-hidden': dots.ooe}"
+									style="opacity: 0"
+								></span
 							></span>
 							<span class="main__word" id="word-3">{{ '\xa0' }}маркетинговое{{ '\xa0' }}</span>
 							<span id="string-1-2-3">
@@ -1372,7 +1377,7 @@
 					scrollY: {
 						translateX: [
 							[5300, 5600],
-							[0, -610],
+							[0, -620],
 						],
 					},
 				});
@@ -1699,7 +1704,7 @@
 		&__dot {
 			position: absolute;
 			bottom: 0;
-			left: 50%;
+			left: calc(50% - 5px);
 			transform: translateX(-50%);
 			border-radius: 100%;
 			width: 10px;
@@ -2047,7 +2052,7 @@
 			color: var(--red);
 			visibility: hidden;
 			opacity: 0;
-			transition: 0.2s;
+			transition: 0.3s;
 			position: absolute;
 			left: 0;
 			&-active {

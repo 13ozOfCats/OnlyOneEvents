@@ -24,7 +24,7 @@
 								Контакты
 							</router-link>
 						</li>
-						<li class="menu__li menu__video">
+						<li v-if="desktop" class="menu__li menu__video">
 							<span class="showreal__play" @click="openShowreel">
 								<img src="./images/header__video.png" alt="" />
 							</span>
@@ -32,7 +32,7 @@
 					</ul>
 				</nav>
 			</div>
-			<div class="header__burger" @click="burger">
+			<div class="header__burger" :class="{'header__burger-black': aboutActive}" @click="burger">
 				<svg width="24" height="21" viewBox="0 0 24 21" fill="none">
 					<path
 						class="burger__line-1"
@@ -59,6 +59,9 @@
 	import anime from 'animejs/lib/anime.es.js';
 
 	export default Vue.extend({
+		props: {
+			desktop: Boolean
+		},
 		data: function() {
 			return {
 				position: 'fixed',
@@ -132,6 +135,10 @@
 		},
 		watch: {
 			$route: function() {
+				if (document.querySelector('.header__burger').classList.contains('header__burger-active')) {
+					document.querySelector('.header__burger').classList.remove('header__burger-active');
+					this.headerOff();
+				}
 				if (this.$route.path === '/about' || this.$route.path === '/') {
 					if (document.documentElement.clientWidth > 967) {
 						this.color = '#212121';
@@ -231,15 +238,25 @@
 			height: 100%;
 			display: flex;
 			align-items: center;
+			&-black {
+				.burger__line-1,
+				.burger__line-2,
+				.burger__line-3 {
+					fill: var(--bg);
+				}
+			}
 			&-active {
 				.burger__line-1 {
 					transform: rotate(45deg) translate(5px, -4px);
+					fill: #ffffff;
 				}
 				.burger__line-2 {
 					transform: rotate(-45deg) translate(-9px, 7px);
+					fill: #ffffff;
 				}
 				.burger__line-3 {
 					opacity: 0;
+					fill: #ffffff;
 				}
 			}
 		}

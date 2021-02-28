@@ -1,9 +1,9 @@
 <template>
 	<body id="app" :class="{overflowHidden: overflowHidden}" @keydown="onKeydown">
 		<myLoader v-if="showPreloader"></myLoader>
-		<myShowreel v-if="showPreloader" :videoLink="shortcut" :displayOn="true"></myShowreel>
-		<myShowreel v-if="!showPreloader" :videoLink="showreel"></myShowreel>
-		<myHeader></myHeader>
+		<myShowreel v-if="showPreloader && desktop" :videoLink="shortcut" :displayOn="true"></myShowreel>
+		<myShowreel v-if="!showPreloader && desktop" :videoLink="showreel"></myShowreel>
+		<myHeader :desktop="desktop"></myHeader>
 		<myDot v-if="this.$route.path.includes('/works')" ref="dot"></myDot>
 		<router-view />
 		<myFooter></myFooter>
@@ -22,6 +22,7 @@
 			return {
 				goWork: false,
 				overflowHidden: false,
+				desktop: true,
 			};
 		},
 		components: {
@@ -42,8 +43,16 @@
 					this.$eventBus.$emit('onArrowdown', e)
 				}
 			},
+			onResize: function() {
+				if(window.innerWidth > 1300) {
+					this.desktop = true;
+				} else {
+					this.desktop = false;
+				}
+			},
 		},
 		created() {
+			this.onResize();
 			this.$eventBus.$on('overflowHidden', this.overflow);
 		},
 		beforeDestroy() {
