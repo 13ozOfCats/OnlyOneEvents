@@ -148,7 +148,7 @@
 				} else {
 					this.color = '#FFFFFF';
 				}
-				if (this.$route.path === '/') {
+				if ((this.$route.path === '/') && this.desktop) {
 					this.position = 'fixed';
 				} else {
 					this.position = 'absolute';

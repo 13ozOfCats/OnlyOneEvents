@@ -186,6 +186,13 @@
 			z-index: 2;
 			background: rgba(33, 33, 33, 0.55);
 		}
+		&__contacts {
+			width: 100%;
+			height: 480px;
+			background: var(--bg);
+			padding-top: 48px;
+			padding-bottom: 44px;
+		}
 	}
 
 	@media all and(min-width: 968px) {
@@ -206,6 +213,10 @@
 			}
 			&__container {
 				margin-top: 48px;
+			}
+			&__contacts {
+				padding-top: 72px;
+				padding-bottom: 72px;
 			}
 		}
 	}

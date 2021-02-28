@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<div class="main__wrapper desktop">
+		<div class="main__wrapper desktop" v-if="desktop">
 			<div class="main__inner">
 				<div class="hover__bg hover__bg-spb" :class="{'hover__bg-active': dots.spb}">
 					<div class="hover__cities">
@@ -27,7 +27,8 @@
 						<div
 							class="main__string"
 							:class="{
-								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy || dots.agency || dots.spb
+								'main__string-white':
+									dots.events || dots.creative || dots.decor || dots.philosophy || dots.agency || dots.spb,
 							}"
 							id="string-1"
 						>
@@ -877,7 +878,7 @@
 				:class="{'main__bg-active': dots.events || dots.creative || dots.decor}"
 			></div>
 		</div>
-		<section class="works desktop" @wheel="goToMeet">
+		<section v-if="desktop" class="works desktop" @wheel="goToMeet">
 			<div class="container container-h100">
 				<div class="works__items">
 					<div class="works__first">
@@ -894,7 +895,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="meet desktop" @wheel="backFromMeet">
+		<section v-if="!desktop" class="meet desktop" @wheel="backFromMeet">
 			<div class="meet__box">
 				<div class="meet__title">
 					Обсудим проект?
@@ -923,7 +924,7 @@
 				<div class="meet__bg" :class="{'meet__bg-active': this.meetBg, 'meet__bg-top': this.meetBgTop}"></div>
 			</div>
 		</section>
-		<div class="main__mobile">
+		<div class="main__mobile" v-if="!desktop">
 			<section class="mobile__main">
 				<div class="container">
 					<div class="mobile__title">Привет! Мы маркетинговое агентство</div>
@@ -952,6 +953,10 @@
 				</div>
 				<div class="mobile__bg"></div>
 			</section>
+			<mobileWorks></mobileWorks>
+			<div class="mobile__contacts">
+				<contacts></contacts>
+			</div>
 		</div>
 	</div>
 </template>
@@ -960,6 +965,8 @@
 	import {mapGetters} from 'vuex';
 	import lax from 'lax.js';
 	import pluhs from './components/pluhi';
+	import mobileWorks from './components/mobile_works';
+	import contacts from '../../components/contacts/index.vue';
 	import anime from "animejs/lib/anime.es.js";
 
 	export default Vue.extend({
@@ -972,6 +979,7 @@
 				canPlay: true,
 				meetBg: false,
 				meetBgTop: false,
+				desktop: true,
 				dots: {
 					we: false,
 					agency: false,
@@ -986,6 +994,8 @@
 		},
 		components: {
 			pluhs,
+			mobileWorks,
+			contacts,
 		},
 		methods: {
 			openShowreel: function() {
@@ -1140,104 +1150,112 @@
 					}
 				}
 			},
+			onResize: function() {
+				this.desktop = window.innerWidth > 1300;
+			},
 		},
 		computed: {
 			...mapGetters(['posts', 'showPreloader']),
 		},
 		created() {
+			this.onResize();
 			this.$eventBus.$on('scrollFromMeet', this.scrollFromMeet);
 		},
 		mounted() {
-			this.foi = anime.timeline({
-				autoplay: true,
-				loop: true,
-			}).add({
-				targets: '#about__focus',
-				opacity: 1,
-				delay: 100,
-				duration: 500,
-			}).add({
-				targets: '.about__focus.line',
-				strokeDashoffset: [anime.setDashoffset, 0],
-				easing: 'easeInOutSine',
-				duration: 300,
-				delay: function(el, i) { return i * 200 },
-				direction: 'alternate-reverse',
-			}).add({
-				targets: '#about__focus .foi__text',
-				opacity: 0,
-				delay: 300,
-				duration: 100,
-			}).add({
-				targets: '#about__on',
-				opacity: 1,
-				delay: 100,
-				duration: 500,
-			}).add({
-				targets: '.about__on.line',
-				strokeDashoffset: [anime.setDashoffset, 0],
-				easing: 'easeInOutSine',
-				duration: 400,
-				delay: function(el, i) { return i * 150 },
-				direction: 'alternate-reverse',
-			}).add({
-				targets: '#about__on .foi__text',
-				opacity: 0,
-				delay: 300,
-				duration: 100,
-			}).add({
-				targets: '#about__ideas',
-				opacity: 1,
-				delay: 100,
-				duration: 500,
-			}).add({
-				targets: '.about__ideas.line',
-				strokeDashoffset: [anime.setDashoffset, 0],
-				easing: 'easeInOutSine',
-				duration: 500,
-				delay: function(el, i) { return i * 100 },
-				direction: 'alternate-reverse',
-			}).add({
-				targets: '#about__ideas, #about__on,  #about__focus',
-				opacity: 0,
-				delay: 300,
-				duration: 100,
-			});
-			this.goForm = anime.timeline({
-				loop: false,
-				autoplay: false,
-			})
-				.add({
+			if (this.desktop) {
+				this.foi = anime.timeline({
+					autoplay: true,
+					loop: true,
+				}).add({
+					targets: '#about__focus',
+					opacity: 1,
+					delay: 100,
+					duration: 500,
+				}).add({
+					targets: '.about__focus.line',
+					strokeDashoffset: [anime.setDashoffset, 0],
+					easing: 'easeInOutSine',
+					duration: 300,
+					delay: function(el, i) {
+						return i * 200
+					},
+					direction: 'alternate-reverse',
+				}).add({
+					targets: '#about__focus .foi__text',
+					opacity: 0,
+					delay: 300,
+					duration: 100,
+				}).add({
+					targets: '#about__on',
+					opacity: 1,
+					delay: 100,
+					duration: 500,
+				}).add({
+					targets: '.about__on.line',
+					strokeDashoffset: [anime.setDashoffset, 0],
+					easing: 'easeInOutSine',
+					duration: 400,
+					delay: function(el, i) {
+						return i * 150
+					},
+					direction: 'alternate-reverse',
+				}).add({
+					targets: '#about__on .foi__text',
+					opacity: 0,
+					delay: 300,
+					duration: 100,
+				}).add({
+					targets: '#about__ideas',
+					opacity: 1,
+					delay: 100,
+					duration: 500,
+				}).add({
+					targets: '.about__ideas.line',
+					strokeDashoffset: [anime.setDashoffset, 0],
+					easing: 'easeInOutSine',
+					duration: 500,
+					delay: function(el, i) {
+						return i * 100
+					},
+					direction: 'alternate-reverse',
+				}).add({
+					targets: '#about__ideas, #about__on,  #about__focus',
+					opacity: 0,
+					delay: 300,
+					duration: 100,
+				});
+				this.goForm = anime.timeline({
+					loop: false,
+					autoplay: false,
+				}).add({
 					targets: '.meet__bg',
 					easing: 'easeInOutCubic',
 					scaleY: [1, 0],
 					delay: 100,
 					duration: 800,
-				})
-				.add({
+				}).add({
 					targets: '.meet',
 					easing: 'easeInOutCirc',
 					translateX: [0, 0],
 					translateY: [0, '-100%'],
 					duration: 1000,
 				}, '-=300');
-			this.goMeet = anime.timeline({
-				loop: false,
-				autoplay: false,
-			})
-				.add({
+				this.goMeet = anime.timeline({
+					loop: false,
+					autoplay: false,
+				}).add({
 					targets: '.meet',
 					easing: 'easeInOutCirc',
 					translateX: ['100%', 0],
 					duration: 1000,
-				})
-				.add({
+				}).add({
 					targets: '.meet__bg',
 					easing: 'easeInOutCubic',
 					scaleY: [0, 1],
 					delay: 100,
 					duration: 600,
 				});
+			}
 			if (!this.showPreloader) {
 				window.scrollTo({
 					top: document.getElementById('main').offsetTop,
@@ -2067,12 +2085,17 @@
 		&__main {
 			padding-bottom: 188px;
 			position: relative;
+			overflow: hidden;
 		}
 		&__title {
 			font-size: 36px;
 			line-height: 120%;
 			text-align: center;
 			color: #ffffff;
+		}
+		&__title2 {
+			font-size: 28px;
+			line-height: 120%;
 		}
 		&__subtitle {
 			margin-top: 16px;
@@ -2108,7 +2131,7 @@
 			width: 70%;
 		}
 		&__slide {
-			width: 256px;
+			width: 256px !important;
 			height: 176px;
 			border-radius: 6px;
 			padding: 16px;
@@ -2131,6 +2154,13 @@
 			min-width: 100%;
 			height: 100%;
 			object-fit: cover;
+		}
+		&__contacts {
+			width: 100%;
+			height: 480px;
+			background: var(--bg);
+			padding-top: 48px;
+			padding-bottom: 44px;
 		}
 	}
 	.meet {
