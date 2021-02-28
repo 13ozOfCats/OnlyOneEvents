@@ -2,9 +2,25 @@
 	<div class="home">
 		<div class="main__wrapper desktop">
 			<div class="main__inner">
-				<div class="hover__bg hover__bg-spb" :class="{'hover__bg-active': dots.spb}"></div>
+				<div class="hover__bg hover__bg-spb" :class="{'hover__bg-active': dots.spb}">
+					<div class="hover__cities">
+						<svg width="110" height="163" viewBox="0 0 110 163" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<ellipse cx="55" cy="153" rx="38" ry="10" fill="black" fill-opacity="0.25"></ellipse>
+							<path
+								d="M55 0C24.6728 0 0 24.6728 0 54.9997C0 92.6363 49.2196 147.889 51.3152 150.223C53.2835 152.415 56.7201 152.411 58.6848 150.223C60.7804 147.889 110 92.6363 110 54.9997C109.999 24.6728 85.3269 0 55 0ZM55 82.6716C39.7416 82.6716 27.3284 70.258 27.3284 54.9997C27.3284 39.7414 39.7419 27.3281 55 27.3281C70.2581 27.3281 82.6713 39.7416 82.6713 55C82.6713 70.2583 70.2581 82.6716 55 82.6716Z"
+								fill="white"
+							></path>
+						</svg>
+						<div class="main__text">
+							С опытом работы в Москве, Сочи, Перми, Екатеринбурге, Новосибирске, Краснодаре, а также в Финляндии.
+						</div>
+					</div>
+				</div>
 				<div class="hover__bg hover__bg-agency" :class="{'hover__bg-active': dots.agency}">
 					<div class="hover__chutes"></div>
+				</div>
+				<div class="hover__logo" :class="{'hover__logo-active': dots.we}">
+					<img src="./images/main_megalogo.svg" loading="lazy" alt="ooe logo" />
 				</div>
 				<section class="main__section" id="welcome">
 					<div class="container">
@@ -21,7 +37,13 @@
 							></span>
 							<span class="main__word" id="word-3">{{ '\xa0' }}маркетинговое{{ '\xa0' }}</span>
 							<span id="string-1-2-3">
-								<span class="main__word" id="word-4" :class="{'pointer': dots.agency}" @mouseover="agency(true)" @mouseout="agency(false)"
+								<span
+									class="main__word"
+									id="word-4"
+									:class="{pointer: dots.agency}"
+									@mouseover="agency(true)"
+									@mouseout="agency(false)"
+									@click="agencyClick"
 									>агентство
 									<span class="hover__descr" :class="{'hover__descr-active': dots.agency}">
 										нажмите, чтобы узнать больше о нас
@@ -89,15 +111,15 @@
 							</span>
 						</div>
 						<div class="main__scroll">scroll</div>
-						<div class="main__logo" :class="{'main__logo-active': dots.we}">
-							<img src="./images/main_megalogo.svg" loading="lazy" alt="" />
+						<div class="main__logo">
+							<img src="./images/main_megalogo.svg" loading="lazy" alt="ooe logo" />
 						</div>
 						<div class="main__aboutBg"></div>
 						<span class="main__about" :class="{'main__about-active': dots.agency}">
 							”Мы - команда увлеченных профессионалов, с 2015 года создающая яркие зрелищные проекты в сфере
 							event-маркетинга.”
 						</span>
-						<div class="main__cities" :class="{'main__cities-active': dots.spb}">
+						<div class="main__cities">
 							<svg width="110" height="163" viewBox="0 0 110 163" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<ellipse cx="55" cy="153" rx="38" ry="10" fill="black" fill-opacity="0.25"></ellipse>
 								<path
@@ -551,7 +573,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="main__svgbg" :class="{'main__svgbg-active': dots.philosophy}" style="opacity: 0">
+						<div class="main__svgbg" :class="{'main__svgbg-active': dots.philosophy}">
 							<svg width="1800" height="1800" viewBox="0 0 1800 1800" fill="none" class="main__foi">
 								<g id="about__ideas" style="opacity: 0">
 									<circle
@@ -1008,59 +1030,104 @@
 				});
 			},
 			we: function(bool) {
-				this.dots.we = bool;
+				if (bool) {
+					if (window.scrollY > 7200) {
+						this.dots.we = true;
+					}
+				} else {
+					if (this.dots.we === true) {
+						this.dots.we = false;
+					}
+				}
 			},
 			agency: function(bool) {
 				if (bool) {
-					this.dots.agency = true;
+					if (window.scrollY > 7200) {
+						this.dots.agency = true;
+					}
 				} else {
-					this.dots.agency = false;
+					if (this.dots.agency === true) {
+						this.dots.agency = false;
+					}
+				}
+			},
+			agencyClick: function() {
+				if (this.dots.agency === true) {
+					this.$router.push({path: '/about'});
 				}
 			},
 			spb: function(bool) {
-				this.dots.spb = bool;
+				if (bool) {
+					if (window.scrollY > 7200) {
+						this.dots.spb = true;
+					}
+				} else {
+					if (this.dots.spb === true) {
+						this.dots.spb = false;
+					}
+				}
 			},
 			events: function(bool) {
 				if (bool) {
-					this.$eventBus.$emit('event', true);
-					this.dots.events = true;
+					if (window.scrollY > 7200) {
+						this.$eventBus.$emit('event', true);
+						this.dots.events = true;
+					}
 				} else {
-					this.$eventBus.$emit('event', false);
-					this.dots.events = false;
+					if (this.dots.events === true) {
+						this.$eventBus.$emit('event', false);
+						this.dots.events = false;
+					}
 				}
 			},
 			creative: function(bool) {
 				if (bool) {
-					this.$eventBus.$emit('creative', true);
-					this.dots.creative = true;
+					if (window.scrollY > 7200) {
+						this.$eventBus.$emit('creative', true);
+						this.dots.creative = true;
+					}
 				} else {
-					this.$eventBus.$emit('creative', false);
-					this.dots.creative = false;
+					if (this.dots.creative === true) {
+						this.$eventBus.$emit('creative', false);
+						this.dots.creative = false;
+					}
 				}
 			},
 			decor: function(bool) {
 				if (bool) {
-					this.$eventBus.$emit('decor', true);
-					this.dots.decor = true;
+					if (window.scrollY > 7200) {
+						this.$eventBus.$emit('decor', true);
+						this.dots.decor = true;
+					}
 				} else {
-					this.$eventBus.$emit('decor', false);
-					this.dots.decor = false;
+					if (this.dots.decor === true) {
+						this.$eventBus.$emit('decor', false);
+						this.dots.decor = false;
+					}
 				}
 			},
 			philosophy: function(bool) {
 				if (bool) {
-					this.foi.play();
-					this.dots.philosophy = true;
+					if (window.scrollY > 7200) {
+						this.foi.play();
+						this.dots.philosophy = true;
+					}
 				} else {
-					this.foi.pause();
-					this.dots.philosophy = false;
+					if (this.dots.philosophy === true) {
+						this.foi.pause();
+						this.dots.philosophy = false;
+					}
 				}
 			},
 			ooe: function(bool) {
 				if (bool) {
-					this.dots.ooe = true;
+					if (window.scrollY > 7200) {
+						this.dots.ooe = true;
+					}
 				} else {
-					this.dots.ooe = false;
+					if (this.dots.ooe === true) {
+						this.dots.ooe = false;
+					}
 				}
 			},
 		},
@@ -1419,12 +1486,12 @@
 							[50, 0],
 						],
 						opacity: [
-							[2700, 3100, 3800, 3801],
-							[0, 1, 1, 0],
+							[2700, 3100],
+							[0, 1],
 						],
 						translateX: [
-							[3300, 3800, 3801, 3802],
-							[0, '-screenWidth', '-screenWidth', 0],
+							[3300, 3800],
+							[0, '-screenWidth'],
 						],
 					},
 				});
@@ -1507,17 +1574,37 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			display: none;
-			&-active {
-				display: block;
-			}
+			visibility: hidden;
+			transition: 0.4s;
 			&-spb {
 				z-index: 11;
 				background: var(--red);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transform: translateX(100%);
 			}
 			&-agency {
+				opacity: 0;
 				z-index: -11;
 				background: var(--bg);
+			}
+			&-active {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateX(0) !important;
+			}
+		}
+		&__logo {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			transition: 0.4s;
+			transform: translateX(-100%);
+			visibility: hidden;
+			&-active {
+				visibility: visible;
+				transform: translateX(0);
 			}
 		}
 		&__chutes {
@@ -1529,6 +1616,13 @@
 			background: url('./images/main__bg-2.svg') center top/cover;
 			animation: hover__chutes 5s linear infinite;
 		}
+		&__cities {
+			margin-top: 50px;
+			width: fit-content;
+			display: flex;
+			align-items: center;
+			position: relative;
+		}
 		&__descr {
 			position: absolute;
 			bottom: -5px;
@@ -1539,9 +1633,9 @@
 			text-align: center;
 			text-decoration-line: underline;
 			color: #ffffff;
-			display: none;
+			visibility: hidden;
 			&-active {
-				display: block;
+				visibility: visible;
 			}
 		}
 	}
@@ -1691,10 +1785,6 @@
 			left: 0;
 			bottom: 0;
 			opacity: 0;
-			transition: 0.3s;
-			&-active {
-				opacity: 1 !important;
-			}
 		}
 		&__bg {
 			position: fixed;
@@ -1753,10 +1843,6 @@
 			display: flex;
 			align-items: center;
 			position: relative;
-			&-active {
-				opacity: 1 !important;
-				z-index: 12;
-			}
 		}
 		&__text {
 			margin-left: 45px;
@@ -1864,8 +1950,11 @@
 			width: 100%;
 			height: 100%;
 			background: var(--bg);
-			transition: 0.2s;
+			opacity: 0;
+			transition: 0.4s;
+			visibility: hidden;
 			&-active {
+				visibility: visible;
 				opacity: 1 !important;
 			}
 		}

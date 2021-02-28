@@ -218,7 +218,6 @@
 				}
 				this.event = bool;
 			});
-
 			this.$eventBus.$on('creative', (bool) => {
 				if (bool) {
 					pluha3.play();
@@ -229,7 +228,6 @@
 				}
 				this.creative = bool;
 			});
-
 			this.$eventBus.$on('decor', (bool) => {
 				if (bool) {
 					pluha5.play();
@@ -239,9 +237,7 @@
 					pluha6.pause();
 				}
 				this.decor = bool;
-
 			});
-
 		},
 		beforeDestroy() {
 			this.$eventBus.$off('event');
@@ -254,7 +250,9 @@
 	.pluha {
 		position: absolute;
 		top: calc(50% - 300px);
-		display: none;
+		visibility: hidden;
+		opacity: 0;
+		transition: 0.4s;
 		&-left {
 			left: calc(50% - 600px);
 		}
@@ -262,7 +260,8 @@
 			right: calc(50% - 600px);
 		}
 		&-active {
-			display: block;
+			visibility: visible;
+			opacity: 1;
 		}
 	}
 </style>
