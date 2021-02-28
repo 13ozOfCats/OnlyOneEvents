@@ -895,7 +895,7 @@
 				</div>
 			</div>
 		</section>
-		<section v-if="!desktop" class="meet desktop" @wheel="backFromMeet">
+		<section v-if="desktop" class="meet desktop" @wheel="backFromMeet">
 			<div class="meet__box">
 				<div class="meet__title">
 					Обсудим проект?
