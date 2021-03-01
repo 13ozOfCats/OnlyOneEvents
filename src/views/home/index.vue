@@ -37,7 +37,17 @@
 								><span class="hover__we" :class="{'hover__we-active': dots.ooe}">Мы</span>
 								<span
 									class="main__dot"
-									:class="{'main__dot-active': dots.we, 'main__dot-hidden': dots.ooe}"
+									:class="{
+										'main__dot-active': dots.we,
+										'main__dot-hidden':
+											dots.agency ||
+											dots.spb ||
+											dots.events ||
+											dots.creative ||
+											dots.decor ||
+											dots.philosophy ||
+											dots.ooe,
+									}"
 									style="opacity: 0"
 								></span
 							></span>
@@ -55,12 +65,41 @@
 										<span class="hover__descr" :class="{'hover__descr-active': dots.agency}">
 											нажмите, чтобы узнать больше о нас
 										</span>
-										<span class="main__dot" :class="{'main__dot-hidden': dots.agency}" style="opacity: 0"></span>
+										<span
+											class="main__dot"
+											:class="{
+												'main__dot-hidden':
+													dots.we ||
+													dots.agency ||
+													dots.spb ||
+													dots.events ||
+													dots.creative ||
+													dots.decor ||
+													dots.philosophy ||
+													dots.ooe,
+											}"
+											style="opacity: 0"
+										></span>
 									</span>
 									<span class="main__word hover__word" id="word-5">{{ '\xa0' }}из{{ '\xa0' }}</span>
 									<span class="main__word hover__word" id="word-6">Санкт-</span>
 									<span class="main__word hover__word" id="word-7" @mouseover="spb(true)" @mouseout="spb(false)"
-										>Петербурга<span class="main__dot" :class="{'main__dot-active': dots.spb}" style="opacity: 0"></span
+										>Петербурга
+										<span
+											class="main__dot"
+											:class="{
+												'main__dot-active': dots.spb,
+												'main__dot-hidden':
+													dots.we ||
+													dots.agency ||
+													dots.events ||
+													dots.creative ||
+													dots.decor ||
+													dots.philosophy ||
+													dots.ooe,
+											}"
+											style="opacity: 0"
+										></span
 									></span>
 								</span>
 								<span class="main__word hover__ooe" :class="{'hover__ooe-active': dots.ooe}">
@@ -77,12 +116,28 @@
 						>
 							<span class="main__word" id="word-11">Продюссируем{{ '\xa0' }}</span>
 							<span class="main__word" id="word-12" @mouseover="events(true)" @mouseout="events(false)"
-								>ивенты<span class="main__dot" :class="{'main__dot-active': dots.events}" style="opacity: 0"></span
+								>ивенты<span
+									class="main__dot"
+									:class="{
+										'main__dot-active': dots.events,
+										'main__dot-hidden':
+											dots.we || dots.agency || dots.spb || dots.creative || dots.decor || dots.philosophy || dots.ooe,
+									}"
+									style="opacity: 0"
+								></span
 							></span>
 							<span class="main__word" id="word-13">{{ '\xa0' }}разрабатываем{{ '\xa0' }}</span>
 							<span id="string-2-2">
 								<span class="main__word" id="word-14" @mouseover="creative(true)" @mouseout="creative(false)"
-									>креатив<span class="main__dot" :class="{'main__dot-active': dots.creative}" style="opacity: 0"></span
+									>креатив<span
+										class="main__dot"
+										:class="{
+											'main__dot-active': dots.creative,
+											'main__dot-hidden':
+												dots.we || dots.agency || dots.spb || dots.events || dots.decor || dots.philosophy || dots.ooe,
+										}"
+										style="opacity: 0"
+									></span
 								></span>
 								<span class="main__word" id="word-15">{{ '\xa0' }}проектируем{{ '\xa0' }}стенды</span>
 								<span class="inline-block" id="string-2-3">
@@ -90,7 +145,17 @@
 									<span class="main__word" @mouseover="decor(true)" @mouseout="decor(false)"
 										>декор<span
 											class="main__dot"
-											:class="{'main__dot-active': dots.decor}"
+											:class="{
+												'main__dot-active': dots.decor,
+												'main__dot-hidden':
+													dots.we ||
+													dots.agency ||
+													dots.spb ||
+													dots.events ||
+													dots.creative ||
+													dots.philosophy ||
+													dots.ooe,
+											}"
 											style="opacity: 0"
 										></span></span
 									><span class="main__word" id="word-18">ации c 2015 года.</span>
@@ -107,14 +172,36 @@
 							<span class="main__word" id="word-21">Наша{{ '\xa0' }}</span>
 							<span class="main__word" id="word-22" @mouseover="philosophy(true)" @mouseout="philosophy(false)">
 								философия
-								<span class="main__dot" :class="{'main__dot-active': dots.philosophy}" style="opacity: 0"></span>
+								<span
+									class="main__dot"
+									:class="{
+										'main__dot-active': dots.philosophy,
+										'main__dot-hidden':
+											dots.we || dots.agency || dots.spb || dots.events || dots.creative || dots.decor || dots.ooe,
+									}"
+									style="opacity: 0"
+								></span>
 							</span>
 							<span @mouseover="ooe(true)" @mouseout="ooe(false)">
 								<span class="main__word" id="word-23">{{ '\xa0' }}-{{ '\xa0' }}f</span>
 								<span class="main__word">o</span>
 								<span class="main__word" id="word-25">cus{{ '\xa0' }}</span>
 								<span class="main__word" id="word-26"
-									>o<span class="main__dot" :class="{'main__dot-active': dots.ooe}" style="opacity: 0"></span
+									>o<span
+										class="main__dot"
+										:class="{
+											'main__dot-active': dots.ooe,
+											'main__dot-hidden':
+												dots.we ||
+												dots.agency ||
+												dots.spb ||
+												dots.events ||
+												dots.creative ||
+												dots.decor ||
+												dots.philosophy,
+										}"
+										style="opacity: 0"
+									></span
 								></span>
 								<span class="main__word" id="word-27">n{{ '\xa0' }}id</span>
 								<span class="main__word" id="word-28">e</span>
@@ -1728,7 +1815,6 @@
 			width: 10px;
 			height: 10px;
 			background: #acacac;
-			border: 1px solid #ffffff;
 			&-active {
 				background: #ee3d43;
 			}
@@ -1784,6 +1870,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
+			z-index: 0;
 			width: 100%;
 			height: 200%;
 			background: url('./images/main__bg-2.svg') center top / cover;
