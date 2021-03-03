@@ -212,7 +212,28 @@
 						<div class="main__logo">
 							<img src="./images/main_megalogo.svg" loading="lazy" alt="ooe logo" />
 						</div>
-						<div class="main__aboutBg"></div>
+						<div class="main__aboutBgs">
+							<div class="main__aboutBg main__aboutBg-1"></div>
+							<div class="main__aboutBg main__aboutBg-2"></div>
+							<div class="main__aboutBg main__aboutBg-3"></div>
+							<div class="main__aboutBg main__aboutBg-4"></div>
+							<div class="main__aboutBg main__aboutBg-5"></div>
+							<div class="main__aboutBg main__aboutBg-6"></div>
+							<div class="main__aboutBg main__aboutBg-7"></div>
+							<div class="main__aboutBg main__aboutBg-8"></div>
+							<div class="main__aboutBg main__aboutBg-9"></div>
+							<div class="main__aboutBg main__aboutBg-10"></div>
+							<div class="main__aboutBg main__aboutBg-11"></div>
+							<div class="main__aboutBg main__aboutBg-12"></div>
+							<div class="main__aboutBg main__aboutBg-13"></div>
+							<div class="main__aboutBg main__aboutBg-14"></div>
+							<div class="main__aboutBg main__aboutBg-15"></div>
+							<div class="main__aboutBg main__aboutBg-16"></div>
+							<div class="main__aboutBg main__aboutBg-17"></div>
+							<div class="main__aboutBg main__aboutBg-18"></div>
+							<div class="main__aboutBg main__aboutBg-19"></div>
+							<div class="main__aboutBg main__aboutBg-20"></div>
+						</div>
 						<span class="main__about" :class="{'main__about-active': dots.agency}">
 							”Мы - команда увлеченных профессионалов, с 2015 года создающая яркие зрелищные проекты в сфере
 							event-маркетинга.”
@@ -534,7 +555,13 @@
 								Мы всегда в поиске новых идей для создания эффективных и оригинальных маркетинговых коммуникаций
 							</div>
 						</div>
-						<div class="main__end" :class="{'main__end-hide': dots.philosophy}">
+						<div
+							class="main__end"
+							:class="{
+								'main__end-hide':
+									dots.we || dots.agency || dots.events || dots.creative || dots.decor || dots.philosophy || dots.ooe,
+							}"
+						>
 							<div class="container main__flex">
 								<router-link to="/works" class="main__workbtn btn btn__gray">
 									<span class="btn__text">
@@ -1008,7 +1035,26 @@
 				</div>
 			</div>
 			<div class="meet__inner">
-				<div class="meet__bg" :class="{'meet__bg-active': this.meetBg, 'meet__bg-top': this.meetBgTop}"></div>
+				<div class="meet__bgs" :class="{'meet__bgs-active': this.meetBg}">
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+					<div class="meet__bg"></div>
+				</div>
 			</div>
 		</section>
 		<div class="main__mobile" v-if="!desktop">
@@ -1151,10 +1197,12 @@
 				if (bool) {
 					if (window.scrollY > 7200) {
 						this.dots.agency = true;
+						this.$eventBus.$emit('headerColor', '#ffffff');
 					}
 				} else {
 					if (this.dots.agency === true) {
 						this.dots.agency = false;
+						this.$eventBus.$emit('headerColor', '#212121');
 					}
 				}
 			},
@@ -1167,10 +1215,12 @@
 				if (bool) {
 					if (window.scrollY > 7200) {
 						this.dots.spb = true;
+						this.$eventBus.$emit('headerColor', '#ffffff');
 					}
 				} else {
 					if (this.dots.spb === true) {
 						this.dots.spb = false;
+						this.$eventBus.$emit('headerColor', '#212121');
 					}
 				}
 			},
@@ -1179,11 +1229,13 @@
 					if (window.scrollY > 7200) {
 						this.$eventBus.$emit('event', true);
 						this.dots.events = true;
+						this.$eventBus.$emit('headerColor', '#ffffff');
 					}
 				} else {
 					if (this.dots.events === true) {
 						this.$eventBus.$emit('event', false);
 						this.dots.events = false;
+						this.$eventBus.$emit('headerColor', '#212121');
 					}
 				}
 			},
@@ -1192,11 +1244,13 @@
 					if (window.scrollY > 7200) {
 						this.$eventBus.$emit('creative', true);
 						this.dots.creative = true;
+						this.$eventBus.$emit('headerColor', '#ffffff');
 					}
 				} else {
 					if (this.dots.creative === true) {
 						this.$eventBus.$emit('creative', false);
 						this.dots.creative = false;
+						this.$eventBus.$emit('headerColor', '#212121');
 					}
 				}
 			},
@@ -1205,11 +1259,13 @@
 					if (window.scrollY > 7200) {
 						this.$eventBus.$emit('decor', true);
 						this.dots.decor = true;
+						this.$eventBus.$emit('headerColor', '#ffffff');
 					}
 				} else {
 					if (this.dots.decor === true) {
 						this.$eventBus.$emit('decor', false);
 						this.dots.decor = false;
+						this.$eventBus.$emit('headerColor', '#212121');
 					}
 				}
 			},
@@ -1218,11 +1274,13 @@
 					if (window.scrollY > 7200) {
 						this.foi.play();
 						this.dots.philosophy = true;
+						this.$eventBus.$emit('headerColor', '#ffffff');
 					}
 				} else {
 					if (this.dots.philosophy === true) {
 						this.foi.pause();
 						this.dots.philosophy = false;
+						this.$eventBus.$emit('headerColor', '#212121');
 					}
 				}
 			},
@@ -1316,10 +1374,12 @@
 					autoplay: false,
 				}).add({
 					targets: '.meet__bg',
-					easing: 'easeInOutCubic',
-					scaleY: [1, 0],
-					delay: 100,
-					duration: 800,
+					easing: 'easeInOutCirc',
+					translateY: [0, function (el, i) {
+						const top = 70 * i + 70
+						return -top;
+					}],
+					duration: 1000,
 				}).add({
 					targets: '.meet',
 					easing: 'easeInOutCirc',
@@ -1337,10 +1397,16 @@
 					duration: 1000,
 				}).add({
 					targets: '.meet__bg',
-					easing: 'easeInOutCubic',
-					scaleY: [0, 1],
-					delay: 100,
-					duration: 600,
+					easing: 'easeInOutCirc',
+					translateY: [function (el, i) {
+						const top = window.innerHeight - (70 * i);
+						if(top > 0) {
+							return top;
+						} else {
+							return 0;
+						}
+					}, 0],
+					duration: 1000,
 				});
 			}
 			if (!this.showPreloader) {
@@ -1582,18 +1648,177 @@
 						],
 					},
 				});
-				lax.addElements('.main__aboutBg', {
+				lax.addElements('.main__aboutBgs', {
 					scrollY: {
 						translateY: [
-							[1600, 2100],
-							['2 * screenHeight', '-screenHeight'],
+							[1600, 1800, 2200, 2400],
+							['screenHeight', 0, 0, -100],
 						],
-						scaleY: [
-							[2100, 2400],
-							[1, 0]
-						]
 					},
 				});
+
+				lax.addElements('.main__aboutBg-1', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -70],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-2', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -140],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-3', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -210],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-4', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -280],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-5', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -350],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-6', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -420],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-7', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -490],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-8', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -560],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-9', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -630],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-10', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -700],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-11', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -770],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-12', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -840],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-13', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -910],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-14', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -980],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-15', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1050],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-16', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1120],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-17', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1190],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-18', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1260],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-19', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1330],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-20', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1400],
+						],
+					},
+				});
+
+
 				lax.addElements('.main__cities', {
 					scrollY: {
 						translateY: [
@@ -1866,14 +2091,23 @@
 				display: block;
 			}
 		}
-		&__aboutBg {
+		&__aboutBgs {
 			position: absolute;
+			padding-top: 20px;
 			top: 0;
 			left: 0;
 			z-index: 0;
 			width: 100%;
-			height: 200%;
-			background: url('./images/main__bg-2.svg') center top / cover;
+			height: auto;
+		}
+		&__aboutBg {
+			width: 100%;
+			height: 90px;
+			background: url('./images/main__bg-2.svg') repeat-x left top;
+			margin-top: -20px;
+			&:nth-child(odd) {
+				background: url('./images/main__bg-2.svg') repeat-x -180px top;
+			}
 		}
 		&__ball {
 			position: absolute;
@@ -1939,13 +2173,6 @@
 			line-height: 29px;
 			color: #6f6f6f;
 		}
-		&__foi {
-			position: fixed;
-			z-index: -1;
-			top: 10%;
-			left: 50%;
-			transform: translate(-50%, 0);
-		}
 		&__foibox {
 			position: absolute;
 			top: 75%;
@@ -1965,8 +2192,11 @@
 			bottom: 90px;
 			left: 0;
 			width: 100%;
+			transition: 0.3s;
 			&-hide {
-				display: none;
+				visibility: hidden;
+				opacity: 0 !important;
+				transform: translate3d(0.00001px, 50px, 0.00001px) !important;
 			}
 		}
 		&__links {
@@ -2015,7 +2245,8 @@
 		}
 		&__foi {
 			position: absolute;
-			top: 70%;
+			z-index: -1;
+			top: 75%;
 			left: 50%;
 			transform: translate(-50%, -50%);
 			.line {
@@ -2082,7 +2313,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				transform: translateX(100%);
+				transform: translate3d(100%, 0.00001px, 0.00001px);
 			}
 			&-agency {
 				opacity: 0;
@@ -2286,18 +2517,22 @@
 			z-index: -1;
 			overflow: hidden;
 		}
-		&__bg {
+		&__bgs {
+			padding-top: 20px;
 			width: 100%;
-			height: 200%;
-			background: url('./images/meet__bg.svg') center center / cover;
-			opacity: 0.5;
-			transform: scaleY(0);
-			transform-origin: 50% 100%;
-			&-top {
-				transform-origin: 50% 0;
-			}
+			height: auto;
 			&-active {
 				animation: meet 5s linear infinite;
+			}
+		}
+		&__bg {
+			width: 100%;
+			height: 90px;
+			background: url('./images/meet__bg-1.svg') repeat-x left top;
+			opacity: 0.5;
+			margin-top: -20px;
+			&:nth-child(odd) {
+				background: url('./images/meet__bg-1.svg') repeat-x -180px top;
 			}
 		}
 	}
