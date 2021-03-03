@@ -126,12 +126,17 @@
 			headerHide: function (bool) {
 				this.headerHidden = bool;
 			},
+			headerColor: function (color) {
+				this.color = color;
+			},
 		},
 		created() {
 			this.$eventBus.$on('headerHide', this.headerHide);
+			this.$eventBus.$on('headerColor', this.headerColor);
 		},
 		beforeDestroy() {
 			this.$eventBus.$off('headerHide');
+			this.$eventBus.$on('headerColor');
 		},
 		watch: {
 			$route: function() {
