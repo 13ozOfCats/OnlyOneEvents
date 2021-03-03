@@ -2359,7 +2359,7 @@
 			left: 0;
 			width: 100%;
 			height: 200%;
-			background: url('./images/main__bg-2.svg') center top/cover;
+			background: url('./images/main__bg-3.svg') center top/cover;
 			animation: hover__chutes 5s linear infinite;
 		}
 		&__cities {
