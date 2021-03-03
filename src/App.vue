@@ -579,10 +579,10 @@
 	}
 	@keyframes meet {
 		0% {
-			transform: translateY(-5%);
+			transform: translateY(0);
 		}
 		100% {
-			transform: translateY(-47%);
+			transform: translateY(-420px);
 		}
 	}
 	@keyframes hover__chutes {
