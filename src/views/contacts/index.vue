@@ -31,7 +31,7 @@
 			top: 0;
 			left: 0;
 			z-index: -1;
-			background: var(--bg) url('./images/contacts_bg.svg');
+			background: var(--bg) url('../../assets/images/contacts_bg.svg');
 		}
 	}
 	@media all and(min-width: 968px) {

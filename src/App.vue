@@ -585,14 +585,6 @@
 			transform: translateY(-420px);
 		}
 	}
-	@keyframes hover__chutes {
-		0% {
-			transform: translateY(-0%);
-		}
-		100% {
-			transform: translateY(-46%);
-		}
-	}
 
 	body * {
 		-webkit-font-smoothing: antialiased;
