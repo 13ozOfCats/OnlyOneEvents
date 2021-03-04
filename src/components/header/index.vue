@@ -188,6 +188,7 @@
 		top: 0;
 		left: 0;
 		z-index: 1000;
+		transform: translate3d(0.00001px, 0.00001px, 0.00001px);
 		&-hidden {
 			display: none;
 		}

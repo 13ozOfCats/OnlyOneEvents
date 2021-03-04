@@ -40,7 +40,7 @@
 			<div class="contacts__box">
 				<div class="contacts__subtitle">Адрес</div>
 				<a
-					href="https://yandex.ru/maps/2/saint-petersburg/house/17_ya_liniya_vasilyevskogo_ostrova_4_6ye/Z0kYdABiTUMFQFtjfXVycnhiYQ==/?ll=30.272462%2C59.933415&z=16"
+					href="https://yandex.ru/maps/org/one_only_events/218555672700/?ll=30.272462%2C59.933415&z=16"
 					target="_blank"
 					class="contacts__text contacts__address contacts__hover"
 				>

@@ -17,7 +17,28 @@
 					</div>
 				</div>
 				<div class="hover__bg hover__bg-agency" :class="{'hover__bg-active': dots.agency}">
-					<div class="hover__chutes"></div>
+					<div class="hover__chutes">
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+						<div class="main__aboutBg"></div>
+					</div>
 				</div>
 				<div class="hover__logo" :class="{'hover__logo-active': dots.we}">
 					<img src="./images/main_megalogo.svg" loading="lazy" alt="ooe logo" />
@@ -110,8 +131,9 @@
 						<div
 							class="main__string"
 							:class="{
-								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy || dots.agency,
+								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy,
 							}"
+							v-show="!dots.agency"
 							id="string-2"
 						>
 							<span class="main__word" id="word-11">Продюссируем{{ '\xa0' }}</span>
@@ -165,8 +187,9 @@
 						<div
 							class="main__string"
 							:class="{
-								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy || dots.agency,
+								'main__string-white': dots.events || dots.creative || dots.decor || dots.philosophy,
 							}"
+							v-show="!dots.agency"
 							id="string-3"
 						>
 							<span class="main__word" id="word-21">Наша{{ '\xa0' }}</span>
@@ -182,11 +205,11 @@
 									style="opacity: 0"
 								></span>
 							</span>
-							<span @mouseover="ooe(true)" @mouseout="ooe(false)">
+							<span>
 								<span class="main__word" id="word-23">{{ '\xa0' }}-{{ '\xa0' }}f</span>
 								<span class="main__word">o</span>
 								<span class="main__word" id="word-25">cus{{ '\xa0' }}</span>
-								<span class="main__word" id="word-26"
+								<span class="main__word" id="word-26" @mouseover="ooe(true)" @mouseout="ooe(false)"
 									>o<span
 										class="main__dot"
 										:class="{
@@ -204,7 +227,7 @@
 									></span
 								></span>
 								<span class="main__word" id="word-27">n{{ '\xa0' }}id</span>
-								<span class="main__word" id="word-28">e</span>
+								<span class="main__word" id="word-28" @mouseover="ooe(true)" @mouseout="ooe(false)">e</span>
 								<span class="main__word" id="word-29">as</span>
 							</span>
 						</div>
@@ -262,297 +285,6 @@
 							<div class="main__videodescr">
 								<span class="main__name"> Видео о нас </span>
 								<span class="main__time"> 2:12 </span>
-							</div>
-						</div>
-						<svg width="1800" height="1800" viewBox="0 0 1800 1800" fill="none" class="main__foi">
-							<g>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="275"
-									stroke="url(#ma1n__linear3)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="330"
-									stroke="url(#ma1n__linear4)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="385"
-									stroke="url(#ma1n__linear5)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="440"
-									stroke="url(#ma1n__linear6)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="495"
-									stroke="url(#ma1n__linear7)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="550"
-									stroke="url(#ma1n__linear8)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="605"
-									stroke="url(#ma1n__linear9)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="660"
-									stroke="url(#ma1n__linear10)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="715"
-									stroke="url(#ma1n__linear11)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="770"
-									stroke="url(#ma1n__linear12)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="825"
-									stroke="url(#ma1n__linear13)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__ideas .line"
-									cx="900"
-									cy="900"
-									r="880"
-									stroke="url(#ma1n__linear14)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<text x="900" y="910" class="preloader__text" id="ideas__text" style="opacity: 0">
-									ideas
-								</text>
-							</g>
-							<g>
-								<circle
-									class="main__on .line"
-									cx="900"
-									cy="900"
-									r="165"
-									stroke="url(#ma1n__linear1)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<circle
-									class="main__on .line"
-									cx="900"
-									cy="900"
-									r="220"
-									stroke="url(#ma1n__linear2)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<text x="900" y="910" class="preloader__text" id="on__text" style="opacity: 0">
-									on
-								</text>
-							</g>
-							<g>
-								<circle
-									class="main__focus .line"
-									cx="900"
-									cy="900"
-									r="110"
-									stroke="url(#ma1n__linear0)"
-									stroke-width="2"
-									style="opacity: 0"
-								></circle>
-								<text x="900" y="910" class="preloader__text" id="focus__text" style="opacity: 0">
-									focus
-								</text>
-							</g>
-							<defs>
-								<linearGradient
-									id="ma1n__linear0"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1010"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(-165, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear1"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1065"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(115, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear2"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1120"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(-220, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear3"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1175"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(100, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear4"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1230"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(130, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear5"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1285"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(110, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear6"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1340"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(-200, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear7"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1395"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(130, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear8"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1450"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(115, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear9"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1505"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(75, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-								<linearGradient
-									id="ma1n__linear10"
-									x1="900"
-									y1="800"
-									x2="900"
-									y2="1560"
-									gradientUnits="userSpaceOnUse"
-									gradientTransform="rotate(150, 900, 900)"
-								>
-									<stop stop-color="#FF0000"></stop>
-									<stop offset="0.520833" stop-color="#212121"></stop>
-								</linearGradient>
-							</defs>
-						</svg>
-						<div class="main__foibox" style="opacity: 0">
-							<div class="main__textfoi">
-								Мы всегда в поиске новых идей для создания эффективных и оригинальных маркетинговых коммуникаций
 							</div>
 						</div>
 						<div
@@ -701,33 +433,16 @@
 						<div class="main__svgbg" :class="{'main__svgbg-active': dots.philosophy}">
 							<svg width="1800" height="1800" viewBox="0 0 1800 1800" fill="none" class="main__foi">
 								<g id="about__ideas" style="opacity: 0">
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="275"
-										transform="rotate(-125 900 900)"
-										stroke="url(#linear3)"
-										stroke-width="2"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="330"
-										transform="rotate(145 900 900)"
-										stroke="url(#linear4)"
-										stroke-width="2"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="385"
-										transform="rotate(115 900 900)"
-										stroke="url(#linear5)"
-										stroke-width="2"
-									></circle>
+									<circle cx="900" cy="900" r="440" stroke="#323232" stroke-width="2" style="opacity: 0.5"></circle>
+									<circle cx="900" cy="900" r="495" stroke="#323232" stroke-width="2" style="opacity: 0.45"></circle>
+									<circle cx="900" cy="900" r="550" stroke="#323232" stroke-width="2" style="opacity: 0.4"></circle>
+									<circle cx="900" cy="900" r="605" stroke="#323232" stroke-width="2" style="opacity: 0.35"></circle>
+									<circle cx="900" cy="900" r="660" stroke="#323232" stroke-width="2" style="opacity: 0.3"></circle>
+									<circle cx="900" cy="900" r="715" stroke="#323232" stroke-width="2" style="opacity: 0.25"></circle>
+									<circle cx="900" cy="900" r="770" stroke="#323232" stroke-width="2" style="opacity: 0.2"></circle>
+									<circle cx="900" cy="900" r="825" stroke="#323232" stroke-width="2" style="opacity: 0.15"></circle>
+									<circle cx="900" cy="900" r="880" stroke="#323232" stroke-width="2" style="opacity: 0.1"></circle>
+
 									<circle
 										class="about__ideas line"
 										cx="900"
@@ -736,6 +451,7 @@
 										transform="rotate(75 900 900)"
 										stroke="url(#linear6)"
 										stroke-width="2"
+										style="opacity: 0.5"
 									></circle>
 									<circle
 										class="about__ideas line"
@@ -745,6 +461,7 @@
 										transform="rotate(190 900 900)"
 										stroke="url(#linear7)"
 										stroke-width="2"
+										style="opacity: 0.45"
 									></circle>
 									<circle
 										class="about__ideas line"
@@ -754,6 +471,7 @@
 										transform="rotate(75 900 900)"
 										stroke="url(#linear8)"
 										stroke-width="2"
+										style="opacity: 0.4"
 									></circle>
 									<circle
 										class="about__ideas line"
@@ -763,6 +481,7 @@
 										transform="rotate(115 900 900)"
 										stroke="url(#linear9)"
 										stroke-width="2"
+										style="opacity: 0.35"
 									></circle>
 									<circle
 										class="about__ideas line"
@@ -772,6 +491,7 @@
 										transform="rotate(95 900 900)"
 										stroke="url(#linear10)"
 										stroke-width="2"
+										style="opacity: 0.3"
 									></circle>
 									<circle
 										class="about__ideas line"
@@ -781,6 +501,7 @@
 										transform="rotate(115 900 900)"
 										stroke="url(#linear11)"
 										stroke-width="2"
+										style="opacity: 0.25"
 									></circle>
 									<circle
 										class="about__ideas line"
@@ -790,6 +511,7 @@
 										transform="rotate(145 900 900)"
 										stroke="url(#linear12)"
 										stroke-width="2"
+										style="opacity: 0.2"
 									></circle>
 									<circle
 										class="about__ideas line"
@@ -799,6 +521,7 @@
 										transform="rotate(105 900 900)"
 										stroke="url(#linear13)"
 										stroke-width="2"
+										style="opacity: 0.15"
 									></circle>
 									<circle
 										class="about__ideas line"
@@ -808,19 +531,15 @@
 										transform="rotate(-160 900 900)"
 										stroke="url(#linear14)"
 										stroke-width="2"
+										style="opacity: 0.1"
 									></circle>
 									<text x="900" y="910" class="foi__text about__ideas">ideas</text>
 								</g>
 								<g id="about__on" style="opacity: 0">
-									<circle
-										class="about__on line"
-										cx="900"
-										cy="900"
-										r="165"
-										transform="rotate(-145 900 900)"
-										stroke="url(#linear1)"
-										stroke-width="2"
-									></circle>
+									<circle cx="900" cy="900" r="220" stroke="#323232" stroke-width="2" style="opacity: 0.9"></circle>
+									<circle cx="900" cy="900" r="275" stroke="#323232" stroke-width="2" style="opacity: 0.8"></circle>
+									<circle cx="900" cy="900" r="330" stroke="#323232" stroke-width="2" style="opacity: 0.7"></circle>
+									<circle cx="900" cy="900" r="385" stroke="#323232" stroke-width="2" style="opacity: 0.6"></circle>
 									<circle
 										class="about__on line"
 										cx="900"
@@ -829,10 +548,43 @@
 										transform="rotate(-200 900 900)"
 										stroke="url(#linear2)"
 										stroke-width="2"
+										style="opacity: 0.9"
+									></circle>
+									<circle
+										class="about__on line"
+										cx="900"
+										cy="900"
+										r="275"
+										transform="rotate(-125 900 900)"
+										stroke="url(#linear3)"
+										stroke-width="2"
+										style="opacity: 0.8"
+									></circle>
+									<circle
+										class="about__on line"
+										cx="900"
+										cy="900"
+										r="330"
+										transform="rotate(145 900 900)"
+										stroke="url(#linear4)"
+										stroke-width="2"
+										style="opacity: 0.7"
+									></circle>
+									<circle
+										class="about__on line"
+										cx="900"
+										cy="900"
+										r="385"
+										transform="rotate(115 900 900)"
+										stroke="url(#linear5)"
+										stroke-width="2"
+										style="opacity: 0.6"
 									></circle>
 									<text x="900" y="910" class="foi__text about__on">on</text>
 								</g>
 								<g id="about__focus" style="opacity: 0">
+									<circle cx="900" cy="900" r="110" stroke="#323232" stroke-width="2"></circle>
+									<circle cx="900" cy="900" r="165" stroke="#323232" stroke-width="2" style="opacity: 0.95"></circle>
 									<circle
 										class="about__focus line"
 										cx="900"
@@ -841,6 +593,16 @@
 										transform="rotate(-65 900 900)"
 										stroke="url(#linear0)"
 										stroke-width="2"
+									></circle>
+									<circle
+										class="about__focus line"
+										cx="900"
+										cy="900"
+										r="165"
+										transform="rotate(-145 900 900)"
+										stroke="url(#linear1)"
+										stroke-width="2"
+										style="opacity: 0.95"
 									></circle>
 									<text x="900" y="910" class="foi__text about__focus">focus</text>
 								</g>
@@ -855,7 +617,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear1"
@@ -867,7 +629,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear2"
@@ -879,7 +641,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear3"
@@ -891,7 +653,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear4"
@@ -903,7 +665,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear5"
@@ -915,7 +677,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear6"
@@ -927,7 +689,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear7"
@@ -939,7 +701,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear8"
@@ -951,7 +713,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear9"
@@ -963,7 +725,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 									<linearGradient
 										id="linear10"
@@ -975,7 +737,7 @@
 										gradientTransform="rotate(-50, 900, 900)"
 									>
 										<stop stop-color="#FF0000"></stop>
-										<stop offset="0.520833" stop-color="#212121"></stop>
+										<stop offset="0.520833" stop-color="#323232"></stop>
 									</linearGradient>
 								</defs>
 							</svg>
@@ -1009,7 +771,12 @@
 				</div>
 			</div>
 		</section>
-		<section v-if="desktop" class="meet desktop" @wheel="backFromMeet">
+		<section
+			v-if="desktop"
+			class="meet desktop"
+			@wheel="backFromMeet"
+			style="transform: translate3d(0.00001px, 0.00001px, 0.00001px);"
+		>
 			<div class="meet__box">
 				<div class="meet__title">
 					Обсудим проект?
@@ -1315,22 +1082,22 @@
 					targets: '#about__focus',
 					opacity: 1,
 					delay: 100,
-					duration: 500,
+					duration: 300,
 				}).add({
 					targets: '.about__focus.line',
 					strokeDashoffset: [anime.setDashoffset, 0],
 					easing: 'easeInOutSine',
-					duration: 300,
+					duration: 200,
 					delay: function(el, i) {
-						return i * 200
+						return i * 100
 					},
 					direction: 'alternate-reverse',
 				}).add({
 					targets: '#about__focus .foi__text',
 					opacity: 0,
-					delay: 300,
-					duration: 100,
-				}).add({
+					delay: 100,
+					duration: 300,
+				}, '-=200').add({
 					targets: '#about__on',
 					opacity: 1,
 					delay: 100,
@@ -1339,26 +1106,26 @@
 					targets: '.about__on.line',
 					strokeDashoffset: [anime.setDashoffset, 0],
 					easing: 'easeInOutSine',
-					duration: 400,
+					duration: 300,
 					delay: function(el, i) {
-						return i * 150
+						return i * 100
 					},
 					direction: 'alternate-reverse',
 				}).add({
 					targets: '#about__on .foi__text',
 					opacity: 0,
-					delay: 300,
-					duration: 100,
-				}).add({
+					delay: 100,
+					duration: 300,
+				}, '-=200').add({
 					targets: '#about__ideas',
 					opacity: 1,
-					delay: 100,
+					delay: 400,
 					duration: 500,
 				}).add({
 					targets: '.about__ideas.line',
 					strokeDashoffset: [anime.setDashoffset, 0],
 					easing: 'easeInOutSine',
-					duration: 500,
+					duration: 400,
 					delay: function(el, i) {
 						return i * 100
 					},
@@ -1366,8 +1133,8 @@
 				}).add({
 					targets: '#about__ideas, #about__on,  #about__focus',
 					opacity: 0,
-					delay: 300,
-					duration: 100,
+					delay: 100,
+					duration: 300,
 				});
 				this.goForm = anime.timeline({
 					loop: false,
@@ -1385,6 +1152,7 @@
 					easing: 'easeInOutCirc',
 					translateX: [0, 0],
 					translateY: [0, '-100%'],
+					translateZ: [0, 0],
 					duration: 1000,
 				}, '-=300');
 				this.goMeet = anime.timeline({
@@ -1394,6 +1162,8 @@
 					targets: '.meet',
 					easing: 'easeInOutCirc',
 					translateX: ['100%', 0],
+					translateY: [0, 0],
+					translateZ: [0, 0],
 					duration: 1000,
 				}).add({
 					targets: '.meet__bg',
@@ -1907,6 +1677,18 @@
 	#string-1 {
 		z-index: 12;
 	}
+	#word-26 {
+		&:before {
+			content: '';
+			position: absolute;
+			width: 350%;
+			height: 100%;
+			top: 0;
+			left: -125%;
+			z-index: 41;
+			transform: translate3d(0.00001px, 0.00001px, 0.00001px);
+		}
+	}
 	.works {
 		height: 100vh;
 		width: 100%;
@@ -2080,7 +1862,7 @@
 		&__about {
 			display: none;
 			position: absolute;
-			top: 62%;
+			top: 45%;
 			left: calc(50% - 355px);
 			width: 710px;
 			font-size: 24px;
@@ -2173,12 +1955,6 @@
 			line-height: 29px;
 			color: #6f6f6f;
 		}
-		&__foibox {
-			position: absolute;
-			top: 75%;
-			left: 50%;
-			transform: translate(-50%, 0);
-		}
 		&__textfoi {
 			text-align: center;
 			max-width: 680px;
@@ -2249,53 +2025,6 @@
 			top: 75%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			.line {
-				&:nth-child(1) {
-					opacity: 1;
-				}
-				&:nth-child(2) {
-					opacity: 0.9;
-				}
-				&:nth-child(3) {
-					opacity: 0.8;
-				}
-				&:nth-child(4) {
-					opacity: 0.7;
-				}
-				&:nth-child(5) {
-					opacity: 0.6;
-				}
-				&:nth-child(6) {
-					opacity: 0.55;
-				}
-				&:nth-child(7) {
-					opacity: 0.5;
-				}
-				&:nth-child(8) {
-					opacity: 0.45;
-				}
-				&:nth-child(9) {
-					opacity: 0.4;
-				}
-				&:nth-child(10) {
-					opacity: 0.35;
-				}
-				&:nth-child(11) {
-					opacity: 0.3;
-				}
-				&:nth-child(12) {
-					opacity: 0.25;
-				}
-				&:nth-child(13) {
-					opacity: 0.2;
-				}
-				&:nth-child(14) {
-					opacity: 0.15;
-				}
-				&:nth-child(15) {
-					opacity: 0.1;
-				}
-			}
 		}
 	}
 	.hover {
@@ -2323,7 +2052,7 @@
 			&-active {
 				opacity: 1 !important;
 				visibility: visible !important;
-				transform: translateX(0) !important;
+				transform: translate3d(0.00001px, 0.00001px, 0.00001px) !important;
 			}
 		}
 		&__string {
@@ -2354,16 +2083,16 @@
 			}
 		}
 		&__chutes {
+			padding-top: 20px;
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 200%;
-			background: url('./images/main__bg-3.svg') center top/cover;
-			animation: hover__chutes 5s linear infinite;
+			height: auto;
+			animation: meet 5s linear infinite;
 		}
 		&__cities {
-			margin-top: 50px;
+			margin-top: 180px;
 			width: fit-content;
 			display: flex;
 			align-items: center;
@@ -2597,9 +2326,6 @@
 				&-left {
 					left: 11%;
 				}
-			}
-			&__foibox {
-				top: 66%;
 			}
 			&__string + &__string {
 				margin-top: 0;
