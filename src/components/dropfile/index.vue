@@ -7,10 +7,10 @@
 		@dragleave.prevent="dragleave"
 		@drop.prevent="drop($event)"
 	>
-		<span class="upload__title">Переместите файлы сюда</span>
-		<span class="upload__text">или</span>
-		<label class="upload__clickbox" @click="upload($event)">
-			<input type="file" class="upload__input" multiple="True" @change="fileInput" />
+		<span class="upload__title" id="upload__top">Переместите файлы сюда</span>
+		<span class="upload__text" id="upload__mid">или</span>
+		<label class="upload__clickbox" id="upload__bot">
+			<input type="file" class="upload__input" @change="fileInput" />
 			<span class="upload__text upload__link">
 				Загрузите
 				<span class="desktop">{{ '\xa0' }}c компьютера</span>
@@ -20,16 +20,19 @@
 				Максимальный размер файлов 15 МБ
 			</span>
 		</label>
+		<!--
 		<ul v-if="files !== []">
 			<li v-for="(file, index) in files" :key="file">
 				{{ file.name }} ({{ file.size }} b)
 				<button @click="removeFile(index)">X</button>
 			</li>
 		</ul>
+		-->
 	</div>
 </template>
 <script lang="js">
 	import Vue from 'vue';
+	import $ from 'jquery';
 
 	export default Vue.extend({
 		data: function() {
@@ -51,34 +54,76 @@
 				this.active = false;
 				const droppedFiles = e.dataTransfer.files;
 				if (!droppedFiles) return;
-				[...droppedFiles].forEach((f) => {
-					this.files.push(f);
-				});
+				//[...droppedFiles].forEach((f) => {
+				//	this.files.push(f);
+				//});
+				this.upload(droppedFiles[0]);
 			},
 			fileInput: function(e) {
 				const inputFiles = e.target.files;
 				if (!inputFiles) return;
-				[...inputFiles].forEach((f) => {
-					this.files.push(f);
-				});
+				//[...inputFiles].forEach((f) => {
+				//	this.files.push(f);
+				//});
+				this.upload(inputFiles[0]);
 			},
 			removeFile(fileKey) {
 				this.files.splice(fileKey, 1);
 			},
 			upload: function(file) {
-				const formData = new FormData();
-				formData.append('file', file);
-				fetch('https://httpbin.org/post', {
-					method: 'POST',
-					body: formData,
-				})
-					.then((res) => res.json())
-					.then((res) => {
-						console.log('done uploading', res);
-					})
-					.catch((e) => {
-						console.error(JSON.stringify(e.message));
-					});
+				const xhr = new XMLHttpRequest();
+				const formdata = new FormData();
+				formdata.append("file", file);
+				//console.log(file['size']);
+				if(file['size'] > 15728640){
+					alert('Превышен максимальный размер файла');
+					return false;
+				}
+
+				// обработчик для отправки
+				xhr.upload.addEventListener("progress", function(e){
+					$('#upload__top').text('Файл загружается');
+					const percent = 125 - (e.loaded / e.total * 125);
+					$('#upload__mid').html(
+						'<svg width="42" height="42" viewBox="0 0 42 42" fill="none">' +
+							'<circle cx="21" cy="21" r="20" stroke="#FFFFFF"/>' +
+							'<circle cx="21" cy="21" r="20" transform="rotate(-90 21 21)" stroke="#EE3D43" stroke-width="1.5" stroke-dasharray="125" stroke-dashoffset="'+ percent +'"/>' +
+							'</svg>'
+					);
+					$('#upload__bot').hide();
+				});
+				xhr.addEventListener("load", function(){
+					$('#upload__top').text('Файл успешно загружен');
+					$('#upload__mid').html(
+						'<svg width="42" height="42" viewBox="0 0 42 42" fill="none">' +
+							'<circle cx="21" cy="21" r="20" stroke="#FEFEFD"/>' +
+							'<path d="M13 19.1538L19 29L29 13" stroke="white" stroke-linecap="round"/>' +
+							'</svg>'
+					);
+					$('#upload__bot').hide();
+				});
+				xhr.addEventListener("error", function(){
+					$('#upload__top').text('Не удалось загрузить файл');
+					$('#upload__mid').html(
+						'<svg width="42" height="42" viewBox="0 0 42 42" fill="none">' +
+							'<circle cx="21" cy="21" r="20" stroke="#FEFEFD"/>' +
+							'<line x1="13.7071" y1="13" x2="29" y2="28.2929" stroke="#EE3D43" stroke-linecap="round"/>' +
+							'<line x1="13" y1="28.2929" x2="28.2929" y2="13" stroke="#EE3D43" stroke-linecap="round"/>' +
+							'</svg>');
+					$('.upload__link').text('Попробуйте повторить загрузку');
+					console.log("error " + this.status);
+				});
+				xhr.addEventListener("abort", function(){
+					console.log("abort");
+				});
+				xhr.open("POST", "php/upload.php", );
+				xhr.send(formdata);
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == XMLHttpRequest.DONE) {
+						this.files = xhr.responseText;
+						this.$eventBus.$emit('dropfile', this.files);
+					}
+				}
 			},
 		},
 	});

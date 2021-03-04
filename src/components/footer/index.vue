@@ -302,9 +302,11 @@
 		},
 		created(){
 			this.$eventBus.$on('footerMeet', this.fMeet);
+			this.$eventBus.$on('dropfile', this.getFile);
 		},
 		beforeDestroy() {
 			this.$eventBus.$off('footerMeet');
+			this.$eventBus.$off('dropfile');
 		},
 		methods: {
 			validateName: function() {
@@ -361,7 +363,7 @@
 							this.footerActive = true;
 							setTimeout(function() {
 								window.scrollTo({
-									top: 10000,
+									top: 20000,
 									behavior: 'smooth',
 								});
 							}, 500);
@@ -410,6 +412,9 @@
 				this.$eventBus.$emit('overflowHidden', false);
 				this.$eventBus.$emit('scrollFromMeet');
 				this.footerMeet = false;
+			},
+			getFile: function(files) {
+				this.message.files = files;
 			},
 		},
 		directives: {
@@ -824,6 +829,16 @@
 				margin-top: 0;
 			}
 			&__ul {
+				display: block;
+			}
+		}
+	}
+	@media all and(min-width: 1300px) and (max-height: 768px) {
+		.footer {
+			&-main {
+				padding-top: 60px;
+			}
+			&__container {
 				display: block;
 			}
 		}
