@@ -293,11 +293,21 @@
 					mask: '+{7} (000) 000 00 00',
 					lazy: true,
 				},
+				formSend: false,
 			};
 		},
 		watch: {
 			$route: function() {
 				this.mainPage = this.$route.path === '/';
+				if (this.formSend) {
+					this.message.name = '';
+					this.message.email = '';
+					this.message.phone = '';
+					this.message.theme = '';
+					this.message.text = '';
+					this.message.files = [];
+					this.goSlide(1);
+				}
 			},
 		},
 		created(){
@@ -398,6 +408,7 @@
 			},
 			sendMessage: function() {
 				this.slide = 4;
+				this.formSend = true;
 			},
 			goTop: function() {
 				window.scrollTo({
