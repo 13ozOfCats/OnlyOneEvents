@@ -1869,6 +1869,7 @@
 			line-height: 35px;
 			text-align: center;
 			color: var(--white);
+			z-index: 1;
 			&-active {
 				display: block;
 			}
