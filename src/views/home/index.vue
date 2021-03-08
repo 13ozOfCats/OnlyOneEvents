@@ -256,6 +256,16 @@
 							<div class="main__aboutBg main__aboutBg-18"></div>
 							<div class="main__aboutBg main__aboutBg-19"></div>
 							<div class="main__aboutBg main__aboutBg-20"></div>
+							<div class="main__aboutBg main__aboutBg-21"></div>
+							<div class="main__aboutBg main__aboutBg-22"></div>
+							<div class="main__aboutBg main__aboutBg-23"></div>
+							<div class="main__aboutBg main__aboutBg-24"></div>
+							<div class="main__aboutBg main__aboutBg-25"></div>
+							<div class="main__aboutBg main__aboutBg-26"></div>
+							<div class="main__aboutBg main__aboutBg-27"></div>
+							<div class="main__aboutBg main__aboutBg-28"></div>
+							<div class="main__aboutBg main__aboutBg-29"></div>
+							<div class="main__aboutBg main__aboutBg-30"></div>
 						</div>
 						<span class="main__about" :class="{'main__about-active': dots.agency}">
 							”Мы - команда увлеченных профессионалов, с 2015 года создающая яркие зрелищные проекты в сфере
@@ -433,21 +443,155 @@
 						<div class="main__svgbg" :class="{'main__svgbg-active': dots.philosophy}">
 							<svg width="1800" height="1800" viewBox="0 0 1800 1800" fill="none" class="main__foi">
 								<g id="about__gray" style="opacity: 0">
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="110" stroke="#323232" stroke-width="2"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="165" stroke="#323232" stroke-width="2" style="opacity: 0.95"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="220" stroke="#323232" stroke-width="2" style="opacity: 0.9"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="275" stroke="#323232" stroke-width="2" style="opacity: 0.8"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="330" stroke="#323232" stroke-width="2" style="opacity: 0.7"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="385" stroke="#323232" stroke-width="2" style="opacity: 0.6"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="440" stroke="#323232" stroke-width="2" style="opacity: 0.5"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="495" stroke="#323232" stroke-width="2" style="opacity: 0.45"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="550" stroke="#323232" stroke-width="2" style="opacity: 0.4"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="605" stroke="#323232" stroke-width="2" style="opacity: 0.35"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="660" stroke="#323232" stroke-width="2" style="opacity: 0.3"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="715" stroke="#323232" stroke-width="2" style="opacity: 0.25"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="770" stroke="#323232" stroke-width="2" style="opacity: 0.2"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="825" stroke="#323232" stroke-width="2" style="opacity: 0.15"></circle>
-									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="880" stroke="#323232" stroke-width="2" style="opacity: 0.1"></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="110"
+										stroke="#323232"
+										stroke-width="2"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="165"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.95"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="220"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.9"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="275"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.8"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="330"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.7"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="385"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.6"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="440"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.5"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="495"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.45"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="550"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.4"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="605"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.35"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="660"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.3"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="715"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.25"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="770"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.2"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="825"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.15"
+									></circle>
+									<circle
+										class="about__gray line"
+										transform="rotate(90 900 900)"
+										cx="900"
+										cy="900"
+										r="880"
+										stroke="#323232"
+										stroke-width="2"
+										style="opacity: 0.1"
+									></circle>
 								</g>
 								<g id="about__on" style="opacity: 0">
 									<circle
@@ -516,94 +660,94 @@
 								</g>
 								<g id="about__ideas" style="opacity: 0">
 									<circle
-											class="about__ideas line"
-											cx="900"
-											cy="900"
-											r="440"
-											transform="rotate(75 900 900)"
-											stroke="url(#linear6)"
-											stroke-width="2"
-											style="opacity: 0.5"
+										class="about__ideas line"
+										cx="900"
+										cy="900"
+										r="440"
+										transform="rotate(75 900 900)"
+										stroke="url(#linear6)"
+										stroke-width="2"
+										style="opacity: 0.5"
 									></circle>
 									<circle
-											class="about__ideas line"
-											cx="900"
-											cy="900"
-											r="495"
-											transform="rotate(190 900 900)"
-											stroke="url(#linear7)"
-											stroke-width="2"
-											style="opacity: 0.45"
+										class="about__ideas line"
+										cx="900"
+										cy="900"
+										r="495"
+										transform="rotate(190 900 900)"
+										stroke="url(#linear7)"
+										stroke-width="2"
+										style="opacity: 0.45"
 									></circle>
 									<circle
-											class="about__ideas line"
-											cx="900"
-											cy="900"
-											r="550"
-											transform="rotate(75 900 900)"
-											stroke="url(#linear8)"
-											stroke-width="2"
-											style="opacity: 0.4"
+										class="about__ideas line"
+										cx="900"
+										cy="900"
+										r="550"
+										transform="rotate(75 900 900)"
+										stroke="url(#linear8)"
+										stroke-width="2"
+										style="opacity: 0.4"
 									></circle>
 									<circle
-											class="about__ideas line"
-											cx="900"
-											cy="900"
-											r="605"
-											transform="rotate(115 900 900)"
-											stroke="url(#linear9)"
-											stroke-width="2"
-											style="opacity: 0.35"
+										class="about__ideas line"
+										cx="900"
+										cy="900"
+										r="605"
+										transform="rotate(115 900 900)"
+										stroke="url(#linear9)"
+										stroke-width="2"
+										style="opacity: 0.35"
 									></circle>
 									<circle
-											class="about__ideas line"
-											cx="900"
-											cy="900"
-											r="660"
-											transform="rotate(95 900 900)"
-											stroke="url(#linear10)"
-											stroke-width="2"
-											style="opacity: 0.3"
+										class="about__ideas line"
+										cx="900"
+										cy="900"
+										r="660"
+										transform="rotate(95 900 900)"
+										stroke="url(#linear10)"
+										stroke-width="2"
+										style="opacity: 0.3"
 									></circle>
 									<circle
-											class="about__ideas line"
-											cx="900"
-											cy="900"
-											r="715"
-											transform="rotate(115 900 900)"
-											stroke="url(#linear11)"
-											stroke-width="2"
-											style="opacity: 0.25"
+										class="about__ideas line"
+										cx="900"
+										cy="900"
+										r="715"
+										transform="rotate(115 900 900)"
+										stroke="url(#linear11)"
+										stroke-width="2"
+										style="opacity: 0.25"
 									></circle>
 									<circle
-											class="about__ideas line"
-											cx="900"
-											cy="900"
-											r="770"
-											transform="rotate(145 900 900)"
-											stroke="url(#linear12)"
-											stroke-width="2"
-											style="opacity: 0.2"
+										class="about__ideas line"
+										cx="900"
+										cy="900"
+										r="770"
+										transform="rotate(145 900 900)"
+										stroke="url(#linear12)"
+										stroke-width="2"
+										style="opacity: 0.2"
 									></circle>
 									<circle
-											class="about__ideas line"
-											cx="900"
-											cy="900"
-											r="825"
-											transform="rotate(105 900 900)"
-											stroke="url(#linear13)"
-											stroke-width="2"
-											style="opacity: 0.15"
+										class="about__ideas line"
+										cx="900"
+										cy="900"
+										r="825"
+										transform="rotate(105 900 900)"
+										stroke="url(#linear13)"
+										stroke-width="2"
+										style="opacity: 0.15"
 									></circle>
 									<circle
-											class="about__ideas line"
-											cx="900"
-											cy="900"
-											r="880"
-											transform="rotate(-160 900 900)"
-											stroke="url(#linear14)"
-											stroke-width="2"
-											style="opacity: 0.1"
+										class="about__ideas line"
+										cx="900"
+										cy="900"
+										r="880"
+										transform="rotate(-160 900 900)"
+										stroke="url(#linear14)"
+										stroke-width="2"
+										style="opacity: 0.1"
 									></circle>
 									<text x="900" y="910" class="foi__text about__ideas">ideas</text>
 								</g>
@@ -1449,7 +1593,7 @@
 					scrollY: {
 						translateY: [
 							[1600, 1800, 2200, 2400],
-							['screenHeight', 0, 0, -100],
+							['screenHeight', -500, -500, -100],
 						],
 					},
 				});
@@ -1611,6 +1755,86 @@
 						translateY: [
 							[1800, 2400],
 							[0, -1400],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-21', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1470],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-22', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1540],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-23', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1610],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-24', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1680],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-25', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1750],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-26', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1820],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-27', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1890],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-28', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -1960],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-29', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -2030],
+						],
+					},
+				});
+				lax.addElements('.main__aboutBg-30', {
+					scrollY: {
+						translateY: [
+							[1800, 2400],
+							[0, -2100],
 						],
 					},
 				});
