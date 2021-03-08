@@ -432,114 +432,24 @@
 						</div>
 						<div class="main__svgbg" :class="{'main__svgbg-active': dots.philosophy}">
 							<svg width="1800" height="1800" viewBox="0 0 1800 1800" fill="none" class="main__foi">
-								<g id="about__ideas" style="opacity: 0">
-									<circle cx="900" cy="900" r="440" stroke="#323232" stroke-width="2" style="opacity: 0.5"></circle>
-									<circle cx="900" cy="900" r="495" stroke="#323232" stroke-width="2" style="opacity: 0.45"></circle>
-									<circle cx="900" cy="900" r="550" stroke="#323232" stroke-width="2" style="opacity: 0.4"></circle>
-									<circle cx="900" cy="900" r="605" stroke="#323232" stroke-width="2" style="opacity: 0.35"></circle>
-									<circle cx="900" cy="900" r="660" stroke="#323232" stroke-width="2" style="opacity: 0.3"></circle>
-									<circle cx="900" cy="900" r="715" stroke="#323232" stroke-width="2" style="opacity: 0.25"></circle>
-									<circle cx="900" cy="900" r="770" stroke="#323232" stroke-width="2" style="opacity: 0.2"></circle>
-									<circle cx="900" cy="900" r="825" stroke="#323232" stroke-width="2" style="opacity: 0.15"></circle>
-									<circle cx="900" cy="900" r="880" stroke="#323232" stroke-width="2" style="opacity: 0.1"></circle>
-
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="440"
-										transform="rotate(75 900 900)"
-										stroke="url(#linear6)"
-										stroke-width="2"
-										style="opacity: 0.5"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="495"
-										transform="rotate(190 900 900)"
-										stroke="url(#linear7)"
-										stroke-width="2"
-										style="opacity: 0.45"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="550"
-										transform="rotate(75 900 900)"
-										stroke="url(#linear8)"
-										stroke-width="2"
-										style="opacity: 0.4"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="605"
-										transform="rotate(115 900 900)"
-										stroke="url(#linear9)"
-										stroke-width="2"
-										style="opacity: 0.35"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="660"
-										transform="rotate(95 900 900)"
-										stroke="url(#linear10)"
-										stroke-width="2"
-										style="opacity: 0.3"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="715"
-										transform="rotate(115 900 900)"
-										stroke="url(#linear11)"
-										stroke-width="2"
-										style="opacity: 0.25"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="770"
-										transform="rotate(145 900 900)"
-										stroke="url(#linear12)"
-										stroke-width="2"
-										style="opacity: 0.2"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="825"
-										transform="rotate(105 900 900)"
-										stroke="url(#linear13)"
-										stroke-width="2"
-										style="opacity: 0.15"
-									></circle>
-									<circle
-										class="about__ideas line"
-										cx="900"
-										cy="900"
-										r="880"
-										transform="rotate(-160 900 900)"
-										stroke="url(#linear14)"
-										stroke-width="2"
-										style="opacity: 0.1"
-									></circle>
-									<text x="900" y="910" class="foi__text about__ideas">ideas</text>
+								<g id="about__gray" style="opacity: 0">
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="110" stroke="#323232" stroke-width="2"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="165" stroke="#323232" stroke-width="2" style="opacity: 0.95"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="220" stroke="#323232" stroke-width="2" style="opacity: 0.9"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="275" stroke="#323232" stroke-width="2" style="opacity: 0.8"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="330" stroke="#323232" stroke-width="2" style="opacity: 0.7"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="385" stroke="#323232" stroke-width="2" style="opacity: 0.6"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="440" stroke="#323232" stroke-width="2" style="opacity: 0.5"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="495" stroke="#323232" stroke-width="2" style="opacity: 0.45"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="550" stroke="#323232" stroke-width="2" style="opacity: 0.4"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="605" stroke="#323232" stroke-width="2" style="opacity: 0.35"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="660" stroke="#323232" stroke-width="2" style="opacity: 0.3"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="715" stroke="#323232" stroke-width="2" style="opacity: 0.25"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="770" stroke="#323232" stroke-width="2" style="opacity: 0.2"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="825" stroke="#323232" stroke-width="2" style="opacity: 0.15"></circle>
+									<circle class="about__gray line" transform="rotate(90 900 900)" cx="900" cy="900" r="880" stroke="#323232" stroke-width="2" style="opacity: 0.1"></circle>
 								</g>
 								<g id="about__on" style="opacity: 0">
-									<circle cx="900" cy="900" r="220" stroke="#323232" stroke-width="2" style="opacity: 0.9"></circle>
-									<circle cx="900" cy="900" r="275" stroke="#323232" stroke-width="2" style="opacity: 0.8"></circle>
-									<circle cx="900" cy="900" r="330" stroke="#323232" stroke-width="2" style="opacity: 0.7"></circle>
-									<circle cx="900" cy="900" r="385" stroke="#323232" stroke-width="2" style="opacity: 0.6"></circle>
 									<circle
 										class="about__on line"
 										cx="900"
@@ -583,8 +493,6 @@
 									<text x="900" y="910" class="foi__text about__on">on</text>
 								</g>
 								<g id="about__focus" style="opacity: 0">
-									<circle cx="900" cy="900" r="110" stroke="#323232" stroke-width="2"></circle>
-									<circle cx="900" cy="900" r="165" stroke="#323232" stroke-width="2" style="opacity: 0.95"></circle>
 									<circle
 										class="about__focus line"
 										cx="900"
@@ -605,6 +513,99 @@
 										style="opacity: 0.95"
 									></circle>
 									<text x="900" y="910" class="foi__text about__focus">focus</text>
+								</g>
+								<g id="about__ideas" style="opacity: 0">
+									<circle
+											class="about__ideas line"
+											cx="900"
+											cy="900"
+											r="440"
+											transform="rotate(75 900 900)"
+											stroke="url(#linear6)"
+											stroke-width="2"
+											style="opacity: 0.5"
+									></circle>
+									<circle
+											class="about__ideas line"
+											cx="900"
+											cy="900"
+											r="495"
+											transform="rotate(190 900 900)"
+											stroke="url(#linear7)"
+											stroke-width="2"
+											style="opacity: 0.45"
+									></circle>
+									<circle
+											class="about__ideas line"
+											cx="900"
+											cy="900"
+											r="550"
+											transform="rotate(75 900 900)"
+											stroke="url(#linear8)"
+											stroke-width="2"
+											style="opacity: 0.4"
+									></circle>
+									<circle
+											class="about__ideas line"
+											cx="900"
+											cy="900"
+											r="605"
+											transform="rotate(115 900 900)"
+											stroke="url(#linear9)"
+											stroke-width="2"
+											style="opacity: 0.35"
+									></circle>
+									<circle
+											class="about__ideas line"
+											cx="900"
+											cy="900"
+											r="660"
+											transform="rotate(95 900 900)"
+											stroke="url(#linear10)"
+											stroke-width="2"
+											style="opacity: 0.3"
+									></circle>
+									<circle
+											class="about__ideas line"
+											cx="900"
+											cy="900"
+											r="715"
+											transform="rotate(115 900 900)"
+											stroke="url(#linear11)"
+											stroke-width="2"
+											style="opacity: 0.25"
+									></circle>
+									<circle
+											class="about__ideas line"
+											cx="900"
+											cy="900"
+											r="770"
+											transform="rotate(145 900 900)"
+											stroke="url(#linear12)"
+											stroke-width="2"
+											style="opacity: 0.2"
+									></circle>
+									<circle
+											class="about__ideas line"
+											cx="900"
+											cy="900"
+											r="825"
+											transform="rotate(105 900 900)"
+											stroke="url(#linear13)"
+											stroke-width="2"
+											style="opacity: 0.15"
+									></circle>
+									<circle
+											class="about__ideas line"
+											cx="900"
+											cy="900"
+											r="880"
+											transform="rotate(-160 900 900)"
+											stroke="url(#linear14)"
+											stroke-width="2"
+											style="opacity: 0.1"
+									></circle>
+									<text x="900" y="910" class="foi__text about__ideas">ideas</text>
 								</g>
 								<defs>
 									<linearGradient
@@ -1078,64 +1079,90 @@
 				this.foi = anime.timeline({
 					autoplay: true,
 					loop: true,
-				}).add({
-					targets: '#about__focus',
-					opacity: 1,
-					delay: 100,
-					duration: 300,
-				}).add({
-					targets: '.about__focus.line',
-					strokeDashoffset: [anime.setDashoffset, 0],
-					easing: 'easeInOutSine',
-					duration: 200,
-					delay: function(el, i) {
-						return i * 100
-					},
-					direction: 'alternate-reverse',
-				}).add({
-					targets: '#about__focus .foi__text',
-					opacity: 0,
-					delay: 100,
-					duration: 300,
-				}, '-=200').add({
-					targets: '#about__on',
-					opacity: 1,
-					delay: 100,
-					duration: 500,
-				}).add({
-					targets: '.about__on.line',
-					strokeDashoffset: [anime.setDashoffset, 0],
-					easing: 'easeInOutSine',
-					duration: 300,
-					delay: function(el, i) {
-						return i * 100
-					},
-					direction: 'alternate-reverse',
-				}).add({
-					targets: '#about__on .foi__text',
-					opacity: 0,
-					delay: 100,
-					duration: 300,
-				}, '-=200').add({
-					targets: '#about__ideas',
-					opacity: 1,
-					delay: 400,
-					duration: 500,
-				}).add({
-					targets: '.about__ideas.line',
-					strokeDashoffset: [anime.setDashoffset, 0],
-					easing: 'easeInOutSine',
-					duration: 400,
-					delay: function(el, i) {
-						return i * 100
-					},
-					direction: 'alternate-reverse',
-				}).add({
-					targets: '#about__ideas, #about__on,  #about__focus',
-					opacity: 0,
-					delay: 100,
-					duration: 300,
-				});
+				})
+					.add({
+						targets: '#about__gray',
+						opacity: 1,
+						duration: 100,
+					})
+					.add({
+						targets: '.about__gray.line',
+						strokeDashoffset: [anime.setDashoffset, 0],
+						easing: 'easeInOutSine',
+						duration: function(el, i) {
+							return i * 20 + 50
+						},
+						delay: function(el, i) {
+							return i * 50
+						},
+						direction: 'alternate-reverse',
+					})
+					.add({
+						targets: '#about__focus',
+						opacity: 1,
+						delay: 100,
+						duration: 100,
+					})
+					.add({
+						targets: '.about__focus.line',
+						strokeDashoffset: [anime.setDashoffset, 0],
+						easing: 'easeInOutSine',
+						duration: 500,
+						delay: function(el, i) {
+							return i * 500
+						},
+						direction: 'alternate-reverse',
+					}, "-=100")
+					.add({
+						targets: '#about__focus .foi__text',
+						opacity: 0,
+						delay: 100,
+						duration: 100,
+					}, )
+					.add({
+						targets: '#about__on',
+						opacity: 1,
+						delay: 100,
+						duration: 100,
+					})
+					.add({
+						targets: '.about__on.line',
+						strokeDashoffset: [anime.setDashoffset, 0],
+						easing: 'easeInOutSine',
+						duration: 250,
+						delay: function(el, i) {
+							return i * 250
+						},
+						direction: 'alternate-reverse',
+					}, "-=100")
+					.add({
+						targets: '#about__on .foi__text',
+						opacity: 0,
+						delay: 100,
+						duration: 100,
+					}, )
+					.add({
+						targets: '#about__ideas',
+						opacity: 1,
+						delay: 100,
+						duration: 100,
+					})
+					.add({
+						targets: '.about__ideas.line',
+						strokeDashoffset: [anime.setDashoffset, 0],
+						easing: 'easeInOutSine',
+						duration: 250,
+						delay: function(el, i) {
+							return i * 250
+						},
+						direction: 'alternate-reverse',
+					}, "-=100")
+					.add({
+						targets: '#about__ideas, #about__on,  #about__focus, #about__gray',
+						opacity: 0,
+						delay: 100,
+						duration: 300,
+					});
 				this.goForm = anime.timeline({
 					loop: false,
 					autoplay: false,
