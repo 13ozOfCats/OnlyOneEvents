@@ -210,7 +210,7 @@
 			</div>
 			<div class="footer__slide">
 				<div class="container  footer__container">
-					<router-link to="/" class="btn">
+					<span class="btn" @click="toMainPage">
 						<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
 							<path
 								class="btn__bg"
@@ -246,7 +246,7 @@
 							></path>
 						</svg>
 						<span class="btn__text"> На главную </span>
-					</router-link>
+					</span>
 					<div class="footer__complete">
 						<h3 class="footer__title">Сообщение отправлено</h3>
 						<span class="footer__done" @click="goTop"> Наверх </span>
@@ -411,10 +411,18 @@
 				this.formSend = true;
 			},
 			goTop: function() {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth',
-				});
+				if (this.$route.path === '/') {
+					window.scrollTo({
+						top: document.getElementById('main').offsetTop,
+					});
+					this.$eventBus.$emit('overflowHidden', false);
+					this.fMeet(false);
+				} else {
+					window.scrollTo({
+						top: 0,
+						behavior: 'smooth',
+					});
+				}
 			},
 			fMeet: function(bool) {
 				this.footerMeet = bool;
@@ -423,6 +431,17 @@
 				this.$eventBus.$emit('overflowHidden', false);
 				this.$eventBus.$emit('scrollFromMeet');
 				this.footerMeet = false;
+			},
+			toMainPage: function() {
+				if (this.$route.path === '/') {
+					window.scrollTo({
+						top: document.getElementById('main').offsetTop,
+					});
+					this.$eventBus.$emit('overflowHidden', false);
+					this.fMeet(false);
+				} else {
+					this.$router.push({path: '/'});
+				}
 			},
 			getFile: function(files) {
 				this.message.files = files;
