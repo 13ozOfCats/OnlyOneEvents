@@ -831,8 +831,8 @@
 			}
 			&__textarea,
 			&__input {
-				font-size: 64px;
-				line-height: 115%;
+				font-size: 57px;
+				line-height: 100%;
 				&::placeholder {
 					color: #141414;
 					-webkit-text-stroke: 1.5px #ffffff;
