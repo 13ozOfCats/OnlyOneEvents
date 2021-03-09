@@ -2121,6 +2121,7 @@
 			text-align: center;
 			color: var(--white);
 			z-index: 1;
+			transform: translate3d(0.00001px, 0.00001px, 0.00001px);
 			&-active {
 				display: block;
 			}
