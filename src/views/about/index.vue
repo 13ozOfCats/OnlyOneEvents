@@ -13,8 +13,10 @@
 							height="100%"
 							allow="autoplay; fullscreen"
 							allowfullscreen
+							scrolling="no"
 							@wheel.prevent="videoWheel"
 						></iframe>
+						<div class="aboutUs__overlay"></div>
 					</div>
 				</div>
 				<div class="aboutUs__ooe">
@@ -336,6 +338,7 @@
 		&__player {
 			width: 100%;
 			height: 170px;
+			position: relative;
 		}
 		&__video {
 			margin-top: 50px;
@@ -448,6 +451,17 @@
 			&__player {
 				width: 89%;
 				height: 600px;
+			}
+			&__overlay {
+				content: '';
+				position: absolute;
+				top: 65px;
+				left: 0;
+				width: calc(100% - 47px);
+				height: calc(100% - 120px);
+				&:active {
+					visibility: hidden;
+				}
 			}
 			&__bigRedContainer {
 				display: block;
