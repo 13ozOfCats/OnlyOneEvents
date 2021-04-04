@@ -48,11 +48,11 @@
 		.contacts {
 			padding-top: 140px;
 			&__section {
-				min-height: 750px;
+				min-height: 600px;
 				max-height: 1200px;
 				height: calc(100vh - 140px);
-				padding-top: 120px;
-				padding-bottom: 120px;
+				padding-top: 40px;
+				padding-bottom: 40px;
 			}
 		}
 	}

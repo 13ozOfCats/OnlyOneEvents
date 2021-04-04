@@ -210,7 +210,7 @@
 			</div>
 			<div class="footer__slide">
 				<div class="container  footer__container">
-					<span class="btn" @click="toMainPage">
+					<span v-show="$route.path !== '/'" class="btn" @click="toMainPage">
 						<svg width="56" height="65" viewBox="0 0 56 65" fill="none" class="btn__svg">
 							<path
 								class="btn__bg"
@@ -299,15 +299,21 @@
 		watch: {
 			$route: function() {
 				this.mainPage = this.$route.path === '/';
-				if (this.formSend) {
-					this.message.name = '';
-					this.message.email = '';
-					this.message.phone = '';
-					this.message.theme = '';
-					this.message.text = '';
-					this.message.files = [];
-					this.goSlide(1);
-				}
+				this.message.name = '';
+				this.message.email = '';
+				this.message.phone = '';
+				this.message.theme = '';
+				this.message.text = '';
+				this.message.files = [];
+				this.errors.name = false;
+				this.errors.email = false;
+				this.errors.phone = false;
+				this.errors.theme = false;
+				this.errorsText.name = '\xa0';
+				this.errorsText.email = '\xa0';
+				this.errorsText.phone = '\xa0';
+				this.errorsText.theme = '\xa0';
+				this.goSlide(1);
 			},
 		},
 		created(){
@@ -870,6 +876,17 @@
 			}
 			&__container {
 				display: block;
+			}
+			&__ul {
+				margin-top: 0;
+			}
+			&__li {
+				& + & {
+					margin-top: 0;
+				}
+			}
+			&__theme {
+				line-height: 150%;
 			}
 		}
 	}

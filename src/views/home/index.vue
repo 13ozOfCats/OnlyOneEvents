@@ -305,27 +305,7 @@
 							}"
 						>
 							<div class="container main__flex">
-								<router-link to="/works" class="main__workbtn btn btn__gray">
-									<span class="btn__text">
-										Наши работы
-									</span>
-									<svg width="64" height="72" viewBox="0 0 72 72" class="btn__svg">
-										<path
-											class="btn__bg"
-											d="M4.35321 9.14134C9.7484 4.71538 16.317 1.95847 23.2549 1.2081C30.1927 0.457718 37.1989 1.74643 43.4156 4.91647C49.6324 8.08652 54.79 13.0003 58.2571 19.0564C61.7242 25.1125 63.3504 32.0481 62.9366 39.0142C62.5228 45.9802 60.0869 52.6745 55.9272 58.2775C51.7674 63.8805 46.0643 68.1492 39.516 70.5609C32.9677 72.9726 25.8582 73.4228 19.058 71.8563C12.2577 70.2898 6.06176 66.7746 1.22852 61.7411"
-											stroke-width="1.13924"
-										/>
-										<path
-											class="btn__arrow"
-											d="M26.9467 43.5547C26.7243 43.7772 26.3636 43.7772 26.1412 43.5547L22.5161 39.9297C22.2937 39.7072 22.2937 39.3466 22.5161 39.1241C22.7386 38.9017 23.0992 38.9017 23.3217 39.1241L26.5439 42.3464L29.7662 39.1241C29.9887 38.9017 30.3493 38.9017 30.5718 39.1241C30.7942 39.3466 30.7942 39.7072 30.5718 39.9297L26.9467 43.5547ZM27.1136 31.7595L27.1136 43.1519L25.9743 43.1519L25.9743 31.7595L27.1136 31.7595Z"
-										/>
-										<path
-											class="btn__circle"
-											d="M4.35321 9.14134C9.7484 4.71538 16.317 1.95847 23.2549 1.2081C30.1927 0.457718 37.1989 1.74643 43.4156 4.91647C49.6324 8.08652 54.79 13.0003 58.2571 19.0564C61.7242 25.1125 63.3504 32.0481 62.9366 39.0142C62.5228 45.9802 60.0869 52.6745 55.9272 58.2775C51.7674 63.8805 46.0643 68.1492 39.516 70.5609C32.9677 72.9726 25.8582 73.4228 19.058 71.8563C12.2577 70.2898 6.06176 66.7746 1.22852 61.7411"
-											stroke-width="1.13924"
-										/>
-									</svg>
-								</router-link>
+								<div class="main__scroll2">scroll</div>
 								<div class="main__links">
 									<a target="_blank" href="https://www.facebook.com/ooevents" class="main__link link">
 										<svg width="73" height="73" viewBox="0 0 73 73">
@@ -927,7 +907,7 @@
 					Обсудим проект?
 				</div>
 				<div class="meet__btn btn" @click="goToForm">
-					<span class="btn__text"> Обсудить </span>
+					<span class="btn__text"> Окей </span>
 					<svg width="64" height="72" viewBox="0 0 72 72" class="btn__svg">
 						<path
 							class="btn__bg"
@@ -998,9 +978,9 @@
 				</div>
 				<div class="mobile__bg"></div>
 			</section>
-			<mobileWorks></mobileWorks>
+			<mobileWorks />
 			<div class="mobile__contacts">
-				<contacts></contacts>
+				<contacts />
 			</div>
 		</div>
 	</div>
@@ -1210,6 +1190,24 @@
 			onResize: function() {
 				this.desktop = window.innerWidth > 1300;
 			},
+			slowScrollToMain: function () {
+				window.scrollTo({
+					top: document.getElementById('main').offsetTop,
+				});
+				if (this.meetBg) {
+					if (this.canPlay) {
+						this.canPlay = false;
+						this.meetBg = false;
+						this.goMeet.reverse();
+						this.goMeet.play();
+						this.goMeet.finished.then(() => {
+							this.goMeet.reverse();
+							this.canPlay = true;
+							this.$eventBus.$emit('overflowHidden', false);
+						});
+					}
+				}
+			}
 		},
 		computed: {
 			...mapGetters(['posts', 'showPreloader']),
@@ -1217,6 +1215,7 @@
 		created() {
 			this.onResize();
 			this.$eventBus.$on('scrollFromMeet', this.scrollFromMeet);
+
 		},
 		mounted() {
 			if (this.desktop) {
@@ -1356,6 +1355,7 @@
 				});
 			}
 			if (document.documentElement.clientWidth > 1300) {
+				this.$eventBus.$on('slowScrollToMain', this.slowScrollToMain);
 				lax.init();
 				lax.addDriver('scrollY', function () {
 					return window.scrollY;
@@ -1912,6 +1912,7 @@
 		},
 		beforeDestroy() {
 			this.$eventBus.$off('scrollFromMeet');
+			this.$eventBus.$off('slowScrollToMain');
 			this.$eventBus.$emit('footerMeet', false);
 			this.$eventBus.$emit('overflowHidden', false);
 		},
@@ -2229,7 +2230,7 @@
 			}
 		}
 		&__links {
-			margin-left: 106px;
+			margin-left: 180px;
 		}
 		&__link {
 			& + & {
@@ -2271,6 +2272,18 @@
 			font-size: 27.3418px;
 			line-height: 188%;
 			color: rgba(0, 0, 0, 0.42);
+		}
+		&__scroll2 {
+			font-family: 'Circe', sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 27.3418px;
+			line-height: 100%;
+			color: #c8c8c8;
+			cursor: default;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 		&__foi {
 			position: absolute;
@@ -2471,7 +2484,7 @@
 		height: 100%;
 		background: #ff4e54;
 		transform: translate3d(100%, 0.00001px, 0.00001px);
-		z-index: 1100;
+		z-index: 110;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -2589,6 +2602,9 @@
 			&__word,
 			&__string {
 				line-height: 75px;
+			}
+			&__about {
+				top: 50%;
 			}
 		}
 		.works {

@@ -1,7 +1,7 @@
 <template>
 	<header class="header" :class="{'header-hidden': headerHidden}" :style="{position: position}">
 		<div class="header__container container">
-			<div class="header__left">
+			<div class="header__left" @click.prevent="mainPageScrol">
 				<router-link to="/">
 					<img src="./images/contacts_logo.svg" alt="ooe logo" class="header__logo" />
 				</router-link>
@@ -129,6 +129,11 @@
 			headerColor: function (color) {
 				this.color = color;
 			},
+			mainPageScrol: function () {
+				if (this.$route.path === '/') {
+					this.$eventBus.$emit('slowScrollToMain')
+				}
+			}
 		},
 		created() {
 			this.$eventBus.$on('headerHide', this.headerHide);
@@ -136,7 +141,7 @@
 		},
 		beforeDestroy() {
 			this.$eventBus.$off('headerHide');
-			this.$eventBus.$on('headerColor');
+			this.$eventBus.$off('headerColor');
 		},
 		watch: {
 			$route: function() {

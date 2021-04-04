@@ -83,6 +83,7 @@
 			font-size: 18px;
 			line-height: 140%;
 			color: #363636;
+			padding-left: 5px;
 		}
 		&__row {
 			display: flex;

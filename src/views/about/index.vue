@@ -8,14 +8,15 @@
 					<h2 class="aboutUs__supatitle aboutUs__supatitle-white">Шоурил</h2>
 					<div class="aboutUs__player">
 						<iframe
-							src="https://player.vimeo.com/video/313998647"
+							src="https://player.vimeo.com/video/313998647?title=0&byline=0&portrait=0"
 							width="100%"
 							height="100%"
-							allow="autoplay; fullscreen"
+							frameborder="0"
+							allow="autoplay; fullscreen; picture-in-picture"
 							allowfullscreen
 							scrolling="no"
-							@wheel.prevent="videoWheel"
-						></iframe>
+						>
+						</iframe>
 						<div class="aboutUs__overlay"></div>
 					</div>
 				</div>
@@ -319,9 +320,10 @@
 	.aboutUs {
 		&__supatitle {
 			font-size: 32px;
-			line-height: 130%;
+			line-height: 100%;
 			color: #363636;
 			font-weight: normal;
+			margin-left: -5px;
 			&-white {
 				padding-bottom: 10px;
 				color: #363636;
@@ -455,10 +457,10 @@
 			&__overlay {
 				content: '';
 				position: absolute;
-				top: 65px;
+				top: 0;
 				left: 0;
 				width: calc(100% - 47px);
-				height: calc(100% - 120px);
+				height: calc(100% - 60px);
 				&:active {
 					visibility: hidden;
 				}
