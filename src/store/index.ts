@@ -28,6 +28,10 @@ export default new Vuex.Store({
 					'http://ooe.borodadigital.com/img/rr-cullinan_4.jpg',
 					'http://ooe.borodadigital.com/img/rr-cullinan_5.jpg',
 				],
+				prizes: {
+					bema: 'Шорт-лист фестиваля <br/> «bema!» 2021',
+					eoe: 'Шорт-лист фестиваля 2021 <br/> победитель народного <br/> голосования',
+				},
 			},
 			{
 				id: 2,
@@ -52,6 +56,10 @@ export default new Vuex.Store({
 					'http://ooe.borodadigital.com/img/aston_7.jpg',
 					'http://ooe.borodadigital.com/img/aston_8.jpg',
 				],
+				prizes: {
+					bema: 'Шорт-лист фестиваля <br/> «bema!» 2021',
+					eoe: 'Двукратный Победитель <br/> народного голосования',
+				},
 			},
 			{
 				id: 3,
@@ -82,6 +90,9 @@ export default new Vuex.Store({
 					'http://ooe.borodadigital.com/img/rr-ghost_13.jpg',
 					'http://ooe.borodadigital.com/img/rr-ghost_14.jpg',
 				],
+				prizes: {
+					bema: 'Шорт-лист фестиваля <br/> «bema!» 2021',
+				},
 			},
 			{
 				id: 4,
@@ -320,9 +331,9 @@ export default new Vuex.Store({
 		showPreloader: true,
 	},
 	mutations: {
-		preloaderShown (state) {
+		preloaderShown(state) {
 			state.showPreloader = false;
-		}
+		},
 	},
 	actions: {},
 	modules: {},
