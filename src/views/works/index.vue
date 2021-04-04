@@ -271,6 +271,7 @@
 			padding-top: 48px;
 			padding-bottom: 44px;
 			background: var(--bg) url('../../assets/images/contacts_bg.svg');
+			background-size: 100%;
 		}
 	}
 

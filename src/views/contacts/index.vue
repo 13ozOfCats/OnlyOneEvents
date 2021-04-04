@@ -32,6 +32,7 @@
 			left: 0;
 			z-index: -1;
 			background: var(--bg) url('../../assets/images/contacts_bg.svg');
+			background-size: 100%;
 		}
 	}
 	@media all and(min-width: 968px) {

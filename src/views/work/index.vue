@@ -40,10 +40,10 @@
 					</div>
 				</section>
 				<section class="project__block" v-if="post[0].video">
-					<div class="container container-mobileOff">
+					<div class="container">
 						<div class="project__video">
 							<iframe
-								:src="post[0].video"
+								:src="post[0].video + '?title=0&byline=0&portrait=0'"
 								width="100%"
 								height="100%"
 								allow="autoplay; fullscreen"
@@ -172,7 +172,7 @@
 			left: 0;
 			color: #ffffff;
 			text-transform: uppercase;
-			z-index: 1002;
+			z-index: 10;
 		}
 		&__subtitle1 {
 			font-size: 28px;
@@ -268,6 +268,7 @@
 		&__video {
 			width: 100%;
 			position: relative;
+			aspect-ratio: 19/11;
 		}
 		&__palyer {
 			width: 100%;

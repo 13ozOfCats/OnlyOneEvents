@@ -952,9 +952,9 @@
 		<div class="main__mobile" v-if="!desktop">
 			<section class="mobile__main">
 				<div class="container">
-					<div class="mobile__title">Привет! Мы маркетинговое агентство</div>
+					<div class="mobile__title">Привет! <br/> Мы маркетинговое агентство</div>
 					<div class="mobile__subtitle">
-						Продюссируем ивенты, разрабатываем креатив, проектируем стенды и декор
+						Продюссируем ивенты, разрабатываем креатив, <br/> проектируем стенды и декор
 					</div>
 					<router-link to="/works" class="mobile__btn btn goto">
 						<span class="btn__text"> Наши проекты </span>
@@ -2411,14 +2411,14 @@
 			line-height: 120%;
 		}
 		&__subtitle {
-			margin-top: 16px;
-			font-size: 14px;
+			margin-top: 60px;
+			font-size: 16px;
 			line-height: 150%;
 			text-align: center;
 			color: #ffffff;
 		}
 		&__btn {
-			margin: 26px auto 0;
+			margin: 40px auto 0;
 		}
 		&__bg {
 			position: absolute;

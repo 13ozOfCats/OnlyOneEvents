@@ -78,9 +78,12 @@
 			line-height: 120%;
 			color: #363636;
 		}
-		&__left,
+		&__left {
+			flex-basis: 170px;
+			min-width: 170px;
+		}
 		&__right {
-			flex-basis: 50%;
+			flex-basis: auto;
 		}
 	}
 	@media all and(min-width: 968px) {
