@@ -150,7 +150,7 @@
 					this.headerOff();
 				}
 				if (this.$route.path === '/about' || this.$route.path === '/') {
-					if (document.documentElement.clientWidth > 967) {
+					if (document.documentElement.clientWidth > 1200) {
 						this.color = '#212121';
 					} else {
 						this.color = '#FFFFFF';

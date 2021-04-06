@@ -9,7 +9,7 @@
 							d="M307 76.5C334.034 98.6187 366.5 143.5 366.5 186C366.5 228.5 330.5 271 302.5 285C274.5 299 223.782 275.15 182 293.5C138.738 312.5 71.6124 305 40.5001 254.5C12.2163 208.591 22.561 157.439 40.5001 123.5C59 88.5 110.238 32.9997 163.238 33C203.926 33.0002 263 40.5 307 76.5Z"
 							class="aboutUs__conturs"
 							fill="none"
-							stroke="#EE3D43"
+							stroke="url(#paint0_linear)"
 							stroke-width="3"
 						></path>
 						<path
@@ -23,13 +23,27 @@
 							fill="#363636"
 						></path>
 					</g>
+					<defs>
+						<linearGradient
+							id="paint0_linear"
+							x1="194.727"
+							y1="33"
+							x2="194.727"
+							y2="303.061"
+							gradientUnits="userSpaceOnUse"
+						>
+							<stop stop-color="#EE3D43" stop-opacity="0.74" />
+							<stop offset="0.401042" stop-color="white" stop-opacity="0" />
+							<stop offset="1" stop-color="#EE3D43" />
+						</linearGradient>
+					</defs>
 				</svg>
 				<svg width="390" height="330" viewBox="0 0 390 330" fill="none">
 					<g id="bubble-2" class="aboutUs__item">
 						<path
 							class="aboutUs__conturs"
 							d="M292.735 87.5C313.354 115.694 360.235 152.5 360.235 195C360.235 237.5 329.735 259 304.735 276.093C279.735 293.186 231.369 298.5 185.734 298.5C133.234 298.5 73.339 281.5 42.2266 231C13.9428 185.091 36.0235 108.502 61.7382 79.9989C87.4532 51.4956 110.238 31.9997 163.238 32C203.927 32.0002 268.235 54 292.735 87.5Z"
-							stroke="#EE3D43"
+							stroke="url(#paint1_linear)"
 							stroke-width="3"
 						></path>
 						<path
@@ -43,13 +57,28 @@
 							fill="#363636"
 						></path>
 					</g>
+					<defs>
+						<linearGradient
+							id="paint1_linear"
+							x1="194.617"
+							y1="32"
+							x2="249.5"
+							y2="293.5"
+							gradientUnits="userSpaceOnUse"
+						>
+							<stop stop-color="#EE3D43" />
+							<stop offset="0.348958" stop-color="white" stop-opacity="0" />
+							<stop offset="0.833333" stop-color="#EE3D43" />
+							<stop offset="1" stop-color="#EE3D43" stop-opacity="0" />
+						</linearGradient>
+					</defs>
 				</svg>
 				<svg width="390" height="330" viewBox="0 0 390 330" fill="none">
 					<g id="bubble-3" class="aboutUs__item">
 						<path
 							class="aboutUs__conturs"
 							d="M331.221 79.6484C359.721 104.144 373.327 140.648 370.721 190.148C368.116 239.648 331.221 257.148 306.721 274.644C282.221 292.14 233.405 296.148 189.721 296.148C131.721 296.148 71.2163 274.644 39.2171 227.648C18.7535 197.595 7.24653 143.139 32.2208 102.144C57.1951 61.1488 99.7215 17.649 155.221 40.1457C199.997 58.2957 299.721 52.5747 331.221 79.6484Z"
-							stroke="#EE3D43"
+							stroke="url(#paint2_linear)"
 							stroke-width="3"
 						></path>
 						<path
@@ -63,6 +92,14 @@
 							fill="#363636"
 						></path>
 					</g>
+					<defs>
+						<linearGradient id="paint2_linear" x1="21.5" y1="120" x2="365.5" y2="219" gradientUnits="userSpaceOnUse">
+							<stop stop-color="#EE3D43" />
+							<stop offset="0.328125" stop-color="white" stop-opacity="0" />
+							<stop offset="0.729167" stop-color="#EE3D43" />
+							<stop offset="1" stop-color="#EE3D43" stop-opacity="0" />
+						</linearGradient>
+					</defs>
 				</svg>
 			</div>
 			<div class="aboutUs__textbox" :class="{'aboutUs__textbox-hidden': !bubbleActive.none}">

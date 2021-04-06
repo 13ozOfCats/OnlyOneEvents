@@ -174,6 +174,9 @@
 			text-transform: uppercase;
 			z-index: 10;
 		}
+		&__inner {
+			width: 100%;
+		}
 		&__subtitle1 {
 			font-size: 28px;
 			line-height: 120%;
@@ -186,8 +189,9 @@
 		&__main {
 			margin-top: 20px;
 			position: relative;
-			height: 275px;
 			margin-bottom: 5px;
+			width: 100%;
+			aspect-ratio: 19/11;
 		}
 		&__imgs {
 			position: absolute;
@@ -348,16 +352,17 @@
 			z-index: 1001;
 		}
 	}
+	@media all and (min-width: 540px) and (max-width: 1200px) {
 
+	}
 	@media all and(min-width: 968px) {
 		.project {
 			padding-top: 140px;
 			&__head {
-				margin-top: 200px;
+				margin-top: 100px;
 			}
 			&__main {
 				margin-top: 0;
-				height: 680px;
 			}
 			&__imgs {
 				height: calc(100% - 95px);
@@ -445,9 +450,6 @@
 				height: calc(100% - 165px);
 				margin-left: 0;
 				margin-right: 0;
-			}
-			&__main {
-				height: 985px;
 			}
 			&__video {
 				height: 700px;
