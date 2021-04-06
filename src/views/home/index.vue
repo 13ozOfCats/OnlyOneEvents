@@ -136,8 +136,14 @@
 							v-show="!dots.agency"
 							id="string-2"
 						>
+							<div v-show="dots.philosophy" class="hover__filosophy">
+								<span
+									>Мы всегда в поиске новых идей для создания эффективных и оригинальных маркетинговых
+									коммуникаций</span
+								>
+							</div>
 							<span class="main__word" id="word-11">Продюссируем{{ '\xa0' }}</span>
-							<span class="main__word" id="word-12" @mouseover="events(true)" @mouseout="events(false)"
+							<span v-show="!dots.philosophy" class="main__word" id="word-12" @mouseover="events(true)" @mouseout="events(false)"
 								>ивенты<span
 									class="main__dot"
 									:class="{
@@ -149,7 +155,7 @@
 								></span
 							></span>
 							<span class="main__word" id="word-13">{{ '\xa0' }}разрабатываем{{ '\xa0' }}</span>
-							<span id="string-2-2">
+							<span v-show="!dots.philosophy" id="string-2-2">
 								<span class="main__word" id="word-14" @mouseover="creative(true)" @mouseout="creative(false)"
 									>креатив<span
 										class="main__dot"
@@ -2412,6 +2418,20 @@
 				visibility: visible;
 				opacity: 1;
 			}
+		}
+		&__filosophy {
+			font-size: 24px;
+			line-height: 35px;
+			text-align: center;
+			text-transform: lowercase;
+			color: #ffffff;
+			position: absolute;
+			max-width: 850px;
+			top: 0;
+			left: calc(50% + 230px);
+			transform: translateX(-50%);
+			white-space: normal;
+			width: 100%;
 		}
 	}
 	.mobile {
