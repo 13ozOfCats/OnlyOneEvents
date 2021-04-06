@@ -408,6 +408,9 @@
 
 	@media all and(min-width: 1281px) {
 		.project {
+			&__main {
+				aspect-ratio: 19/14;
+			}
 			&__container {
 				flex-direction: row;
 			}

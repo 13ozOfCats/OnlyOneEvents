@@ -275,7 +275,7 @@
 		}
 	}
 
-	@media all and(min-width: 968px) {
+	@media all and(min-width: 540px) {
 		.work {
 			&__main {
 				padding-top: 130px;
@@ -297,12 +297,13 @@
 			&__contacts {
 				padding-top: 72px;
 				padding-bottom: 72px;
+				height: 600px;
 			}
 		}
 	}
 
 	@media all and(min-width: 1281px) {
-		.work {
+		work {
 			padding-top: 140px;
 			&__main {
 				padding-top: 70px;

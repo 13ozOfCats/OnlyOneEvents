@@ -35,13 +35,20 @@
 			background-size: 100%;
 		}
 	}
-	@media all and(min-width: 968px) {
+	@media all and(min-width: 540px) {
 		.contacts {
 			padding-top: 96px;
 			&__section {
 				min-height: 600px;
 				padding-top: 70px;
 				padding-bottom: 70px;
+			}
+		}
+	}
+	@media all and(min-height: 1000px) {
+		.contacts {
+			&__section {
+				height: calc(100vh - 596px);
 			}
 		}
 	}

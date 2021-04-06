@@ -94,7 +94,24 @@
 			}
 		}
 	}
-	@media all and(min-width: 968px) {
+	@media all and(min-width: 540px) {
+		.aboutMobile {
+			&__title {
+				font-size: 64px;
+				line-height: 130%;
+			}
+			&__descr {
+				font-size: 24px;
+			}
+			&__name {
+				font-size: 36px;
+			}
+			&__bot {
+				font-size: 22px;
+			}
+		}
+	}
+	@media all and(min-width: 1280px) {
 		.aboutMobile {
 			&__services {
 				display: none;

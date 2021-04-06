@@ -86,7 +86,21 @@
 			flex-basis: auto;
 		}
 	}
-	@media all and(min-width: 968px) {
+	@media all and(min-width: 540px) {
+		.aboutMobile {
+			&__title {
+				font-size: 64px;
+				line-height: 130%;
+			}
+			&__text {
+				font-size: 24px;
+			}
+			&__subtitle {
+				font-size: 28px;
+			}
+		}
+	}
+	@media all and(min-width: 1280px) {
 		.aboutMobile {
 			&__main {
 				display: none;

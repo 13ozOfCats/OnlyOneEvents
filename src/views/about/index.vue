@@ -415,6 +415,7 @@
 			&__contacts {
 				padding-top: 72px;
 				padding-bottom: 72px;
+				height: 600px;
 			}
 			&__slider {
 				width: 250%;
@@ -423,10 +424,6 @@
 		}
 
 		.aboutUs {
-			&__ooe,
-			&__bgWrapper {
-				display: block;
-			}
 			&__supatitle {
 				font-size: 64px;
 				line-height: 130%;
@@ -454,6 +451,10 @@
 			}
 		}
 		.aboutUs {
+			&__ooe,
+			&__bgWrapper {
+				display: block;
+			}
 			&__player {
 				width: 89%;
 				height: 600px;

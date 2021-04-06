@@ -697,17 +697,28 @@
 			color: rgba(238, 61, 67, 0.4);
 		}
 	}
-
+	@media all and(min-width: 540px) {
+		.footer {
+			&-active {
+				max-height: 500px;
+			}
+			&-main {
+				max-height: 500px;
+			}
+		}
+	}
 	@media all and(min-width: 968px) {
 		.footer {
 			padding-top: 70px;
 			padding-bottom: 80px;
 			&-active {
 				padding-top: 70px;
+				max-height: 500px;
 			}
-			&_main {
+			&-main {
 				padding-top: 70px;
 				padding-bottom: 80px;
+				max-height: 500px;
 			}
 			&__slide {
 				min-height: 410px;

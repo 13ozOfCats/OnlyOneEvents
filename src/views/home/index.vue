@@ -2571,7 +2571,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 968px) {
+	@media all and(min-width: 760px) {
 		.main {
 			&__mobile {
 				padding-top: 130px;
@@ -2599,13 +2599,16 @@
 			}
 			&__name {
 				font-size: 64px;
-				line-height: 94px;
+				line-height: 80px;
 			}
 			&__slide {
 				padding: 40px;
-				width: 759px;
+				width: 759px !important;
 				height: 487px;
 				margin-left: 40px;
+			}
+			&__contacts {
+				height: 600px;
 			}
 		}
 	}
@@ -2661,6 +2664,15 @@
 			}
 			&__imge {
 				height: calc(100vh - 200px - 120px);
+			}
+		}
+	}
+	@media all and(min-width: 540px) {
+		.mobile {
+			&__title2 {
+				font-size: 44px;
+				line-height: 130%;
+				margin-bottom: 30px;
 			}
 		}
 	}
