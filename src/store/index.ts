@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		shortcut: 'http://ooe.borodadigital.com/video/showreel.mp4',
+		shortcut: 'http://ooe.borodadigital.com/video/shortcut.mp4',
 		showreel: 'http://ooe.borodadigital.com/video/showreel2.mp4',
 		posts: [
 			{
