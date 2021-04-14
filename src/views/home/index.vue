@@ -120,8 +120,9 @@
 													dots.ooe,
 											}"
 											style="opacity: 0"
-										></span
-									></span>
+										>
+										</span>
+									</span>
 								</span>
 								<span class="main__word hover__ooe" :class="{'hover__ooe-active': dots.ooe}">
 									one only events
@@ -137,13 +138,17 @@
 							id="string-2"
 						>
 							<div v-show="dots.philosophy" class="hover__filosophy">
-								<span
-									>Мы всегда в поиске новых идей для создания эффективных и оригинальных маркетинговых
-									коммуникаций</span
-								>
+								<span>
+									"Мы всегда в поиске новых идей для создания эффективных и оригинальных маркетинговых коммуникаций"
+								</span>
 							</div>
 							<span class="main__word" id="word-11">Продюссируем{{ '\xa0' }}</span>
-							<span v-show="!dots.philosophy" class="main__word" id="word-12" @mouseover="events(true)" @mouseout="events(false)"
+							<span
+								v-show="!dots.philosophy"
+								class="main__word"
+								id="word-12"
+								@mouseover="events(true)"
+								@mouseout="events(false)"
 								>ивенты<span
 									class="main__dot"
 									:class="{
@@ -1126,7 +1131,7 @@
 			},
 			agencyClick: function() {
 				if (this.dots.agency === true) {
-					this.$router.push({path: '/about'});
+					//this.$router.push({path: '/about'});
 				}
 			},
 			spb: function(bool) {
@@ -2140,7 +2145,7 @@
 		&__about {
 			display: none;
 			position: absolute;
-			top: 45%;
+			top: 50%;
 			left: calc(50% - 355px);
 			width: 710px;
 			font-size: 24px;
@@ -2423,7 +2428,6 @@
 			font-size: 24px;
 			line-height: 35px;
 			text-align: center;
-			text-transform: lowercase;
 			color: #ffffff;
 			position: absolute;
 			max-width: 850px;
@@ -2664,6 +2668,13 @@
 			}
 			&__imge {
 				height: calc(100vh - 200px - 120px);
+			}
+		}
+	}
+	@media all and(min-width: 1300px) and (max-height: 600px) {
+		.main {
+			&__about {
+				top: 60%;
 			}
 		}
 	}

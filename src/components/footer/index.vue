@@ -249,7 +249,9 @@
 					</span>
 					<div class="footer__complete">
 						<h3 class="footer__title">Сообщение отправлено</h3>
-						<span class="footer__done" @click="goTop"> Наверх </span>
+						<span class="footer__done" @click="goTop">
+							{{ goTopText }}
+						</span>
 					</div>
 				</div>
 			</div>
@@ -295,6 +297,15 @@
 				},
 				formSend: false,
 			};
+		},
+		computed: {
+			goTopText () {
+				if (this.mainPage) {
+					return 'На главную'
+				} else {
+					return 'Наверх'
+				}
+			}
 		},
 		watch: {
 			$route: function() {
@@ -482,7 +493,7 @@
 			width: 100%;
 		}
 		&-meet {
-			z-index: 1010;
+			z-index: 1110;
 		}
 		&__wrapper {
 			display: flex;
@@ -789,11 +800,13 @@
 			&-active {
 				padding-top: 95px;
 				height: 100vh;
+				max-height: none;
 			}
 			&-main {
 				height: 100vh;
 				padding-top: 140px;
 				padding-bottom: 85px;
+				max-height: none;
 			}
 			&__container {
 				display: flex;

@@ -40,7 +40,7 @@
 					</div>
 				</section>
 				<section class="project__block" v-if="post[0].video">
-					<div class="container">
+					<div class="container container-mobileOff">
 						<div class="project__video">
 							<iframe
 								:src="post[0].video + '?title=0&byline=0&portrait=0'"
@@ -172,7 +172,7 @@
 			left: 0;
 			color: #ffffff;
 			text-transform: uppercase;
-			z-index: 10;
+			z-index: 1010;
 		}
 		&__inner {
 			width: 100%;
@@ -191,7 +191,7 @@
 			position: relative;
 			margin-bottom: 5px;
 			width: 100%;
-			aspect-ratio: 19/11;
+			height: 250px;
 		}
 		&__imgs {
 			position: absolute;
@@ -271,8 +271,8 @@
 		}
 		&__video {
 			width: 100%;
+			height: 200px;
 			position: relative;
-			aspect-ratio: 19/11;
 		}
 		&__palyer {
 			width: 100%;
@@ -353,7 +353,14 @@
 		}
 	}
 	@media all and (min-width: 540px) and (max-width: 1200px) {
-
+		.project {
+			&__main {
+				height: 500px;
+			}
+			&__video {
+				height: 400px;
+			}
+		}
 	}
 	@media all and(min-width: 968px) {
 		.project {
@@ -409,7 +416,7 @@
 	@media all and(min-width: 1281px) {
 		.project {
 			&__main {
-				aspect-ratio: 19/14;
+				height: 700px;
 			}
 			&__container {
 				flex-direction: row;
@@ -471,6 +478,13 @@
 			}
 			&__block {
 				padding-bottom: 112px;
+			}
+		}
+	}
+	@media all and(min-width: 1600px) {
+		.project {
+			&__main {
+				height: 800px;
 			}
 		}
 	}

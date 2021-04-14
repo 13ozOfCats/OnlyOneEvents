@@ -60,7 +60,7 @@
 				max-height: 1200px;
 				height: calc(100vh - 140px);
 				padding-top: 40px;
-				padding-bottom: 40px;
+				padding-bottom: 90px;
 			}
 		}
 	}

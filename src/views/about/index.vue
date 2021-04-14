@@ -229,15 +229,21 @@
 					duration: 1000,
 				})
 					.add({
+						targets: '.aboutUs__ooe',
+						easing: 'linear',
+						translateX: [0, '100%'],
+						duration: 300,
+					})
+					.add({
 						targets: '.aboutUs__video',
 						easing: 'easeInCubic',
 						translateY: [0, '-100%'],
-					})
+					},'-=150')
 					.add({
 						targets: '.aboutUs__bigRedCircle',
 						easing: 'linear',
 						scale: [5, 1]
-					}, '-=300');
+					}, '-=300')
 				this.scrollAnimationUp = anime.timeline({
 					loop: false,
 					autoplay: false,
@@ -252,7 +258,13 @@
 						targets: '.aboutUs__video',
 						easing: 'easeInCubic',
 						translateY: ['100%', 0],
-					}, 0);
+					}, 0)
+					.add({
+						targets: '.aboutUs__ooe',
+						easing: 'linear',
+						translateX: ['100%', 0],
+						duration: 300,
+					}, '-=150')
 			}
 		},
 		beforeDestroy() {
@@ -387,7 +399,7 @@
 			position: absolute;
 			top: 50%;
 			right: 0;
-			transform: translate(0, -50%);
+			margin-top: -359px;
 			z-index: 1;
 		}
 		&__ooe,
@@ -458,6 +470,7 @@
 			&__player {
 				width: 89%;
 				height: 600px;
+				z-index: 10;
 			}
 			&__overlay {
 				content: '';
@@ -483,6 +496,17 @@
 				z-index: 1005;
 				transform: translateY(100%);
 				background: none;
+			}
+		}
+	}
+	@media all and(min-width: 1300px) and (max-height: 768px) {
+		.aboutUs {
+			&__supatitle {
+				font-size: 52px;
+			}
+			&__player {
+				width: 69%;
+				height: 450px;
 			}
 		}
 	}

@@ -83,7 +83,6 @@
 			font-size: 18px;
 			line-height: 140%;
 			color: #363636;
-			padding-left: 5px;
 		}
 		&__row {
 			display: flex;
@@ -126,6 +125,10 @@
 			transition: 0.4s;
 			cursor: pointer;
 			transform-origin: 0 50%;
+			&:nth-of-type(1),
+			&:nth-of-type(2) {
+				text-indent: -4px;
+			}
 			&-active {
 				transform: scale(1.2);
 				color: rgba(238, 61, 67, 0.85) !important;
