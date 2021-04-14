@@ -27,6 +27,7 @@ export default new Vuex.Store({
 					'http://ooe.borodadigital.com/img/rr-cullinan_3.jpg',
 					'http://ooe.borodadigital.com/img/rr-cullinan_4.jpg',
 					'http://ooe.borodadigital.com/img/rr-cullinan_5.jpg',
+					'http://ooe.borodadigital.com/img/rr-cullinan_6.jpeg',
 				],
 				prizes: {
 					bema: 'Шорт-лист фестиваля <br/> «bema!» 2021',
@@ -55,6 +56,9 @@ export default new Vuex.Store({
 					'http://ooe.borodadigital.com/img/aston_6.jpg',
 					'http://ooe.borodadigital.com/img/aston_7.jpg',
 					'http://ooe.borodadigital.com/img/aston_8.jpg',
+					'http://ooe.borodadigital.com/img/aston_9.jpg',
+					'http://ooe.borodadigital.com/img/aston_10.jpg',
+					'http://ooe.borodadigital.com/img/aston_11.jpg',
 				],
 				prizes: {
 					bema: 'Шорт-лист фестиваля <br/> «bema!» 2021',
@@ -89,6 +93,7 @@ export default new Vuex.Store({
 					'http://ooe.borodadigital.com/img/rr-ghost_12.jpg',
 					'http://ooe.borodadigital.com/img/rr-ghost_13.jpg',
 					'http://ooe.borodadigital.com/img/rr-ghost_14.jpg',
+					'http://ooe.borodadigital.com/img/rr-ghost_15.jpg',
 				],
 				prizes: {
 					bema: 'Шорт-лист фестиваля <br/> «bema!» 2021',
