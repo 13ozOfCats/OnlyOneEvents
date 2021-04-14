@@ -488,6 +488,13 @@
 			}
 		}
 	}
+	@media all and(min-width: 1600px) {
+		.project {
+			&__main {
+				height: 800px;
+			}
+		}
+	}
 	@media all and(min-width: 1300px) and (max-height: 768px) {
 		.project__side-r,
 		.project__side-l {

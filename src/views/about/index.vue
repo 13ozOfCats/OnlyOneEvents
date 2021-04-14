@@ -510,4 +510,15 @@
 			}
 		}
 	}
+	@media all and(min-width: 1300px) and (max-height: 768px) {
+		.aboutUs {
+			&__supatitle {
+				font-size: 52px;
+			}
+			&__player {
+				width: 69%;
+				height: 450px;
+			}
+		}
+	}
 </style>

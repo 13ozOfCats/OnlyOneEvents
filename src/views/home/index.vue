@@ -2678,6 +2678,13 @@
 			}
 		}
 	}
+	@media all and(min-width: 1300px) and (max-height: 600px) {
+		.main {
+			&__about {
+				top: 60%;
+			}
+		}
+	}
 	@media all and(min-width: 540px) {
 		.mobile {
 			&__title2 {

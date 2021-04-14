@@ -249,6 +249,10 @@
 			height: 100%;
 			display: flex;
 			align-items: center;
+			svg {
+				height: 24px;
+				width: 24px;
+			}
 			&-black {
 				.burger__line-1,
 				.burger__line-2,
@@ -314,7 +318,17 @@
 			cursor: pointer;
 		}
 	}
-
+	@media all and(min-width: 768px) {
+		.header {
+			&__burger svg {
+				height: 32px;
+				width: 32px;
+			}
+			&__logo {
+				height: 56px;
+			}
+		}
+	}
 	@media all and(min-width: 968px) {
 		.header {
 			&__container {
@@ -325,6 +339,10 @@
 			}
 			&__logo {
 				height: 56px;
+			}
+			&__burger svg {
+				height: 40px;
+				width: 40px;
 			}
 		}
 
