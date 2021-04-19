@@ -158,4 +158,12 @@
 			}
 		}
 	}
+	@media all and(min-width: 768px) and (max-width: 1023px) {
+		.aboutUs {
+			&__weCan {
+				font-size: 40px;
+				line-height: 100%;
+			}
+		}
+	}
 </style>
