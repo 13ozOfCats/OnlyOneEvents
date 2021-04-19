@@ -61,7 +61,7 @@
 			</aside>
 		</div>
 		<section class="project__block" v-if="post[0].gallery">
-			<div class="container">
+			<div class="container project__container">
 				<div class="project__subtitle2">Галерея</div>
 			</div>
 			<mySlider :gallery="post[0].gallery"></mySlider>
@@ -362,9 +362,47 @@
 			}
 		}
 	}
+	@media all and(min-width: 768px) {
+		.project {
+			&__main {
+				height: 578px;
+			}
+			&__left {
+				flex-direction: column;
+			}
+			&__box {
+				& + & {
+					margin-top: 36px;
+				}
+			}
+			&__right {
+				margin-top: 56px;
+			}
+			&__video {
+				height: 500px;
+			}
+			&__slide {
+				height: 400px;
+			}
+		}
+	}
 	@media all and(min-width: 968px) {
 		.project {
-			padding-top: 140px;
+			padding-top: 120px;
+			&__container {
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+			&__video {
+				height: 576px;
+			}
+			&__slide {
+				height: 486px;
+				margin-right: 40px;
+			}
+			&__slider .slick-track {
+				margin-left: 40px;
+			}
 			&__head {
 				margin-top: 100px;
 			}
@@ -375,7 +413,7 @@
 				height: calc(100% - 95px);
 			}
 			&__right {
-				margin-top: 56px;
+				margin-top: 64px;
 			}
 			&__descr {
 				font-size: 24px;

@@ -138,11 +138,23 @@
 			}
 		}
 	}
-	@media all and(min-width: 968px) {
+	@media all and(min-width: 768px) {
 		.aboutUs {
 			&__we {
 				display: flex;
 				align-items: center;
+			}
+		}
+	}
+	@media all and(min-width: 768px) and (max-width: 1279px) {
+		.aboutUs {
+			&__we {
+				padding-top: 35px;
+				height: 579px;
+			}
+			&__weCan {
+				font-size: 48px;
+				line-height: 100%;
 			}
 		}
 	}

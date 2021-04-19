@@ -67,6 +67,20 @@
 						@click="goToWork(post.slug, $event)"
 					>
 						<span class="work__title" v-html="post.menuTitle"> </span>
+						<div v-if="post.prizes" class="work__achievements">
+							<div v-if="post.prizes.bema" class="work__achievement">
+								<div class="work__achImg">
+									<img src="./images/bema.png" alt="bema" />
+								</div>
+								<span class="work__descr" v-html="post.prizes.bema"></span>
+							</div>
+							<div v-if="post.prizes.eoe" class="work__achievement">
+								<div class="work__achImg">
+									<img src="./images/oeo.png" alt="oeo" />
+								</div>
+								<span class="work__descr" v-html="post.prizes.eoe"></span>
+							</div>
+						</div>
 						<span class="work__imgs">
 							<img :src="post.mainImg" class="work__img" alt="" />
 							<span class="work__overlay"></span>
@@ -274,6 +288,32 @@
 			background: var(--bg) url('../../assets/images/contacts_bg.svg');
 			background-size: 100%;
 		}
+		&__achievements {
+			justify-content: space-between;
+			width: 100%;
+			display: none;
+		}
+		&__achievement {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			height: 178px;
+			flex-basis: calc(50% - 35px);
+		}
+		&__achImg {
+			height: 76px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		&__descr {
+			font-family: 'Circe', sans-serif;
+			font-weight: 300;
+			font-size: 14px;
+			line-height: 100%;
+			height: 78px;
+			text-align: center;
+		}
 	}
 
 	@media all and(min-width: 540px) {
@@ -299,6 +339,31 @@
 				padding-top: 72px;
 				padding-bottom: 72px;
 				height: 600px;
+			}
+		}
+	}
+
+	@media all and(min-width: 768px) {
+		.work {
+			&__item {
+				flex-basis: 50%;
+				height: 578px;
+				padding: 40px 85px 40px 40px;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: flex-start;
+			}
+			&__title {
+				font-size: 31px;
+				line-height: 150%;
+			}
+			&__achievements {
+				display: flex;
+			}
+			&__contacts {
+				height: 560px;
+				padding-top: 72px;
+				padding-bottom: 66px;
 			}
 		}
 	}
@@ -331,6 +396,7 @@
 				height: 25vh;
 				justify-content: flex-start;
 				align-items: center;
+				flex-direction: row;
 			}
 			&__imgs {
 				display: none;
@@ -343,6 +409,9 @@
 				height: 700px;
 				padding-top: 100px;
 				padding-bottom: 100px;
+			}
+			&__achievements {
+				display: none;
 			}
 		}
 	}
