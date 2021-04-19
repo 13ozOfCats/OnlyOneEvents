@@ -314,6 +314,11 @@
 			max-width: 100%;
 		}
 	}
+	@media (min-width: 1024px) {
+		.container {
+			max-width: 864px;
+		}
+	}
 
 	@media (min-width: 1200px) {
 		.container {
@@ -481,6 +486,34 @@
 			}
 			.btn__text {
 				color: #212121;
+			}
+		}
+		&-tablet {
+			.btn__circle {
+				stroke-dasharray: 92;
+				stroke-dashoffset: 92;
+				stroke-width: 1.13924;
+			}
+			.btn__bg {
+				stroke-dasharray: 92;
+				stroke-dashoffset: 0;
+				stroke-width: 1;
+			}
+			&:hover {
+				.btn__circle {
+					stroke-dashoffset: 67;
+				}
+				.btn__bg {
+					stroke-dashoffset: -25;
+				}
+			}
+			&:active {
+				.btn__circle {
+					stroke-dashoffset: 0;
+				}
+				.btn__bg {
+					stroke-dashoffset: -92;
+				}
 			}
 		}
 	}

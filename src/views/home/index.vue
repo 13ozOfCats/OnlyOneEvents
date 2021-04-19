@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<div class="main__wrapper desktop" v-if="desktop">
+		<div v-if="desktop" class="main__wrapper desktop">
 			<div class="main__inner">
 				<div class="hover__bg hover__bg-spb" :class="{'hover__bg-active': dots.spb}">
 					<div class="hover__cities">
@@ -960,7 +960,12 @@
 				</div>
 			</div>
 		</section>
-		<div class="main__mobile" v-if="!desktop">
+		<tablet v-if="tablet" />
+		<tabletSlider v-if="tablet" />
+		<div v-if="tablet" class="tablet__contacts">
+			<contacts />
+		</div>
+		<div class="main__mobile" v-if="mobile">
 			<section class="mobile__main">
 				<div class="container">
 					<div class="mobile__title">
@@ -981,7 +986,7 @@
 							></path>
 							<path
 								class="btn__arrow"
-								d="M26.9467 43.5547C26.7243 43.7772 26.3636 43.7772 26.1412 43.5547L22.5161 39.9297C22.2937 39.7072 22.2937 39.3466 22.5161 39.1241C22.7386 38.9017 23.0992 38.9017 23.3217 39.1241L26.5439 42.3464L29.7662 39.1241C29.9887 38.9017 30.3493 38.9017 30.5718 39.1241C30.7942 39.3466 30.7942 39.7072 30.5718 39.9297L26.9467 43.5547ZM27.1136 31.7595L27.1136 43.1519L25.9743 43.1519L25.9743 31.7595L27.1136 31.7595Z"
+								d="M15.0854 24.8951C14.8629 25.1175 14.5023 25.1175 14.2798 24.8951L10.6548 21.27C10.4323 21.0476 10.4323 20.6869 10.6548 20.4645C10.8772 20.242 11.2379 20.242 11.4604 20.4645L14.6826 23.6867L17.9049 20.4645C18.1273 20.242 18.488 20.242 18.7104 20.4645C18.9329 20.6869 18.9329 21.0476 18.7104 21.27L15.0854 24.8951ZM15.2522 18.1431L15.2522 24.4923L14.113 24.4923L14.113 18.1431L15.2522 18.1431Z"
 							></path>
 							<path
 								class="btn__circle"
@@ -1024,6 +1029,8 @@
 	import mobileWorks from './components/mobile_works';
 	import contacts from '../../components/contacts/index.vue';
 	import anime from "animejs/lib/anime.es.js";
+	import tablet from './components/tablet_head';
+	import tabletSlider from './components/tablet_slider';
 
 	export default Vue.extend({
 		name: 'Home',
@@ -1035,7 +1042,6 @@
 				canPlay: true,
 				meetBg: false,
 				meetBgTop: false,
-				desktop: true,
 				dots: {
 					we: false,
 					agency: false,
@@ -1052,6 +1058,8 @@
 			pluhs,
 			mobileWorks,
 			contacts,
+			tablet,
+			tabletSlider,
 		},
 		methods: {
 			openShowreel: function() {
@@ -1218,9 +1226,6 @@
 					}
 				}
 			},
-			onResize: function() {
-				this.desktop = window.innerWidth > 1300;
-			},
 			slowScrollToMain: function () {
 				window.scrollTo({
 					top: document.getElementById('main').offsetTop,
@@ -1242,11 +1247,18 @@
 		},
 		computed: {
 			...mapGetters(['posts', 'showPreloader']),
+			desktop () {
+				return window.innerWidth > 1300;
+			},
+			tablet () {
+				return window.innerWidth < 1279 && window.innerWidth >= 768;
+			},
+			mobile () {
+				return window.innerWidth < 767;
+			}
 		},
 		created() {
-			this.onResize();
 			this.$eventBus.$on('scrollFromMeet', this.scrollFromMeet);
-
 		},
 		mounted() {
 			if (this.desktop) {
@@ -2515,9 +2527,10 @@
 		&__contacts {
 			width: 100%;
 			height: 480px;
-			background: var(--bg);
 			padding-top: 48px;
 			padding-bottom: 44px;
+			background: var(--bg) url('../../assets/images/contacts_bg.svg');
+			background-size: 100%;
 		}
 	}
 	.meet {
@@ -2575,13 +2588,12 @@
 			}
 		}
 	}
-	@media all and(min-width: 760px) {
+	@media all and(min-width: 768px) {
 		.main {
 			&__mobile {
 				padding-top: 130px;
 			}
 		}
-
 		.mobile {
 			&__main {
 				padding-bottom: 222px;
@@ -2613,6 +2625,15 @@
 			}
 			&__contacts {
 				height: 600px;
+			}
+		}
+	}
+	@media all and(min-width: 768px) and(max-width: 1279px) {
+		.mobile {
+			&__contacts {
+				padding-top: 72px;
+				padding-bottom: 66px;
+				height: 560px;
 			}
 		}
 	}
@@ -2670,6 +2691,14 @@
 				height: calc(100vh - 200px - 120px);
 			}
 		}
+	}
+	.tablet__contacts {
+		width: 100%;
+		height: 564px;
+		padding-top: 72px;
+		padding-bottom: 66px;
+		background: var(--bg) url('../../assets/images/contacts_bg.svg');
+		background-size: 100%;
 	}
 	@media all and(min-width: 1300px) and (max-height: 600px) {
 		.main {

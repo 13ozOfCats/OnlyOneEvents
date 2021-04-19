@@ -32,7 +32,7 @@
 					</ul>
 				</nav>
 			</div>
-			<div class="header__burger" :class="{'header__burger-black': aboutActive}" @click="burger">
+			<div class="header__burger" :class="{'header__burger-black': aboutActive || blackBurger}" @click="burger">
 				<svg width="24" height="21" viewBox="0 0 24 21" fill="none">
 					<path
 						class="burger__line-1"
@@ -70,6 +70,7 @@
 				worksActive: false,
 				contactsActive: false,
 				headerHidden: false,
+				blackBurger: false
 			};
 		},
 		methods: {
@@ -162,6 +163,11 @@
 					this.position = 'fixed';
 				} else {
 					this.position = 'absolute';
+				}
+				if (window.innerWidth < 1279 && window.innerWidth >= 768 && this.$route.path === '/') {
+					this.blackBurger = true;
+				} else {
+					this.blackBurger = false;
 				}
 				if (this.$route.path === '/about') {
 					this.aboutActive = true;
@@ -354,7 +360,13 @@
 			}
 		}
 	}
-
+	@media all and(min-width: 768px) and (max-width: 1279px) {
+		.header {
+			&__container {
+				max-width: 100% !important;
+			}
+		}
+	}
 	@media all and(min-width: 1281px) {
 		.header {
 			padding-top: 40px;

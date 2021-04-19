@@ -1,6 +1,6 @@
 <template>
 	<main class="aboutUs">
-		<mobile1 v-if="!desktop"></mobile1>
+		<mobile1 v-if="mobile"></mobile1>
 		<section1 v-if="desktop" @next="down1" @lastWheel="newWheel" :lastWheel="lastWheel" :hide="hideSection1"></section1>
 		<section class="aboutUs__video" @wheel.prevent="videoWheel">
 			<div class="aboutUs__wrapper">
@@ -41,7 +41,7 @@
 				<div class="aboutUs__bigRedCircle"></div>
 			</div>
 		</section>
-		<mobile2 v-if="!desktop"></mobile2>
+		<mobile2 v-if="mobile"></mobile2>
 		<section3 v-if="desktop" @prev="up2" @lastWheel="newWheel" :lastWheel="lastWheel"></section3>
 		<section class="about__clients">
 			<div class="container">
@@ -116,6 +116,7 @@
 				lastWheel: Date.now(),
 				canPlay: true,
 				desktop: true,
+				mobile: false,
 			};
 		},
 		methods: {
@@ -206,11 +207,8 @@
 				this.lastWheel = now;
 			},
 			onResize: function() {
-				if (window.innerWidth > 1300) {
-					this.desktop = true;
-				} else {
-					this.desktop = false;
-				}
+				this.desktop = window.innerWidth >= 768;
+				this.mobile = !this.desktop;
 			},
 		},
 		created () {
@@ -447,7 +445,23 @@
 			}
 		}
 	}
-
+	@media all and(min-width: 768px) and (max-width: 1279px) {
+		.aboutUs {
+			&__video {
+				min-height: 623px;
+				padding-top: 30px;
+				padding-bottom: 50px;
+			}
+			&__supatitle {
+				font-size: 44px;
+				line-height: 130%;
+			}
+			&__player {
+				padding-top: 11px;
+				height: 475px;
+			}
+		}
+	}
 	@media all and(min-width: 1281px) {
 		.about {
 			&__clients {

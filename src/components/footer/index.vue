@@ -718,6 +718,17 @@
 			}
 		}
 	}
+	@media all and(min-width: 768px) {
+		.footer {
+			height: 430px;
+			&-active {
+				height: 500px;
+			}
+			&-main {
+				height: 500px;
+			}
+		}
+	}
 	@media all and(min-width: 968px) {
 		.footer {
 			padding-top: 70px;
@@ -797,6 +808,7 @@
 		.footer {
 			padding-top: 95px;
 			padding-bottom: 180px;
+			height: 650px;
 			&-active {
 				padding-top: 95px;
 				height: 100vh;
