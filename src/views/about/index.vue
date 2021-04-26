@@ -2,7 +2,7 @@
 	<main class="aboutUs">
 		<mobile1 v-if="mobile"></mobile1>
 		<section1 v-if="desktop" @next="down1" @lastWheel="newWheel" :lastWheel="lastWheel" :hide="hideSection1"></section1>
-		<section class="aboutUs__video" @wheel.prevent="videoWheel">
+		<section class="aboutUs__video" @wheel="videoWheel($event)">
 			<div class="aboutUs__wrapper">
 				<div class="container aboutUs__videoContainer">
 					<h2 class="aboutUs__supatitle aboutUs__supatitle-white">Шоурил</h2>
@@ -114,6 +114,7 @@
 				activeSection: 1,
 				hideSection1: false,
 				lastWheel: Date.now(),
+				width: window.innerWidth,
 				canPlay: true,
 				desktop: true,
 				mobile: false,
@@ -141,7 +142,8 @@
 				}
 			},
 			videoWheel: function (e) {
-				if(window.innerWidth > 1300) {
+				if(this.width > 1280) {
+					e.preventDefault()
 					const now = Date.now();
 					if (now - this.lastWheel > 150) {
 						if (e.deltaY > 0) {
@@ -213,12 +215,11 @@
 		},
 		created () {
 			this.onResize();
-			window.addEventListener('resize', this.onResize);
 			this.$eventBus.$on('onArrowup', this.onArrowUp);
 			this.$eventBus.$on('onArrowdown', this.onArrowDown);
 		},
 		mounted () {
-
+			window.addEventListener('resize', this.onResize)
 			this.$eventBus.$emit('overflow', true);
 			if(window.innerWidth > 1300) {
 				this.scrollAnimationDown = anime.timeline({
@@ -266,6 +267,7 @@
 			}
 		},
 		beforeDestroy() {
+			window.removeEventListener('resize');
 			this.$eventBus.$emit('overflowHidden', false);
 			this.$eventBus.$emit('headerHide', false);
 			this.$eventBus.$off('onArrowup');
@@ -360,6 +362,9 @@
 			align-items: center;
 			background: var(--red);
 			padding-bottom: 20px;
+			@media all and (max-width: 1280px) {
+				transform: none !important;
+			}
 		}
 		&__bigRedContainer {
 			display: none;
@@ -507,7 +512,7 @@
 				position: fixed;
 				top: 0;
 				left: 0;
-				z-index: 1005;
+				z-index: 1105;
 				transform: translateY(100%);
 				background: none;
 			}

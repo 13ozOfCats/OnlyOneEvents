@@ -1,5 +1,5 @@
 <template>
-	<section class="aboutUs__main" :class="{'aboutUs__main-hidden': hide}" @wheel.prevent="onWheel">
+	<section class="aboutUs__main" :class="{'aboutUs__main-hidden': hide}" @wheel="onWheel($event)">
 		<div class="container aboutUs__container">
 			<h1 class="aboutUs__supatitle">Мы one only events</h1>
 			<div class="aboutUs__items">
@@ -162,13 +162,16 @@
 		},
 		methods: {
 			onWheel: function(e) {
-				const now = Date.now();
-				if(now - this.lastWheel > 150) {
-					if (e.deltaY > 0) {
-						this.next();
+				if (window.innerWidth >= 1280) {
+					e.preventDefault()
+					const now = Date.now();
+					if (now - this.lastWheel > 150) {
+						if (e.deltaY > 0) {
+							this.next();
+						}
 					}
+					this.$emit('lastWheel', now);
 				}
-				this.$emit('lastWheel', now);
 			},
 			next: function() {
 				this.$emit('next');
@@ -303,6 +306,12 @@
 			display: none;
 			height: 100vh;
 			padding-top: 140px;
+			&-hidden {
+				display: none !important;
+				@media all and (max-width: 1280px) {
+					display: block !important;
+				}
+			}
 		}
 		&__items {
 			display: flex;
@@ -355,9 +364,6 @@
 				padding-top: 100px;
 				display: flex;
 				align-items: center;
-				&-hidden {
-					display: none;
-				}
 			}
 		}
 	}
