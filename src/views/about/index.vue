@@ -221,7 +221,7 @@
 		mounted () {
 			window.addEventListener('resize', this.onResize)
 			this.$eventBus.$emit('overflow', true);
-			if(window.innerWidth > 1300) {
+			if(window.innerWidth > 1280) {
 				this.scrollAnimationDown = anime.timeline({
 					loop: false,
 					autoplay: false,
@@ -362,7 +362,7 @@
 			align-items: center;
 			background: var(--red);
 			padding-bottom: 20px;
-			@media all and (max-width: 1280px) {
+			@media all and (max-width: 1280.9px) {
 				transform: none !important;
 			}
 		}
@@ -450,7 +450,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 768px) and (max-width: 1279px) {
+	@media all and(min-width: 768px) and (max-width: 1280.9px) {
 		.aboutUs {
 			&__video {
 				min-height: 623px;
@@ -518,7 +518,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 1300px) and (max-height: 768px) {
+	@media all and(min-width: 1281px) and (max-height: 768px) {
 		.aboutUs {
 			&__supatitle {
 				font-size: 52px;
@@ -529,7 +529,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 1300px) and (max-height: 768px) {
+	@media all and(min-width: 1281px) and (max-height: 768px) {
 		.aboutUs {
 			&__supatitle {
 				font-size: 52px;

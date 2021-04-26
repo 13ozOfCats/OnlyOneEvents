@@ -164,7 +164,7 @@
 				} else {
 					this.position = 'absolute';
 				}
-				if (window.innerWidth < 1279 && window.innerWidth >= 768 && this.$route.path === '/') {
+				if (window.innerWidth < 1281 && window.innerWidth >= 768 && this.$route.path === '/') {
 					this.blackBurger = true;
 				} else {
 					this.blackBurger = false;
@@ -360,7 +360,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 768px) and (max-width: 1279px) {
+	@media all and(min-width: 768px) and (max-width: 1280.9px) {
 		.header {
 			&__container {
 				max-width: 100% !important;
@@ -439,7 +439,7 @@
 		}
 	}
 
-	@media all and(min-width: 1300px) and (max-height: 768px) {
+	@media all and(min-width: 1281px) and (max-height: 768px) {
 		.main {
 			&__section {
 				padding-top: 180px;

@@ -162,7 +162,7 @@
 		},
 		methods: {
 			onWheel: function(e) {
-				if (window.innerWidth >= 1280) {
+				if (window.innerWidth > 1280) {
 					e.preventDefault()
 					const now = Date.now();
 					if (now - this.lastWheel > 150) {
@@ -178,7 +178,7 @@
 			},
 		},
 		mounted() {
-			if (window.innerWidth >= 1280) {
+			if (window.innerWidth > 1280) {
 				this.bouble1 = anime
 					.timeline({
 						loop: true,
@@ -245,14 +245,14 @@
 			const bubbleItem3 = document.getElementById('bubble-3');
 			if (bubbleItem1) {
 				bubbleItem1.addEventListener('mouseover', () => {
-					if (window.innerWidth >= 1280) {
+					if (window.innerWidth > 1280) {
 						this.bouble1.play();
 					}
 					this.bubbleActive.none = false;
 					this.bubbleActive.one = true;
 				});
 				bubbleItem1.addEventListener('mouseout', () => {
-					if (window.innerWidth >= 1280) {
+					if (window.innerWidth > 1280) {
 						this.bouble1.pause();
 					}
 					this.bubbleActive.none = true;
@@ -261,14 +261,14 @@
 			}
 			if (bubbleItem2) {
 				bubbleItem2.addEventListener('mouseover', () => {
-					if (window.innerWidth >= 1280) {
+					if (window.innerWidth > 1280) {
 						this.bouble2.play();
 					}
 					this.bubbleActive.none = false;
 					this.bubbleActive.two = true;
 				});
 				bubbleItem2.addEventListener('mouseout', () => {
-					if (window.innerWidth >= 1280) {
+					if (window.innerWidth > 1280) {
 						this.bouble2.pause();
 					}
 					this.bubbleActive.none = true;
@@ -277,14 +277,14 @@
 			}
 			if (bubbleItem3) {
 				bubbleItem3.addEventListener('mouseenter', () => {
-					if (window.innerWidth >= 1280) {
+					if (window.innerWidth > 1280) {
 						this.bouble3.play();
 					}
 					this.bubbleActive.none = false;
 					this.bubbleActive.three = true;
 				});
 				bubbleItem3.addEventListener('mouseleave', () => {
-					if (window.innerWidth >= 1280) {
+					if (window.innerWidth > 1280) {
 						this.bouble3.pause();
 					}
 					this.bubbleActive.none = true;
@@ -308,7 +308,7 @@
 			padding-top: 140px;
 			&-hidden {
 				display: none !important;
-				@media all and (max-width: 1280px) {
+				@media all and (max-width: 1280.9px) {
 					display: block !important;
 				}
 			}
@@ -367,7 +367,7 @@
 			}
 		}
 	}
-	@media all and (min-width: 768px) and (max-width: 1279px) {
+	@media all and (min-width: 768px) and (max-width: 1280.9px) {
 		.aboutUs {
 			&__main {
 				height: 579px;
@@ -398,7 +398,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 1300px) and (max-height: 768px) {
+	@media all and(min-width: 1281px) and (max-height: 768px) {
 		.aboutUs {
 			&__supatitle {
 				font-size: 52px;

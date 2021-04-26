@@ -471,7 +471,7 @@
 			display: none;
 		}
 	}
-	@media all and(min-width: 768px) and (max-width: 1280px) {
+	@media all and(min-width: 768px) and (max-width: 1280.9px) {
 		.contacts {
 			&__container {
 				flex-wrap: wrap;

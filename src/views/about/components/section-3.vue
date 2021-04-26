@@ -146,7 +146,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 768px) and (max-width: 1279px) {
+	@media all and(min-width: 768px) and (max-width: 1280.9px) {
 		.aboutUs {
 			&__we {
 				padding-top: 35px;

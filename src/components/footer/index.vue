@@ -905,7 +905,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 1300px) and (max-height: 768px) {
+	@media all and(min-width: 1281px) and (max-height: 768px) {
 		.footer {
 			&-main {
 				padding-top: 60px;

@@ -383,12 +383,12 @@
 			justify-content: space-between;
 		}
 	}
-	@media all and(min-width: 768px) and (max-width: 1279px) {
+	@media all and(min-width: 768px) and (max-width: 1280.9px) {
 		.head {
 			display: flex;
 		}
 	}
-	@media all and(min-width: 1280px) {
+	@media all and(min-width: 1281px) {
 		.head {
 			display: none;
 		}

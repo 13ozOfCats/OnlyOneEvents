@@ -100,7 +100,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 1280px) {
+	@media all and(min-width: 1281px) {
 		.aboutMobile {
 			&__main {
 				display: none;

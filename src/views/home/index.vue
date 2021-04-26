@@ -1052,6 +1052,7 @@
 					philosophy: false,
 					ooe: false,
 				},
+				width: window.innerWidth,
 			};
 		},
 		components: {
@@ -1066,34 +1067,38 @@
 				this.$eventBus.$emit('showreel');
 			},
 			goToMeet: function(e) {
-				if (e.deltaY > 0) {
-					if ((window.innerHeight + window.scrollY) === document.body.scrollHeight) {
-						e.preventDefault();
-						if (this.canPlay) {
-							this.$eventBus.$emit('overflowHidden', true);
-							this.canPlay = false;
-							this.goMeet.play();
-							this.goMeet.finished.then(() => {
-								this.meetBg = true;
-								this.canPlay = true;
-							});
+				if (this.desktop) {
+					if (e.deltaY > 0) {
+						if ((window.innerHeight + window.scrollY) === document.body.scrollHeight) {
+							e.preventDefault();
+							if (this.canPlay) {
+								this.$eventBus.$emit('overflowHidden', true);
+								this.canPlay = false;
+								this.goMeet.play();
+								this.goMeet.finished.then(() => {
+									this.meetBg = true;
+									this.canPlay = true;
+								});
+							}
 						}
 					}
 				}
 			},
 			backFromMeet: function(e) {
 				e.preventDefault();
-				if (e.deltaY < 0) {
-					if (this.canPlay) {
-						this.canPlay = false;
-						this.meetBg = false;
-						this.goMeet.reverse();
-						this.goMeet.play();
-						this.goMeet.finished.then(() => {
+				if (this.desktop) {
+					if (e.deltaY < 0) {
+						if (this.canPlay) {
+							this.canPlay = false;
+							this.meetBg = false;
 							this.goMeet.reverse();
-							this.canPlay = true;
-							this.$eventBus.$emit('overflowHidden', false);
-						});
+							this.goMeet.play();
+							this.goMeet.finished.then(() => {
+								this.goMeet.reverse();
+								this.canPlay = true;
+								this.$eventBus.$emit('overflowHidden', false);
+							});
+						}
 					}
 				}
 			},
@@ -1139,7 +1144,7 @@
 			},
 			agencyClick: function() {
 				if (this.dots.agency === true) {
-					//this.$router.push({path: '/about'});
+					this.$router.push({path: '/about'});
 				}
 			},
 			spb: function(bool) {
@@ -1232,36 +1237,21 @@
 				});
 				if (this.meetBg) {
 					if (this.canPlay) {
-						this.canPlay = false;
-						this.meetBg = false;
-						this.goMeet.reverse();
-						this.goMeet.play();
-						this.goMeet.finished.then(() => {
+						if (this.desktop) {
+							this.canPlay = false;
+							this.meetBg = false;
 							this.goMeet.reverse();
-							this.canPlay = true;
-							this.$eventBus.$emit('overflowHidden', false);
-						});
+							this.goMeet.play();
+							this.goMeet.finished.then(() => {
+								this.goMeet.reverse();
+								this.canPlay = true;
+								this.$eventBus.$emit('overflowHidden', false);
+							});
+						}
 					}
 				}
-			}
-		},
-		computed: {
-			...mapGetters(['posts', 'showPreloader']),
-			desktop () {
-				return window.innerWidth > 1300;
 			},
-			tablet () {
-				return window.innerWidth < 1279 && window.innerWidth >= 768;
-			},
-			mobile () {
-				return window.innerWidth < 767;
-			}
-		},
-		created() {
-			this.$eventBus.$on('scrollFromMeet', this.scrollFromMeet);
-		},
-		mounted() {
-			if (this.desktop) {
+			anime() {
 				this.foi = anime.timeline({
 					autoplay: true,
 					loop: true,
@@ -1352,52 +1342,77 @@
 				this.goForm = anime.timeline({
 					loop: false,
 					autoplay: false,
-				}).add({
-					targets: '.meet__bg',
-					easing: 'easeInOutCirc',
-					translateY: [0, function (el, i) {
-						const top = 70 * i + 70
-						return -top;
-					}],
-					duration: 1000,
-				}).add({
-					targets: '.meet',
-					easing: 'easeInOutCirc',
-					translateX: [0, 0],
-					translateY: [0, '-100%'],
-					translateZ: [0, 0],
-					duration: 1000,
-				}, '-=300');
+				})
+					.add({
+						targets: '.meet__bg',
+						easing: 'easeInOutCirc',
+						translateY: [0, function (el, i) {
+							const top = 70 * i + 70
+							return -top;
+						}],
+						duration: 1000,
+					})
+					.add({
+						targets: '.meet',
+						easing: 'easeInOutCirc',
+						translateX: [0, 0],
+						translateY: [0, '-100%'],
+						translateZ: [0, 0],
+						duration: 1000,
+					}, '-=300');
 				this.goMeet = anime.timeline({
 					loop: false,
 					autoplay: false,
-				}).add({
-					targets: '.meet',
-					easing: 'easeInOutCirc',
-					translateX: ['100%', 0],
-					translateY: [0, 0],
-					translateZ: [0, 0],
-					duration: 1000,
-				}).add({
-					targets: '.meet__bg',
-					easing: 'easeInOutCirc',
-					translateY: [function (el, i) {
-						const top = window.innerHeight - (70 * i);
-						if(top > 0) {
-							return top;
-						} else {
-							return 0;
-						}
-					}, 0],
-					duration: 1000,
-				});
+				})
+					.add({
+						targets: '.meet',
+						easing: 'easeInOutCirc',
+						translateX: ['100%', 0],
+						translateY: [0, 0],
+						translateZ: [0, 0],
+						duration: 1000,
+					})
+					.add({
+						targets: '.meet__bg',
+						easing: 'easeInOutCirc',
+						translateY: [function (el, i) {
+							const top = window.innerHeight - (70 * i);
+							if(top > 0) {
+								return top;
+							} else {
+								return 0;
+							}
+						}, 0],
+						duration: 1000,
+					});
 			}
+		},
+		computed: {
+			...mapGetters(['posts', 'showPreloader']),
+			desktop () {
+				return this.width > 1280;
+			},
+			tablet () {
+				return this.width < 1281 && this.width >= 768;
+			},
+			mobile () {
+				return this.width < 767;
+			}
+		},
+		created() {
+			this.$eventBus.$on('scrollFromMeet', this.scrollFromMeet);
+		},
+		mounted() {
+			window.addEventListener('resize',() => {
+				this.width = window.innerWidth
+			})
+			this.anime()
 			if (!this.showPreloader) {
 				window.scrollTo({
 					top: document.getElementById('main').offsetTop,
 				});
 			}
-			if (document.documentElement.clientWidth > 1300) {
+			if (document.documentElement.clientWidth > 1280) {
 				this.$eventBus.$on('slowScrollToMain', this.slowScrollToMain);
 				lax.init();
 				lax.addDriver('scrollY', function () {
@@ -1954,6 +1969,7 @@
 			}
 		},
 		beforeDestroy() {
+			window.removeEventListener('resize')
 			this.$eventBus.$off('scrollFromMeet');
 			this.$eventBus.$off('slowScrollToMain');
 			this.$eventBus.$emit('footerMeet', false);
@@ -2628,7 +2644,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 768px) and(max-width: 1279px) {
+	@media all and(min-width: 768px) and(max-width: 1280.9px) {
 		.mobile {
 			&__contacts {
 				padding-top: 72px;
@@ -2637,7 +2653,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 1300px) and (max-height: 768px) {
+	@media all and(min-width: 1281px) and (max-height: 768px) {
 		.main {
 			&__section {
 				padding-top: 185px;
@@ -2700,14 +2716,14 @@
 		background: var(--bg) url('../../assets/images/contacts_bg.svg');
 		background-size: 100%;
 	}
-	@media all and(min-width: 1300px) and (max-height: 600px) {
+	@media all and(min-width: 1281px) and (max-height: 600px) {
 		.main {
 			&__about {
 				top: 60%;
 			}
 		}
 	}
-	@media all and(min-width: 1300px) and (max-height: 600px) {
+	@media all and(min-width: 1281px) and (max-height: 600px) {
 		.main {
 			&__about {
 				top: 60%;

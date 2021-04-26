@@ -44,7 +44,7 @@
 				}
 			},
 			onResize: function() {
-				if(window.innerWidth > 1300) {
+				if(window.innerWidth > 1280) {
 					this.desktop = true;
 				} else {
 					this.desktop = false;
@@ -691,7 +691,7 @@
 		}
 	}
 
-	@media all and (max-width: 1279px) {
+	@media all and (max-width: 1280.9px) {
 		.container {
 			&-mobileOff {
 				padding-right: 0;
@@ -701,7 +701,7 @@
 		}
 	}
 
-	@media all and(min-width: 1300px) and (max-height: 768px) {
+	@media all and(min-width: 1281px) and (max-height: 768px) {
 		.footer {
 			&__flex,
 			&__mid {

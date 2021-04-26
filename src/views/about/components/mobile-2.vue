@@ -111,7 +111,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 1280px) {
+	@media all and(min-width: 1281px) {
 		.aboutMobile {
 			&__services {
 				display: none;

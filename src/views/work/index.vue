@@ -533,7 +533,7 @@
 			}
 		}
 	}
-	@media all and(min-width: 1300px) and (max-height: 768px) {
+	@media all and(min-width: 1281px) and (max-height: 768px) {
 		.project__side-r,
 		.project__side-l {
 			padding: 20px 0 0 0;
