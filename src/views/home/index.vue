@@ -1385,35 +1385,8 @@
 						}, 0],
 						duration: 1000,
 					});
-			}
-		},
-		computed: {
-			...mapGetters(['posts', 'showPreloader']),
-			desktop () {
-				return this.width > 1280;
 			},
-			tablet () {
-				return this.width < 1281 && this.width >= 768;
-			},
-			mobile () {
-				return this.width < 767;
-			}
-		},
-		created() {
-			this.$eventBus.$on('scrollFromMeet', this.scrollFromMeet);
-		},
-		mounted() {
-			window.addEventListener('resize',() => {
-				this.width = window.innerWidth
-			})
-			this.anime()
-			if (!this.showPreloader) {
-				window.scrollTo({
-					top: document.getElementById('main').offsetTop,
-				});
-			}
-			if (document.documentElement.clientWidth > 1280) {
-				this.$eventBus.$on('slowScrollToMain', this.slowScrollToMain);
+			lax() {
 				lax.init();
 				lax.addDriver('scrollY', function () {
 					return window.scrollY;
@@ -1966,6 +1939,36 @@
 						],
 					},
 				});
+			}
+		},
+		computed: {
+			...mapGetters(['posts', 'showPreloader']),
+			desktop () {
+				return this.width > 1280;
+			},
+			tablet () {
+				return this.width < 1281 && this.width >= 768;
+			},
+			mobile () {
+				return this.width < 767;
+			}
+		},
+		created() {
+			this.$eventBus.$on('scrollFromMeet', this.scrollFromMeet);
+		},
+		mounted() {
+			window.addEventListener('resize',() => {
+				this.width = window.innerWidth
+			})
+			this.anime()
+			this.lax()
+			if (!this.showPreloader) {
+				window.scrollTo({
+					top: document.getElementById('main').offsetTop,
+				});
+			}
+			if (document.documentElement.clientWidth > 1280) {
+				this.$eventBus.$on('slowScrollToMain', this.slowScrollToMain);
 			}
 		},
 		beforeDestroy() {
