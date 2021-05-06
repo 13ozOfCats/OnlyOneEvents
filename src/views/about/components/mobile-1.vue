@@ -81,6 +81,7 @@
 		&__left {
 			flex-basis: 170px;
 			min-width: 170px;
+			margin-left: -10px;
 		}
 		&__right {
 			flex-basis: auto;
