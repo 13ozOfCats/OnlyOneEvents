@@ -361,7 +361,6 @@
 	@media all and(min-width: 768px) {
 		.aboutUs {
 			&__main {
-				padding-top: 100px;
 				display: flex;
 				align-items: center;
 			}
