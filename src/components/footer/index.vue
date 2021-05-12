@@ -198,7 +198,7 @@
 					<prevBtn @click="goToSlide(3)"></prevBtn>
 					<div class="footer__flex">
 						<div class="footer__left">
-							<dropfile></dropfile>
+							<dropfile @dropfile="getFile()" />
 						</div>
 						<div class="footer__right">
 							<div class="footer__btn footer__control" @click="sendMessage">
@@ -263,6 +263,7 @@
 	import {IMaskDirective} from 'vue-imask';
 	import prevBtn from '../../components/btn_footer/index.vue';
 	import dropfile from '../../components/dropfile/index.vue';
+	import axios from 'axios';
 
 	export default Vue.extend({
 		data: function() {
@@ -275,7 +276,7 @@
 					phone: '',
 					theme: '',
 					text: '',
-					files: [],
+					file: '',
 				},
 				errors: {
 					name: false,
@@ -423,9 +424,18 @@
 				this.errors.theme = false;
 				this.errorsText.theme = '\xa0';
 			},
-			sendMessage: function() {
-				this.slide = 4;
-				this.formSend = true;
+			sendMessage: async function() {
+				try {
+					await axios({
+						method: 'post',
+						url: './php/sender.php',
+						data: this.message
+					})
+					this.formSend = true;
+					this.slide = 4;
+				} catch(e) {
+					console.log(e)
+				}
 			},
 			goTop: function() {
 				if (this.$route.path === '/') {
@@ -460,8 +470,8 @@
 					this.$router.push({path: '/'});
 				}
 			},
-			getFile: function(files) {
-				this.message.files = files;
+			getFile: function(file) {
+				this.message.file = file;
 			},
 		},
 		directives: {
