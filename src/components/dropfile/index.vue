@@ -37,7 +37,7 @@
 	export default Vue.extend({
 		data: function() {
 			return {
-				files: [],
+				file: '',
 				active: false,
 			};
 		},
@@ -116,12 +116,12 @@
 				xhr.addEventListener("abort", function(){
 					console.log("abort");
 				});
-				xhr.open("POST", "php/upload.php", );
+				xhr.open("POST", "./php/upload.php", );
 				xhr.send(formdata);
-				xhr.onreadystatechange = function() {
+				xhr.onreadystatechange = () => {
 					if (xhr.readyState == XMLHttpRequest.DONE) {
-						this.files = xhr.responseText;
-						this.$eventBus.$emit('dropfile', this.files);
+						this.file = xhr.responseText;
+						this.$eventBus.$emit('dropfile', this.file);
 					}
 				}
 			},
